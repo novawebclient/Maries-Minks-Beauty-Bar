@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { generalBookingPath } from '../data/booking';
+import { getSiteSettings } from '../content/site';
+
+const site = getSiteSettings();
+---
+
+<BaseLayout
+	title={`Contact | ${site.displayName}`}
+	description={`Contact ${site.displayName} for beauty services in ${site.serviceArea}, or book online.`}
+>
+	<header class="page-masthead page-masthead-pink">
+		<div class="container masthead-grid">
+			<div><p class="section-kicker">Get in touch</p><h1>Let’s keep it easy.</h1></div>
+			<p>Call, email, follow along, or head straight to booking. This appointment-only beauty bar shares the studio address after booking.</p>
+		</div>
+	</header>
+
+	<section class="section contact-section" aria-labelledby="contact-options-heading">
+		<div class="container">
+			<div class="section-heading-wide">
+				<div><p class="section-kicker">Contact options</p><h2 id="contact-options-heading">Choose the way that works for you.</h2></div>
+				<p>For an appointment, the live booking calendar is the quickest route. For general business questions, use the public contact details below.</p>
+			</div>
+			<div class="contact-card-grid">
+				<a class="contact-card" href={site.contact.phoneHref}><span>01</span><strong>Call</strong><p>{site.contact.phoneDisplay}</p><small>Tap to call</small></a>
+				<a class="contact-card" href={`mailto:${site.contact.email}`}><span>02</span><strong>Email</strong><p>{site.contact.email}</p><small>Send an email</small></a>
+				<a class="contact-card contact-card-dark" href={generalBookingPath}><span>03</span><strong>Book</strong><p>Choose a live appointment time.</p><small>Open booking ↓</small></a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section social-section" aria-labelledby="socials-heading">
+		<div class="container split-feature split-feature-reverse">
+			<div class="split-copy">
+				<p class="section-kicker">Stay connected</p>
+				<h2 id="socials-heading">Find the beauty bar where you already scroll.</h2>
+				<p class="lead-copy">Social connection is the site’s primary community action. Follow for updates and current announcements.</p>
+				<ul class="social-link-list">
+					{site.socials.map((social, index) => <li><a href={social.href} target="_blank" rel="noopener noreferrer"><span>0{index + 1}</span>{social.label}<span aria-hidden="true">↗</span></a></li>)}
+				</ul>
+			</div>
+			<aside class="contact-note" aria-label="Studio details">
+				<p class="section-kicker">Studio details</p>
+				<p class="contact-note-large">{site.hours}</p>
+				<p>{site.serviceArea}</p>
+				<p>The home-studio address is intentionally provided after booking.</p>
+			</aside>
+		</div>
+	</section>
+
+	<section class="section newsletter-pending-section" id="updates" aria-labelledby="updates-heading">
+		<div class="container newsletter-pending">
+			<div><p class="section-kicker">Email updates</p><h2 id="updates-heading">A list worth looking forward to.</h2></div>
+			<p>Email signup will be connected when the client-owned newsletter account, consent wording, and unsubscribe settings are approved. Until then, follow on social for updates.</p>
+		</div>
+	</section>
+</BaseLayout>

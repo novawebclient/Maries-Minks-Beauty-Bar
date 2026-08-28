@@ -1,0 +1,137 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import beautyTools from '../assets/beauty-tools.png';
+import lashEditorial from '../assets/lash-editorial.png';
+import portraitHero from '../../assets/originals/client-questionnaire/DB8_1436-Edit.jpeg';
+import portraitClose from '../../assets/originals/client-questionnaire/DB8_1181-Edit.jpeg';
+import { generalBookingPath } from '../data/booking';
+import { getSiteSettings } from '../content/site';
+
+const site = getSiteSettings();
+const instagram = site.socials.find((social) => social.label === 'Instagram');
+
+const bookingSteps = [
+	['01', 'Choose your service', 'Explore the category that fits your routine and open its matching booking options.'],
+	['02', 'Select your time', 'Choose from the live availability in the secure booking calendar.'],
+	['03', 'Confirm your visit', 'Review the appointment details and reserve your time directly with the beauty bar.'],
+];
+---
+
+<BaseLayout
+	title={`${site.displayName} | Lashes, Waxing, Brows & Facials in Ocala`}
+	description={`Discover lash, waxing, brow, facial, and beauty services from ${site.displayName} in ${site.serviceArea}.`}
+>
+	<section class="campaign-hero" aria-labelledby="hero-heading">
+		<Image
+			src={portraitHero}
+			alt="Studio portrait of a person seated in black against a bright background"
+			class="campaign-hero-image client-portrait-image"
+			format="webp"
+			loading="eager"
+			fetchpriority="high"
+		/>
+		<div class="campaign-hero-shade" aria-hidden="true"></div>
+		<div class="container campaign-hero-inner">
+			<div class="campaign-copy">
+				<p class="campaign-monogram" aria-hidden="true">MM</p>
+				<p class="eyebrow eyebrow-light">Lashes · Brows · Skin · Beauty</p>
+				<h1 id="hero-heading">Beauty in every detail.</h1>
+				<p class="campaign-lede">A beauty-bar experience for the appointments that keep you feeling polished, cared for, and completely yourself.</p>
+				<div class="actions">
+					{instagram && <a class="button button-pink" href={instagram.href} target="_blank" rel="noopener noreferrer">Follow on Instagram <span aria-hidden="true">↗</span></a>}
+					<a class="text-link text-link-light" href={generalBookingPath}>Book an appointment <span aria-hidden="true">↓</span></a>
+				</div>
+			</div>
+		</div>
+		<p class="campaign-caption">{site.hours} · {site.serviceArea}</p>
+	</section>
+	<div class="brand-ticker" aria-hidden="true">
+		<span>Lash extensions</span><span>Full body waxing</span><span>Brazilian waxing</span><span>Brow services</span><span>Customized facials</span>
+	</div>
+
+	<section class="section intro-section" aria-labelledby="intro-heading">
+		<div class="container split-feature">
+			<figure class="editorial-figure editorial-figure-tall">
+				<Image src={portraitClose} alt="Close studio portrait of a person against a bright background" format="webp" widths={[480, 720, 960]} sizes="(max-width: 800px) 100vw, 44vw" loading="lazy" />
+				<figcaption>Marie’s Minks &amp; Beauty Bar</figcaption>
+			</figure>
+			<div class="split-copy">
+				<p class="section-kicker">Welcome to</p>
+				<h2 id="intro-heading">Marie’s Minks &amp; Beauty Bar</h2>
+				<p class="lead-copy">Greetings! Thank you for choosing Marie’s Minks &amp; Beauty Bar for your professional services. I specialize in individual lash extensions, full body waxing, Brazilian’s, brows and customized facials.</p>
+				<p>I aim to provide a relaxing experience in the comfort of my home studio. My services will leave you feeling more confident and make your everyday routine a breeze.</p>
+				<p class="signature">Xoxo,<br />Angelina</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section social-feature" aria-labelledby="social-heading">
+		<div class="container social-feature-grid">
+			<div>
+				<p class="section-kicker">Stay connected</p>
+				<h2 id="social-heading">Your beauty routine has a community, too.</h2>
+				<p>Follow along for current updates, beauty-bar moments, and future announcements. Connect with Marie’s Minks &amp; Beauty Bar on the platform that feels most like you.</p>
+				<ul class="social-feature-links">
+					{site.socials.map((social) => <li><a class="button button-dark" href={social.href} target="_blank" rel="noopener noreferrer">{social.label} <span aria-hidden="true">↗</span></a></li>)}
+				</ul>
+			</div>
+			<figure class="social-feature-image">
+				<Image src={beautyTools} alt="Beauty tools and spa essentials arranged on a pink counter" format="webp" widths={[480, 720, 960]} sizes="(max-width: 800px) 100vw, 42vw" loading="lazy" />
+			</figure>
+		</div>
+	</section>
+
+	<section class="section gallery-section" aria-labelledby="gallery-heading">
+		<div class="container gallery-preview-grid">
+			<div class="gallery-heading">
+				<div><p class="section-kicker">The finished look</p><h2 id="gallery-heading">Real results, coming into focus.</h2></div>
+				<p>The treatment portfolio is being curated with approved work photography. Visit the gallery to see the plan and learn how to connect with the beauty bar meanwhile.</p>
+			</div>
+			<figure class="gallery-preview-figure">
+				<Image src={lashEditorial} alt="Concept editorial close-up featuring a polished lash look" format="webp" widths={[640, 960]} sizes="(max-width: 800px) 100vw, 60vw" loading="lazy" />
+				<figcaption>Concept imagery · Portfolio pending approval</figcaption>
+			</figure>
+			<a class="text-link gallery-preview-link" href="/gallery/">View the gallery <span aria-hidden="true">↓</span></a>
+		</div>
+	</section>
+
+	<section class="section booking-feature" aria-labelledby="booking-heading">
+		<div class="container booking-grid">
+			<div class="booking-intro">
+				<p class="section-kicker">Reserve your time</p>
+				<h2 id="booking-heading">Go straight to booking.</h2>
+				<p>Choose your service, select an available time, and confirm your details in the secure booking calendar.</p>
+				<a class="button button-dark" href={generalBookingPath}>Book now <span aria-hidden="true">↓</span></a>
+				<p class="secure-note"><span aria-hidden="true">✓</span> Secure online booking</p>
+			</div>
+			<div class="booking-steps">
+				<p class="section-kicker section-kicker-pink">What happens next</p>
+				<ol>
+					{bookingSteps.map(([number, title, copy]) => (
+						<li><span>{number}</span><div><strong>{title}</strong><p>{copy}</p></div></li>
+					))}
+				</ol>
+			</div>
+		</div>
+	</section>
+
+	<section class="section faq-section" aria-labelledby="faq-heading">
+		<div class="container faq-grid">
+			<div><p class="section-kicker">Good to know</p><h2 id="faq-heading">Before you book.</h2></div>
+			<div class="faq-list">
+				<details><summary><span>01</span> How do I book an appointment?</summary><p>Select a service to open its matching booking options, then choose a live time and complete the secure booking flow.</p></details>
+				<details><summary><span>02</span> Where can I see current prices?</summary><p>Current pricing, appointment lengths, and live availability are maintained in the booking system while the approved website price menu is prepared.</p></details>
+				<details><summary><span>03</span> Where is the studio?</summary><p>This is an appointment-only home studio serving Ocala and surrounding areas. The address is provided after booking.</p></details>
+			</div>
+		</div>
+	</section>
+
+	<section class="section final-cta-section">
+		<div class="container final-cta">
+			<p class="section-kicker">Ready when you are</p>
+			<h2>Make time for your beauty routine.</h2>
+			<a class="button button-dark" href={generalBookingPath}>Book an appointment <span aria-hidden="true">↓</span></a>
+		</div>
+	</section>
+</BaseLayout>

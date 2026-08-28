@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { bookingSchedulerUrl, generalBookingPath } from '../data/booking';
+import { getSiteSettings } from '../content/site';
+
+const bookingSteps = [
+	['01', 'Choose your service', 'Review current services, prices, and appointment lengths in the live scheduler.'],
+	['02', 'Select your time', 'Choose from Marie’s current live availability.'],
+	['03', 'Confirm your visit', 'Enter your details, review the booking terms, and complete your reservation.'],
+];
+const site = getSiteSettings();
+---
+
+<BaseLayout
+	title={`Book an Appointment | ${site.displayName}`}
+	description={`Book lash, waxing, Brazilian waxing, facial, and beauty services with ${site.displayName} online.`}
+>
+	<header class="page-masthead page-masthead-pink">
+		<div class="container masthead-grid">
+			<div><p class="section-kicker">Reserve your time</p><h1>Go straight to booking.</h1></div>
+			<p>Choose your service, select an available time, and confirm your details in the secure online booking calendar.</p>
+		</div>
+	</header>
+
+	<section class="section scheduler-section" aria-labelledby="scheduler-heading">
+		<div class="container">
+			<div class="scheduler-heading">
+				<div><p class="section-kicker">Live scheduling</p><h2 id="scheduler-heading">Choose your time.</h2></div>
+				<p>When you arrive from a service link, the booking calendar opens with that service selected or with only its relevant options shown.</p>
+			</div>
+			<div class="scheduler-shell" id="scheduler">
+				<iframe
+					id="booking-scheduling-embed"
+					title={`Book an appointment with ${site.displayName}`}
+					src={bookingSchedulerUrl}
+					data-base-url={bookingSchedulerUrl}
+					width="100%"
+					height="900"
+					frameborder="0"
+					loading="eager"
+					referrerpolicy="strict-origin-when-cross-origin"
+				></iframe>
+			</div>
+			<p class="scheduler-fallback">Prefer a separate window or having trouble with the embed? <a data-booking-fallback href={bookingSchedulerUrl} target="_blank" rel="noopener noreferrer">Open secure booking <span aria-hidden="true">↗</span></a></p>
+		</div>
+		<script is:inline>
+			(() => {
+				const frame = document.querySelector('[data-base-url]');
+				if (!(frame instanceof HTMLIFrameElement) || !frame.dataset.baseUrl) return;
+
+				const pageParams = new URLSearchParams(window.location.search);
+				const appointmentTypeIds = [
+					...pageParams.getAll('appointmentType'),
+					...pageParams.getAll('appointmentType[]'),
+				].filter((value) => /^\d+$/.test(value));
+
+				if (appointmentTypeIds.length === 0) return;
+
+				const schedulerUrl = new URL(frame.dataset.baseUrl);
+				if (appointmentTypeIds.length === 1) {
+					schedulerUrl.searchParams.set('appointmentType', appointmentTypeIds[0]);
+				} else {
+					appointmentTypeIds.forEach((id) => schedulerUrl.searchParams.append('appointmentType[]', id));
+				}
+				frame.src = schedulerUrl.toString();
+
+				const fallback = document.querySelector('[data-booking-fallback]');
+				if (fallback instanceof HTMLAnchorElement) fallback.href = schedulerUrl.toString();
+			})();
+		</script>
+		<script is:inline async src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
+	</section>
+
+	<section class="section booking-page-section">
+		<div class="container booking-grid booking-grid-page">
+			<div class="booking-intro">
+				<p class="section-kicker">Booking support</p>
+				<h2>Book with the beauty bar.</h2>
+				<p>Current service options, pricing, appointment lengths, payments, and availability remain inside the secure booking system.</p>
+				<a class="button button-dark button-large" href={generalBookingPath}>Return to the scheduler <span aria-hidden="true">↑</span></a>
+				<p class="secure-note"><span aria-hidden="true">✓</span> Secure online booking</p>
+			</div>
+			<div class="booking-steps">
+				<p class="section-kicker section-kicker-pink">What happens next</p>
+				<ol>
+					{bookingSteps.map(([number, title, copy]) => (
+						<li><span>{number}</span><div><strong>{title}</strong><p>{copy}</p></div></li>
+					))}
+				</ol>
+			</div>
+		</div>
+	</section>
+
+	<section class="section faq-section" aria-labelledby="booking-faq-heading">
+		<div class="container faq-grid">
+			<div><p class="section-kicker">Booking notes</p><h2 id="booking-faq-heading">Good to know.</h2></div>
+			<div class="faq-list">
+				<details><summary><span>01</span> Why is booking embedded here?</summary><p>The in-page calendar lets you choose a time and continue the booking flow without leaving the website.</p></details>
+				<details><summary><span>02</span> Where are appointment details stored?</summary><p>Booking information is handled inside the client-owned booking system; this website does not maintain a separate appointment database.</p></details>
+				<details><summary><span>03</span> What if the embedded calendar does not load?</summary><p>Use the secure booking link directly beneath the calendar. It opens the same live booking system in a separate window.</p></details>
+			</div>
+		</div>
+	</section>
+
+	<section class="section final-cta-section final-cta-section-dark">
+		<div class="container final-cta final-cta-dark">
+			<p class="section-kicker section-kicker-pink">Marie’s schedule</p>
+			<h2>Your next beauty moment starts here.</h2>
+			<a class="button button-pink" href={generalBookingPath}>Book now <span aria-hidden="true">↑</span></a>
+		</div>
+	</section>
+</BaseLayout>

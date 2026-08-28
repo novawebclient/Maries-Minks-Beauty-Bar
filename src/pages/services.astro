@@ -1,0 +1,76 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import beautyTools from '../assets/beauty-tools.png';
+import lashEditorial from '../assets/lash-editorial.png';
+import { generalBookingPath, serviceCategories } from '../data/booking';
+import { getSiteSettings } from '../content/site';
+
+const site = getSiteSettings();
+---
+
+<BaseLayout
+	title={`Services | ${site.displayName}`}
+	description={`Explore lash, brow, waxing, Brazilian waxing, facial, and beauty services from ${site.displayName}.`}
+>
+	<header class="page-masthead page-masthead-pink">
+		<div class="container masthead-grid">
+			<div>
+				<p class="section-kicker">Marie’s services</p>
+				<h1>Choose your beauty moment.</h1>
+			</div>
+			<p>Choose a service below to open the matching booking options without starting over, then select a live time.</p>
+		</div>
+	</header>
+
+	<section class="section service-editorial-section">
+		<div class="container split-feature split-feature-reverse">
+			<div class="split-copy">
+				<p class="section-kicker">One beauty bar</p>
+				<h2>From first look to final detail.</h2>
+				<p class="lead-copy">The service menu is organized to make discovery simple while the live booking calendar keeps availability current.</p>
+				<p>Current prices and appointment lengths are available in the booking calendar while the approved website menu is prepared. The booking experience will not need to change when that content arrives.</p>
+				<a class="button button-dark" href={generalBookingPath}>View live booking <span aria-hidden="true">↓</span></a>
+			</div>
+			<figure class="editorial-figure editorial-figure-tall">
+				<Image src={beautyTools} alt="Beauty-bar tools and spa essentials arranged on a pink counter" format="webp" widths={[480, 720, 960]} sizes="(max-width: 800px) 100vw, 44vw" loading="lazy" />
+				<figcaption>Beauty bar essentials</figcaption>
+			</figure>
+		</div>
+	</section>
+
+	<section class="section service-menu-section" aria-labelledby="service-menu-heading">
+		<div class="container service-page-grid">
+			<div class="service-image-column">
+				<figure class="editorial-figure sticky-figure">
+					<Image src={lashEditorial} alt="Editorial close-up featuring a finished lash look" format="webp" widths={[480, 720, 960]} sizes="(max-width: 850px) 100vw, 36vw" loading="eager" />
+					<figcaption>Original concept imagery</figcaption>
+				</figure>
+			</div>
+			<div>
+				<p class="sr-only" id="service-menu-heading">Service categories</p>
+				<div class="service-stack service-stack-page">
+					{serviceCategories.map((service, index) => (
+						<details class="service-disclosure" name="service-menu" open={index === 0}>
+							<summary>
+								<span class="service-number">{service.number}</span>
+								<span><small>{service.eyebrow}</small><strong>{service.name}</strong></span>
+								<span class="service-count">{service.items.length} options</span>
+								<span class="summary-icon" aria-hidden="true"></span>
+							</summary>
+							<div class="service-disclosure-body service-disclosure-body-stacked">
+								<p class="service-intro">{service.intro}</p>
+								<ul class="service-booking-links">
+									{service.items.map((item) => <li><a href={item.bookingPath}>{item.name}<span aria-hidden="true">Book ↓</span></a></li>)}
+								</ul>
+								<p class="placeholder-note"><strong>Live booking:</strong> {service.note}</p>
+								<a class="text-link" href={service.bookingPath}>View all {service.name} booking options <span aria-hidden="true">↓</span></a>
+							</div>
+						</details>
+					))}
+				</div>
+				<a class="button button-dark service-menu-cta" href={generalBookingPath}>View all services <span aria-hidden="true">↓</span></a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { generalBookingPath } from '../data/booking';
+import { getSiteSettings } from '../content/site';
+
+const site = getSiteSettings();
+---
+
+<BaseLayout
+	title={`Policies | ${site.displayName}`}
+	description={`Booking and service policy information for ${site.displayName}.`}
+>
+	<header class="page-masthead page-masthead-dark policies-masthead">
+		<div class="container masthead-content">
+			<p class="section-kicker section-kicker-pink">Before you book</p>
+			<h1>Clear details make a better appointment.</h1>
+			<p>Final booking, cancellation, payment, service, and training terms need the client’s approval before this page is published publicly.</p>
+		</div>
+	</header>
+
+	<section class="section policy-section" aria-labelledby="policy-heading">
+		<div class="container legal-layout">
+			<aside class="legal-aside"><p class="section-kicker">Policy status</p><p>Draft structure only</p><p>Do not rely on this page as final booking terms until approved copy is added.</p></aside>
+			<div class="legal-copy">
+				<h2 id="policy-heading">What will be confirmed before launch</h2>
+				<div class="policy-list">
+					<article><span>01</span><div><h3>Booking and deposits</h3><p>Whether a deposit or full payment is required, the approved payment method, and how the booking flow communicates it.</p></div></article>
+					<article><span>02</span><div><h3>Changes and cancellations</h3><p>Rescheduling windows, cancellation terms, late-arrival expectations, no-show terms, and any refund rules.</p></div></article>
+					<article><span>03</span><div><h3>Service preparation</h3><p>Approved preparation, aftercare, contraindications, age requirements, and any service-specific expectations.</p></div></article>
+					<article><span>04</span><div><h3>Training terms</h3><p>Class fees, deposits, materials, attendance, cancellation, and certification-related language for each approved course.</p></div></article>
+				</div>
+				<a class="button button-dark" href={generalBookingPath}>View live booking details <span aria-hidden="true">↓</span></a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

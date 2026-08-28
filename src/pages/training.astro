@@ -1,0 +1,61 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import trainingPortrait from '../../assets/originals/client-questionnaire/DB8_1469-Edit.jpeg';
+import { getSiteSettings } from '../content/site';
+
+const site = getSiteSettings();
+---
+
+<BaseLayout
+	title={`Training | ${site.displayName}`}
+	description={`Explore lash and waxing training information from ${site.displayName} in ${site.serviceArea}.`}
+>
+	<header class="page-masthead page-masthead-dark training-masthead">
+		<Image src={trainingPortrait} alt="Studio portrait of a person holding a lash training manual" class="masthead-background" format="webp" loading="eager" fetchpriority="high" />
+		<div class="masthead-overlay" aria-hidden="true"></div>
+		<div class="container masthead-content">
+			<p class="section-kicker section-kicker-pink">Education</p>
+			<h1>Build your beauty skill set.</h1>
+			<p>Lash and wax training are part of the beauty bar. Class details will be published once the client finalizes each offering.</p>
+		</div>
+	</header>
+
+	<section class="section training-intro-section" aria-labelledby="training-heading">
+		<div class="container split-feature">
+			<div class="split-copy">
+				<p class="section-kicker">Training at the beauty bar</p>
+				<h2 id="training-heading">The next class is taking shape.</h2>
+				<p class="lead-copy">The client questionnaire confirms lash and wax training; dates, format, capacity, curriculum, pricing, and registration details are still being finalized.</p>
+				<p>That means this page intentionally does not promise a schedule, credential, payment requirement, or outcome that has not been approved yet.</p>
+				<a class="button button-dark" href={`mailto:${site.contact.email}?subject=Training%20interest`}>Ask about training <span aria-hidden="true">↗</span></a>
+			</div>
+			<figure class="editorial-figure editorial-figure-tall">
+				<Image src={trainingPortrait} alt="Portrait of a person holding a lash training manual" format="webp" widths={[480, 720, 960]} sizes="(max-width: 800px) 100vw, 44vw" loading="lazy" />
+				<figcaption>Training details in progress</figcaption>
+			</figure>
+		</div>
+	</section>
+
+	<section class="section training-details-section" aria-labelledby="details-heading">
+		<div class="container">
+			<div class="section-heading-wide">
+				<div><p class="section-kicker">Before registration opens</p><h2 id="details-heading">Each class needs the right details.</h2></div>
+				<p>The following information will be added before a training payment or booking link is displayed.</p>
+			</div>
+			<div class="value-grid training-detail-grid">
+				<article><span>01</span><h3>Course format</h3><p>Class type, skill level, date, duration, location, and capacity.</p></article>
+				<article><span>02</span><h3>What’s included</h3><p>Curriculum, materials, models, certification details, and post-class support.</p></article>
+				<article><span>03</span><h3>Registration terms</h3><p>Price, deposit, payment path, cancellation terms, and any prerequisites.</p></article>
+			</div>
+		</div>
+	</section>
+
+	<section class="section final-cta-section">
+		<div class="container final-cta">
+			<p class="section-kicker">Interested in training?</p>
+			<h2>Let the beauty bar know.</h2>
+			<a class="button button-dark" href={`mailto:${site.contact.email}?subject=Training%20interest`}>Email about training <span aria-hidden="true">↗</span></a>
+		</div>
+	</section>
+</BaseLayout>

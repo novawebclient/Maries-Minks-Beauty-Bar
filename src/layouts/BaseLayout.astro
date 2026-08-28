@@ -1,0 +1,110 @@
+---
+import { Image } from 'astro:assets';
+import '../styles/global.css';
+import { generalBookingPath } from '../data/booking';
+import { getSiteSettings } from '../content/site';
+import headerPortrait from '../../assets/originals/client-questionnaire/brand-header-portrait.png';
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+const currentPath = Astro.url.pathname;
+const socialImage = Astro.site ? new URL('/og.png', Astro.site).toString() : undefined;
+const site = getSiteSettings();
+
+const navigation = [
+	{ href: '/', label: 'Home' },
+	{ href: '/services/', label: 'Services' },
+	{ href: '/training/', label: 'Training' },
+	{ href: '/gallery/', label: 'Gallery' },
+	{ href: '/about/', label: 'About' },
+	{ href: '/contact/', label: 'Contact' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="robots" content="noindex, nofollow" />
+		<meta name="theme-color" content="#ec4f91" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		{socialImage && <meta property="og:image" content={socialImage} />}
+		<meta name="twitter:card" content={socialImage ? 'summary_large_image' : 'summary'} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		{socialImage && <meta name="twitter:image" content={socialImage} />}
+		<title>{title}</title>
+	</head>
+	<body>
+		<a class="skip-link" href="#main-content">Skip to main content</a>
+		<div class="top-ribbon">
+			<div class="container top-ribbon-inner top-ribbon-message">
+				<span>{site.serviceArea} · {site.hours}</span>
+			</div>
+		</div>
+		<header class="site-header">
+			<div class="container header-inner">
+				<a class="wordmark" href="/" aria-label={`${site.displayName} home`}>
+					<Image src={headerPortrait} alt="" class="wordmark-portrait" widths={[64, 96, 128]} sizes="44px" loading="eager" />
+					<span>{site.displayName}</span>
+				</a>
+				<nav aria-label="Main navigation">
+					<ul class="nav-list">
+						{navigation.map((item) => (
+							<li>
+								<a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>
+									{item.label}
+								</a>
+							</li>
+						))}
+					</ul>
+				</nav>
+				<details class="mobile-nav">
+					<summary>Menu</summary>
+					<nav aria-label="Mobile navigation">
+						<ul>
+							{navigation.map((item) => (
+								<li><a href={item.href}>{item.label}</a></li>
+							))}
+						</ul>
+					</nav>
+				</details>
+				<a class="header-book" href={generalBookingPath}>Book now <span aria-hidden="true">↓</span></a>
+			</div>
+		</header>
+		<main id="main-content">
+			<slot />
+		</main>
+		<footer class="site-footer">
+			<div class="container footer-main">
+				<div class="footer-brand">
+					<p class="footer-mark" aria-hidden="true">MM</p>
+					<p class="footer-name">{site.displayName}</p>
+					<p class="footer-note">Lashes · Waxing · Brows · Facials</p>
+					<p class="footer-contact"><a href={site.contact.phoneHref}>{site.contact.phoneDisplay}</a><br /><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></p>
+				</div>
+				<nav aria-label="Footer navigation">
+					<ul class="footer-nav">
+						{navigation.slice(1).map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+						<li><a href={generalBookingPath}>Book now ↓</a></li>
+						<li><a href="/privacy/">Privacy</a></li>
+						<li><a href="/policies/">Policies</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="container footer-legal">
+				<p>© 2026 {site.displayName}</p>
+				<p>{site.hours} · {site.serviceArea}</p>
+			</div>
+		</footer>
+	</body>
+</html>

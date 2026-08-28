@@ -1,0 +1,4 @@
+# This project is not approved for public indexing yet.
+# Replace this rule during Step 4 after the production domain is confirmed.
+User-agent: *
+Disallow: /

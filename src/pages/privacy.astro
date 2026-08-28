@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getSiteSettings } from '../content/site';
+
+const site = getSiteSettings();
+---
+
+<BaseLayout
+	title={`Privacy | ${site.displayName}`}
+	description={`Privacy information for ${site.displayName}.`}
+>
+	<header class="page-masthead page-masthead-pink">
+		<div class="container masthead-grid">
+			<div><p class="section-kicker">Privacy</p><h1>Your information should stay clear and protected.</h1></div>
+			<p>This draft identifies the external services used by the site. It must be finalized with the client’s approved legal and operational information before launch.</p>
+		</div>
+	</header>
+
+	<section class="section legal-section" aria-labelledby="privacy-details-heading">
+		<div class="container legal-layout">
+			<aside class="legal-aside"><p class="section-kicker">Draft notice</p><p>Last updated: August 28, 2026</p><p>This is implementation copy for review, not legal advice.</p></aside>
+			<div class="legal-copy">
+				<h2 id="privacy-details-heading">How this preview handles information</h2>
+				<h3>Website contact</h3>
+				<p>This site provides public phone, email, social, and booking links. It does not currently include a custom website contact form or account system.</p>
+				<h3>Booking and payments</h3>
+				<p>Appointments are handled by the secure booking provider. Any payment completed through booking or an approved Square Payment Link is handled by that provider’s checkout surface, not by this website.</p>
+				<h3>Email updates</h3>
+				<p>A newsletter signup will not be enabled until the client confirms the provider, consent language, list ownership, unsubscribe process, and privacy contact. If Brevo is used as planned, the final notice will name Brevo and describe that relationship.</p>
+				<h3>Third-party links</h3>
+				<p>Following a booking, payment, or social-media link takes you to a service with its own privacy practices. The final notice must include any analytics, advertising, or cookie technologies if they are later approved.</p>
+				<h3>Questions</h3>
+				<p>For general privacy questions, contact <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>.</p>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

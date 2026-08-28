@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import beautyTools from '../assets/beauty-tools.png';
+import lashEditorial from '../assets/lash-editorial.png';
+import portrait from '../../assets/originals/client-questionnaire/DB8_1451-Edit.jpeg';
+import { getSiteSettings, getSocialLink } from '../content/site';
+
+const site = getSiteSettings();
+const instagram = getSocialLink('Instagram');
+---
+
+<BaseLayout
+	title={`Gallery | ${site.displayName}`}
+	description={`A growing beauty portfolio from ${site.displayName} in ${site.serviceArea}.`}
+>
+	<header class="page-masthead page-masthead-pink">
+		<div class="container masthead-grid">
+			<div><p class="section-kicker">Portfolio</p><h1>Results deserve the right spotlight.</h1></div>
+			<p>The client’s service-result photography is being collected and approved before it is presented as a portfolio.</p>
+		</div>
+	</header>
+
+	<section class="section gallery-status-section" aria-labelledby="gallery-status-heading">
+		<div class="container gallery-status-grid">
+			<div>
+				<p class="section-kicker">A thoughtful gallery</p>
+				<h2 id="gallery-status-heading">The finished-work gallery is on its way.</h2>
+				<p class="lead-copy">Lash, brow, waxing, facial, and training visuals will be added only with approved photography and the appropriate permissions.</p>
+				<p>For now, the images on this preview establish the beauty-bar atmosphere; they are not presented as client treatment results.</p>
+				{instagram && <a class="button button-dark" href={instagram.href} target="_blank" rel="noopener noreferrer">Follow on Instagram <span aria-hidden="true">↗</span></a>}
+			</div>
+			<div class="portfolio-placeholder" role="note">
+				<span>01</span>
+				<strong>Portfolio launch checklist</strong>
+				<ul><li>Approved finished-work photography</li><li>Service category and alternative text</li><li>Client/model consent where needed</li></ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="section gallery-concept-section" aria-labelledby="concept-heading">
+		<div class="container">
+			<div class="section-heading-wide">
+				<div><p class="section-kicker">Visual direction</p><h2 id="concept-heading">The beauty-bar mood.</h2></div>
+				<p>Concept and approved brand imagery establish the editorial direction while the results portfolio is prepared.</p>
+			</div>
+			<div class="editorial-gallery editorial-gallery-concept">
+				<figure><Image src={portrait} alt="Studio portrait of a person seated against a bright background" format="webp" widths={[480, 720]} sizes="(max-width: 700px) 100vw, 38vw" loading="lazy" /><figcaption>Brand portrait · Approval pending</figcaption></figure>
+				<figure><Image src={lashEditorial} alt="Concept editorial close-up featuring a polished lash look" format="webp" widths={[400, 640]} sizes="(max-width: 700px) 100vw, 27vw" loading="lazy" /><figcaption>Concept lash editorial</figcaption></figure>
+				<figure><Image src={beautyTools} alt="Beauty tools and spa essentials arranged on a pink counter" format="webp" widths={[400, 640]} sizes="(max-width: 700px) 100vw, 27vw" loading="lazy" /><figcaption>Beauty-bar details</figcaption></figure>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
