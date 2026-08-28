@@ -1,5 +1,7 @@
+import { withBase } from '../utils/urls';
+
 export const bookingSchedulerUrl = 'https://mariesminksnbeautybar.as.me/';
-export const generalBookingPath = '/book/#scheduler';
+export const generalBookingPath = withBase('/book/#scheduler');
 
 export interface BookingOption {
 	name: string;
@@ -29,7 +31,7 @@ const buildAppointmentQuery = (appointmentTypeIds: number[]) => {
 };
 
 export const getEmbeddedBookingPath = (appointmentTypeIds: number[]) =>
-	`/book/?${buildAppointmentQuery(appointmentTypeIds)}#scheduler`;
+	withBase(`/book/?${buildAppointmentQuery(appointmentTypeIds)}#scheduler`);
 
 const createOption = (name: string, appointmentTypeIds: number[]): BookingOption => ({
 	name,

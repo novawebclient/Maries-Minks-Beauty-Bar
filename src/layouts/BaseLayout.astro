@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import '../styles/global.css';
 import { generalBookingPath } from '../data/booking';
 import { getSiteSettings } from '../content/site';
+import { withBase } from '../utils/urls';
 import headerPortrait from '../../assets/originals/client-questionnaire/brand-header-portrait.png';
 
 interface Props {
@@ -53,7 +54,7 @@ const navigation = [
 		</div>
 		<header class="site-header">
 			<div class="container header-inner">
-				<a class="wordmark" href="/" aria-label={`${site.displayName} home`}>
+				<a class="wordmark" href={withBase('/')} aria-label={`${site.displayName} home`}>
 					<Image src={headerPortrait} alt="" class="wordmark-portrait" widths={[64, 96, 128]} sizes="44px" loading="eager" />
 					<span>{site.displayName}</span>
 				</a>
@@ -61,7 +62,7 @@ const navigation = [
 					<ul class="nav-list">
 						{navigation.map((item) => (
 							<li>
-								<a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>
+								<a href={withBase(item.href)} aria-current={currentPath === withBase(item.href) ? 'page' : undefined}>
 									{item.label}
 								</a>
 							</li>
@@ -73,7 +74,7 @@ const navigation = [
 					<nav aria-label="Mobile navigation">
 						<ul>
 							{navigation.map((item) => (
-								<li><a href={item.href}>{item.label}</a></li>
+								<li><a href={withBase(item.href)}>{item.label}</a></li>
 							))}
 						</ul>
 					</nav>
@@ -94,10 +95,10 @@ const navigation = [
 				</div>
 				<nav aria-label="Footer navigation">
 					<ul class="footer-nav">
-						{navigation.slice(1).map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+						{navigation.slice(1).map((item) => <li><a href={withBase(item.href)}>{item.label}</a></li>)}
 						<li><a href={generalBookingPath}>Book now ↓</a></li>
-						<li><a href="/privacy/">Privacy</a></li>
-						<li><a href="/policies/">Policies</a></li>
+						<li><a href={withBase('/privacy/')}>Privacy</a></li>
+						<li><a href={withBase('/policies/')}>Policies</a></li>
 					</ul>
 				</nav>
 			</div>

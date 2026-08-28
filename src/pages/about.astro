@@ -5,6 +5,7 @@ import portraitHero from '../../assets/originals/client-questionnaire/DB8_1325-E
 import portraitAbout from '../../assets/originals/client-questionnaire/DB8_1368-Edit.jpeg';
 import { generalBookingPath } from '../data/booking';
 import { getSiteSettings } from '../content/site';
+import { withBase } from '../utils/urls';
 
 const site = getSiteSettings();
 ---
@@ -34,7 +35,7 @@ const site = getSiteSettings();
 				<h2>A full beauty bar, built around your next appointment.</h2>
 				<p class="lead-copy">{site.displayName} brings several beauty-service categories together in one clear experience, from learning what is available to reserving online.</p>
 				<p>The final technician biography, credentials, specialties, and confirmed portrait usage will complete this story before launch. Until then, the site keeps its focus on the beauty-bar experience rather than unverified personal claims.</p>
-				<a class="text-link" href="/services/">Explore services <span aria-hidden="true">↓</span></a>
+				<a class="text-link" href={withBase('/services/')}>Explore services <span aria-hidden="true">↓</span></a>
 			</div>
 		</div>
 	</section>

@@ -7,6 +7,7 @@ import portraitHero from '../../assets/originals/client-questionnaire/DB8_1436-E
 import portraitClose from '../../assets/originals/client-questionnaire/DB8_1181-Edit.jpeg';
 import { generalBookingPath } from '../data/booking';
 import { getSiteSettings } from '../content/site';
+import { withBase } from '../utils/urls';
 
 const site = getSiteSettings();
 const instagram = site.socials.find((social) => social.label === 'Instagram');
@@ -92,7 +93,7 @@ const bookingSteps = [
 				<Image src={lashEditorial} alt="Concept editorial close-up featuring a polished lash look" format="webp" widths={[640, 960]} sizes="(max-width: 800px) 100vw, 60vw" loading="lazy" />
 				<figcaption>Concept imagery · Portfolio pending approval</figcaption>
 			</figure>
-			<a class="text-link gallery-preview-link" href="/gallery/">View the gallery <span aria-hidden="true">↓</span></a>
+			<a class="text-link gallery-preview-link" href={withBase('/gallery/')}>View the gallery <span aria-hidden="true">↓</span></a>
 		</div>
 	</section>
 
