@@ -7,6 +7,7 @@ export interface BookingOption {
 	name: string;
 	appointmentTypeIds: number[];
 	bookingPath: string;
+	bookingUrl: string;
 }
 
 export interface ServiceCategory {
@@ -16,8 +17,8 @@ export interface ServiceCategory {
 	intro: string;
 	description: string;
 	items: BookingOption[];
-	note: string;
 	bookingPath: string;
+	bookingUrl: string;
 }
 
 const buildAppointmentQuery = (appointmentTypeIds: number[]) => {
@@ -33,10 +34,14 @@ const buildAppointmentQuery = (appointmentTypeIds: number[]) => {
 export const getEmbeddedBookingPath = (appointmentTypeIds: number[]) =>
 	withBase(`/book/?${buildAppointmentQuery(appointmentTypeIds)}#scheduler`);
 
+export const getBookingSchedulerUrl = (appointmentTypeIds: number[]) =>
+	`${bookingSchedulerUrl}?${buildAppointmentQuery(appointmentTypeIds)}`;
+
 const createOption = (name: string, appointmentTypeIds: number[]): BookingOption => ({
 	name,
 	appointmentTypeIds,
 	bookingPath: getEmbeddedBookingPath(appointmentTypeIds),
+	bookingUrl: getBookingSchedulerUrl(appointmentTypeIds),
 });
 
 const categoryDetails = [
@@ -51,12 +56,11 @@ const categoryDetails = [
 			createOption('Lash fills and maintenance', [41682212, 47586225, 47586310, 53440920, 62200144, 62211175, 77406627, 40637880, 40638000, 39857121]),
 			createOption('Korean lash lift & tint', [86862685]),
 		],
-		note: 'The live booking calendar contains current style names, appointment lengths, preparation guidance, availability, and prices.',
 	},
 	{
 		number: '02',
 		eyebrow: 'Shape and smooth',
-		name: 'Brows & waxing',
+		name: 'Brows & Waxing',
 		intro: 'Explore brow and beauty-bar waxing options, including Brazilian waxing, in the live scheduler.',
 		description: 'Brow shaping and beauty-bar waxing services, with each website choice connected to its matching booking options.',
 		items: [
@@ -64,12 +68,11 @@ const categoryDetails = [
 			createOption('Facial and body waxing', [50364785, 50436180, 50436215, 54243035, 54243045, 62200121, 62211247, 62211302, 62211328, 62211405, 82728790]),
 			createOption('Brazilian waxing', [52221941, 52945724]),
 		],
-		note: 'The live scheduler should be rechecked before launch if the client changes service names, availability, preparation, or aftercare information.',
 	},
 	{
 		number: '03',
 		eyebrow: 'Refresh and glow',
-		name: 'Skin & beauty',
+		name: 'Skin & Beauty',
 		intro: 'Find facial services and additional beauty appointments in one easy booking path.',
 		description: 'Facials and additional beauty services collected into one easy path from discovery to booking.',
 		items: [
@@ -77,11 +80,11 @@ const categoryDetails = [
 			createOption('Skin-focused treatments', [55091009, 55091105, 62371498]),
 			createOption('VIP beauty bundle', [51646778]),
 		],
-		note: 'The live booking calendar contains treatment descriptions, intended skin concerns, timing, availability, and prices.',
 	},
 ];
 
 export const serviceCategories: ServiceCategory[] = categoryDetails.map((category) => ({
 	...category,
 	bookingPath: getEmbeddedBookingPath(category.items.flatMap((item) => item.appointmentTypeIds)),
+	bookingUrl: getBookingSchedulerUrl(category.items.flatMap((item) => item.appointmentTypeIds)),
 }));

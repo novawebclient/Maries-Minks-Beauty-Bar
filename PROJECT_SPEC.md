@@ -203,6 +203,7 @@ The website should not store customer, appointment, payment-card, or training-re
 
 - The supplied scheduler resolves to the client-owned public page at `https://mariesminksnbeautybar.as.me/`.
 - `/book/` embeds the Acuity scheduler using Acuity’s supported iframe and resize script. A separate-window Acuity link remains directly below it as an accessibility and failure fallback.
+- On `/services/`, every individual-service Book control and every View all booking-options control expands an inline scheduler panel on the same page. The iframe is loaded only when a visitor opens its panel.
 - Generic booking calls to action stay on the website and move visitors to the embedded scheduler.
 - Service calls to action pass Acuity’s supported `appointmentType` parameter. Exact services use one public appointment-type ID; broader labels use Acuity’s supported repeated `appointmentType[]` parameter to show only the relevant choices.
 - The public scheduler currently has no appointment categories configured, so category deep links are not used. Provider-specific IDs and URL construction are isolated in `src/data/booking.ts` so the integration can be updated without editing every page.

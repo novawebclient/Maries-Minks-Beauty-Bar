@@ -691,6 +691,51 @@ h3 {
 	text-decoration: none;
 }
 
+.inline-booking-panel,
+.service-booking-panel {
+	margin: 0;
+}
+
+.inline-booking-panel summary,
+.service-booking-panel summary {
+	cursor: pointer;
+	list-style: none;
+}
+
+.inline-booking-panel summary::-webkit-details-marker,
+.service-booking-panel summary::-webkit-details-marker {
+	display: none;
+}
+
+.inline-booking-panel summary {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	color: inherit;
+	font-weight: 700;
+}
+
+.inline-booking-panel summary span {
+	flex: 0 0 auto;
+	color: var(--pink-deep);
+	font-size: 0.62rem;
+	font-weight: 800;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.inline-scheduler {
+	margin-top: 1rem;
+	border: 1px solid var(--line);
+	background: var(--white);
+}
+
+.inline-scheduler iframe {
+	display: block;
+	border: 0;
+}
+
 .service-booking-links a:hover,
 .service-booking-links a:focus-visible {
 	color: var(--ink);
@@ -713,19 +758,25 @@ h3 {
 	margin-top: 1rem;
 }
 
+.service-booking-panel > .text-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6rem;
+	margin-top: 1rem;
+}
+
+.service-menu-cta {
+	margin-top: 1.5rem;
+}
+
+.service-menu-cta > .button {
+	display: inline-flex;
+}
+
 .service-intro {
 	font-family: var(--serif);
 	font-size: 1.35rem;
 	line-height: 1.4;
-}
-
-.placeholder-note {
-	margin-top: 1.5rem;
-	padding: 1rem;
-	border-left: 0.25rem solid var(--pink);
-	background: var(--pink-soft);
-	color: var(--muted);
-	font-size: 0.9rem;
 }
 
 .showcase-cta {
@@ -1124,11 +1175,9 @@ h3 {
 	min-height: 8rem;
 }
 
-.service-menu-cta {
-	margin-top: 1.5rem;
-}
-
 .service-editorial-section {
+	padding-top: 3.125rem;
+	padding-bottom: 0;
 	background: var(--white);
 }
 
@@ -1714,6 +1763,11 @@ h3 {
 @media (max-width: 46rem) {
 	.section {
 		padding-block: 5rem;
+	}
+
+	.service-editorial-section {
+		padding-top: 2rem;
+		padding-bottom: 0;
 	}
 
 	.header-inner {
