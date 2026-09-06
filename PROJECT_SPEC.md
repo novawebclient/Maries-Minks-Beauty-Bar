@@ -47,7 +47,7 @@ The questionnaire identifies following and connecting on social media as the #1 
 - Complete service and training menu with approved names, descriptions, prices, durations, preparation/aftercare, contraindications, class details, and permissions
 - Decision on whether website pricing is maintained manually, mirrored from Acuity, or managed through a client-editable content source
 - Confirmation that the client-owned Sanity CMS plan and administrative access model are acceptable; whether blog/news is required at launch
-- Square purpose and scope: service deposits, training payments, products, or another offer; plus refund/deposit policy
+- Square purpose and scope: service deposits, training payments, products, or another offer; the client has now supplied general booking, deposit, cancellation, refund, late-arrival, lash-fill, and appointment-preparation policies
 - Email-list provider, signup destination, consent language, unsubscribe handling, ownership, and budget
 - Approval of the Step 2 contact decision: public phone, email, and social links at launch, with no custom contact form
 - Approved treatment-result portfolio images, testimonials/reviews, releases, and intended use for the nine supplied portraits
@@ -120,7 +120,7 @@ Reviews and FAQs are sections on Home and Services rather than standalone routes
 
 ### Footer and legal structure
 
-The footer must include the approved display name, Ocala-area service context, appointment-only note, phone, email, direct social links, primary navigation, Book action, newsletter signup or link, Privacy, Policies, and copyright. It must not publish a street address. Privacy and policy copy require client/legal approval; NOVA should not invent legal terms.
+The footer must include the approved display name, Ocala-area service context, appointment-only note, phone, email, direct social links, primary navigation, Book action, newsletter signup or link, Privacy, Policies, and copyright. It must not publish a street address. Client-supplied appointment policies were added on September 6, 2026. The opening hours visible in the source image were explicitly excluded. Privacy copy still requires client/legal approval; NOVA should not invent legal terms.
 
 ### Customer journeys
 

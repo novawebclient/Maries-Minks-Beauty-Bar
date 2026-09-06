@@ -7,6 +7,7 @@
 - Original signed download URLs are intentionally not retained in repository documentation
 - All nine files are JPEG portraits at 1365 × 2048 pixels
 - `brand-header-portrait.png` was supplied directly by the client on August 28, 2026. It is a 1254 × 1254 PNG circular portrait with a gold ring and is approved by that request for use as the small header brand image.
+- Two policy-reference screenshots were supplied by the client on September 6, 2026 and preserved in `assets/originals/client-questionnaire/policies/`. Their policy text has been translated into the website’s Policies page. The opening hours shown in the source image were explicitly excluded at the client’s direction.
 - Files are preserved as received. Cropped, compressed, renamed, or web-delivery derivatives belong in the Step 3 implementation, not in this originals folder.
 
 ## Publication gate
@@ -29,6 +30,8 @@ These assets are professional studio portraits suitable for brand, About, and Tr
 | `DB8_1451-Edit.jpeg` | Seated portrait with hand near hair | About or beauty editorial section |
 | `DB8_1469-Edit.jpeg` | Portrait holding a Lash Training Manual | Training page hero or instructor section |
 | `brand-header-portrait.png` | Circular professional headshot with a gold ring | Header brand image |
+| `policies/client-policies-booking-cancellation-refund-late.jpg` | Client policy reference covering deposits, changes, refunds, and late arrivals | Source-of-truth reference for the Policies page |
+| `policies/client-policies-fill-preparation-contact.jpg` | Client policy reference covering lash fills, appointment preparation, contact details, and superseded opening hours | Source-of-truth reference for the Policies page; opening hours intentionally excluded |
 
 ## Still missing
 

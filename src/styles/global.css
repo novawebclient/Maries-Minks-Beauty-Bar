@@ -1611,6 +1611,21 @@ h3 {
 	margin: 0.7rem 0 0;
 }
 
+.policy-contact-note {
+	margin: 2rem 0;
+	padding: 1.5rem;
+	border-left: 4px solid var(--pink);
+	background: var(--soft-pink);
+}
+
+.policy-contact-note h3 {
+	margin-top: 0;
+}
+
+.policy-contact-note p {
+	margin-bottom: 0;
+}
+
 @media (max-width: 68rem) {
 	.header-inner > nav {
 		display: none;

@@ -20,6 +20,9 @@ astro-dev*.log
 .env
 .env.production
 
+# locally archived client source references
+assets/originals/client-questionnaire/policies/
+
 # macOS-specific files
 .DS_Store
 

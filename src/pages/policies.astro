@@ -13,21 +13,33 @@ const site = getSiteSettings();
 	<header class="page-masthead page-masthead-dark policies-masthead">
 		<div class="container masthead-content">
 			<p class="section-kicker section-kicker-pink">Before you book</p>
-			<h1>Clear details make a better appointment.</h1>
-			<p>Final booking, cancellation, payment, service, and training terms need the client’s approval before this page is published publicly.</p>
+			<h1>Policies designed to keep every appointment on track.</h1>
+			<p>Please review these booking, cancellation, service, and appointment-preparation policies before reserving your time.</p>
 		</div>
 	</header>
 
 	<section class="section policy-section" aria-labelledby="policy-heading">
 		<div class="container legal-layout">
-			<aside class="legal-aside"><p class="section-kicker">Policy status</p><p>Draft structure only</p><p>Do not rely on this page as final booking terms until approved copy is added.</p></aside>
+			<aside class="legal-aside">
+				<p class="section-kicker">Good to know</p>
+				<p>Deposits are nonrefundable.</p>
+				<p>Changes require at least 24 hours’ notice.</p>
+				<p>Lash fills are scheduled every two to three weeks.</p>
+			</aside>
 			<div class="legal-copy">
-				<h2 id="policy-heading">What will be confirmed before launch</h2>
+				<h2 id="policy-heading">Appointment policies</h2>
 				<div class="policy-list">
-					<article><span>01</span><div><h3>Booking and deposits</h3><p>Whether a deposit or full payment is required, the approved payment method, and how the booking flow communicates it.</p></div></article>
-					<article><span>02</span><div><h3>Changes and cancellations</h3><p>Rescheduling windows, cancellation terms, late-arrival expectations, no-show terms, and any refund rules.</p></div></article>
-					<article><span>03</span><div><h3>Service preparation</h3><p>Approved preparation, aftercare, contraindications, age requirements, and any service-specific expectations.</p></div></article>
-					<article><span>04</span><div><h3>Training terms</h3><p>Class fees, deposits, materials, attendance, cancellation, and certification-related language for each approved course.</p></div></article>
+					<article><span>01</span><div><h3>Booking and deposits</h3><p>A nonrefundable $20 deposit is due when booking to reserve your scheduled appointment time.</p></div></article>
+					<article><span>02</span><div><h3>Rescheduling and cancellations</h3><p>Please reschedule or cancel at least 24 hours before your appointment. Same-day cancellations are subject to 50% of the service cost. Your deposit may be transferred to a new appointment one time.</p></div></article>
+					<article><span>03</span><div><h3>No-call, no-show appointments</h3><p>Clients who do not call or attend their appointment will not be able to book again unless the full service price is paid.</p></div></article>
+					<article><span>04</span><div><h3>Refunds and lash fallout</h3><p>Refunds are not offered on completed services. If you experience extreme lash fallout within the first three days after your appointment, a complimentary fill will be provided.</p></div></article>
+					<article><span>05</span><div><h3>Late arrivals</h3><p>If you are more than 15 minutes late, your deposit will be held and your appointment must be rescheduled.</p></div></article>
+					<article><span>06</span><div><h3>Lash fill policy</h3><p>At least 50% of your lash extensions must remain for the appointment to qualify as a fill. Fills are required every two to three weeks. Appointments scheduled more than three weeks after the previous service are considered a full set.</p></div></article>
+					<article><span>07</span><div><h3>Preparing for your appointment</h3><p>Please arrive without eye makeup and wear comfortable clothing. You may remove your shoes during your appointment.</p></div></article>
+				</div>
+				<div class="policy-contact-note">
+					<h3>Questions about a policy?</h3>
+					<p>Text <a href={site.contact.phoneHref}>{site.contact.phoneDisplay}</a> or email <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a> before booking.</p>
 				</div>
 				<a class="button button-dark" href={generalBookingPath}>View live booking details <span aria-hidden="true">↓</span></a>
 			</div>
