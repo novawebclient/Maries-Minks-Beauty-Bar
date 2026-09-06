@@ -7,9 +7,9 @@
 	--pink-soft: #fff0f6;
 	--white: #ffffff;
 	--line: #ded4d9;
-	--display: "Inter Variable", Inter, "Helvetica Neue", Arial, sans-serif;
-	--sans: "Inter Variable", Inter, "Helvetica Neue", Arial, sans-serif;
-	--serif: var(--display);
+	--display: "Bodoni Moda", Didot, "Times New Roman", serif;
+	--sans: "Manrope", "Helvetica Neue", Arial, sans-serif;
+	--serif: var(--sans);
 	--content-width: 73rem;
 	font-family: var(--sans);
 	color: var(--ink);
@@ -194,7 +194,7 @@ h3 {
 	align-items: center;
 	gap: 0.75rem;
 	max-width: 18rem;
-	font-family: "Inter Variable", Inter, Arial, sans-serif;
+	font-family: var(--sans);
 	font-size: 0.88rem;
 	font-weight: 650;
 	letter-spacing: -0.02em;
@@ -474,6 +474,17 @@ h3 {
 
 .split-copy .lead-copy {
 	color: var(--ink);
+}
+
+.about-masthead .section-kicker {
+	font-size: 0.75rem;
+	font-weight: 500;
+}
+
+.about-story .lead-copy {
+	font-family: var(--sans);
+	font-size: 1rem;
+	line-height: 1.65;
 }
 
 .split-copy .text-link,
