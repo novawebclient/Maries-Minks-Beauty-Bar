@@ -3,7 +3,7 @@
 ## Project identity and status
 
 - **Project name:** Marie’s minks n beauty bar website
-- **Client-facing display name:** Marie’s Minks & Beauty Bar, confirmed by the client during Step 3 review on August 28, 2026; legal-name confirmation remains required before production launch if it differs from the display name
+- **Client-facing display name:** Marie’s Minks n Beauty Bar, confirmed by the client during Step 3 review on September 6, 2026; legal-name confirmation remains required before production launch if it differs from the display name
 - **Project type:** New marketing website
 - **Workflow status:** Step 0, the questionnaire-driven Step 1 reassessment, and Step 2 are complete. Step 3 implementation began on August 28, 2026. A local, non-production preview now covers the approved route structure; final client content and provider-account decisions remain pending.
 - **Repository location:** `C:\Users\Michael Bellony\Documents\ChatGPT\NOVA Web Services Projects`
@@ -27,7 +27,7 @@ The questionnaire identifies following and connecting on social media as the #1 
 
 ### Confirmed from the questionnaire
 
-- Brand: Marie’s Minks & Beauty Bar (display capitalization/punctuation confirmed during Step 3 review; legal spelling still needs confirmation if different)
+- Brand: Marie’s Minks n Beauty Bar (display capitalization/punctuation confirmed during Step 3 review; legal spelling still needs confirmation if different)
 - Business: versatile beauty specialist serving Ocala and surrounding areas from an appointment-only home studio
 - Services: individual lash extensions, Brazilian waxing, brow waxing/tinting/lamination, lash lifts/tints, facials, and lash/wax training classes
 - Public contact: +1 352-843-1383 and angelinadunn1@aol.com
@@ -285,7 +285,7 @@ Provider-specific behavior must be isolated: Acuity URL construction in the book
 
 ## Unresolved client information and architecture questions
 
-- Legal business name confirmation if it differs from the approved display name, `Marie’s Minks & Beauty Bar`
+- Legal business name confirmation if it differs from the approved display name, `Marie’s Minks n Beauty Bar`
 - Logo and complete brand guidelines; exact pink and gold tones, typography, and usage rules are not approved
 - Technician's preferred name, pronouns, title, biography, experience, licenses, certifications, specialties, and service philosophy
 - Final approval of website service labels, descriptions, preparation instructions, aftercare, contraindication language, and training-class content; the client requested website prices but supplied no price sheet

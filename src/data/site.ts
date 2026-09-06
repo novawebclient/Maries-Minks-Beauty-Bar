@@ -1,5 +1,5 @@
 export const site = {
-	displayName: 'Marie’s Minks & Beauty Bar',
+	displayName: 'Marie’s Minks n Beauty Bar',
 	shortName: 'Marie’s Minks',
 	serviceArea: 'Ocala and surrounding areas',
 	hours: 'By appointment only',
