@@ -472,6 +472,29 @@ h3 {
 	text-indent: 1.25em;
 }
 
+.about-brand-detail {
+	max-width: 35rem;
+	margin: 2.5rem 0;
+	overflow: hidden;
+	background: var(--pink-soft);
+}
+
+.about-brand-detail img {
+	width: 100%;
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+}
+
+.about-brand-detail figcaption {
+	padding: 0.7rem 0.85rem;
+	background: var(--ink);
+	color: var(--white);
+	font-size: 0.6rem;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
 .home-intro-message {
 	font-size: clamp(1.125rem, 2.1vw, 1.55rem);
 	line-height: 1.55;
@@ -752,6 +775,7 @@ h3 {
 	align-items: center;
 	gap: 0.6rem;
 	margin-top: 1rem;
+	border-bottom: 0;
 }
 
 .service-menu-cta {
@@ -1702,6 +1726,25 @@ h3 {
 	color: #4d343f;
 }
 
+.newsletter-email-link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	color: var(--ink);
+	font-family: var(--sans);
+	font-size: clamp(1rem, 1.8vw, 1.3rem);
+	font-weight: 800;
+	text-decoration: none;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.2em;
+}
+
+.newsletter-email-link:hover,
+.newsletter-email-link:focus-visible {
+	text-decoration: underline;
+}
+
 .portfolio-placeholder {
 	display: flex;
 	min-height: 22rem;
@@ -1846,6 +1889,16 @@ h3 {
 	}
 }
 
+@media (max-width: 60rem) {
+	.service-menu-section .service-image-column {
+		display: none;
+	}
+
+	.service-page-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
 @media (max-width: 56rem) {
 	.header-inner > nav {
 		display: none;
@@ -1902,6 +1955,7 @@ h3 {
 	.contact-card {
 		min-height: 13rem;
 	}
+
 }
 
 @media (max-width: 46rem) {

@@ -25,7 +25,7 @@ const site = getSiteSettings();
 	<section class="section newsletter-pending-section" id="updates" aria-labelledby="updates-heading">
 		<div class="container newsletter-pending">
 			<div><p class="section-kicker">Email Updates</p><h2 id="updates-heading">A List Worth Looking Forward To.</h2></div>
-			<p>Email signup will be connected when the client-owned newsletter account, consent wording, and unsubscribe settings are approved. Until then, follow on social for updates.</p>
+			<a class="newsletter-email-link" href={`mailto:${site.contact.email}`}>Email {site.contact.email} <span aria-hidden="true">↗</span></a>
 		</div>
 	</section>
 </BaseLayout>
