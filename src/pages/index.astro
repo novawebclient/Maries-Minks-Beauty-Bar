@@ -13,14 +13,14 @@ const site = getSiteSettings();
 const instagram = site.socials.find((social) => social.label === 'Instagram');
 
 const bookingSteps = [
-	['01', 'Choose your service', 'Explore the category that fits your routine and open its matching booking options.'],
-	['02', 'Select your time', 'Choose from the live availability in the secure booking calendar.'],
-	['03', 'Confirm your visit', 'Review the appointment details and reserve your time directly with the beauty bar.'],
+	['01', 'Choose Your Service', 'Explore the category that fits your routine and open its matching booking options.'],
+	['02', 'Select Your Time', 'Choose from the live availability in the secure booking calendar.'],
+	['03', 'Confirm Your Visit', 'Review the appointment details and reserve your time directly with the beauty bar.'],
 ];
 ---
 
 <BaseLayout
-	title={`${site.displayName} | Lashes, Waxing, Brows & Facials in Ocala`}
+	title={`${site.displayName} | Lashes, Waxing, Brows and Facials in Ocala`}
 	description={`Discover lash, waxing, brow, facial, and beauty services from ${site.displayName} in ${site.serviceArea}.`}
 >
 	<section class="campaign-hero" aria-labelledby="hero-heading">
@@ -37,18 +37,18 @@ const bookingSteps = [
 			<div class="campaign-copy">
 				<p class="campaign-monogram" aria-hidden="true">MM</p>
 				<p class="eyebrow eyebrow-light">Lashes · Brows · Skin · Beauty</p>
-				<h1 id="hero-heading">Beauty in every detail.</h1>
+				<h1 id="hero-heading">Beauty in Every Detail.</h1>
 				<p class="campaign-lede">A beauty-bar experience for the appointments that keep you feeling polished, cared for, and completely yourself.</p>
 				<div class="actions">
 					{instagram && <a class="button button-pink" href={instagram.href} target="_blank" rel="noopener noreferrer">Follow on Instagram <span aria-hidden="true">↗</span></a>}
-					<a class="text-link text-link-light" href={generalBookingPath}>Book an appointment <span aria-hidden="true">↓</span></a>
+					<a class="text-link text-link-light" href={generalBookingPath}>Book an Appointment <span aria-hidden="true">↓</span></a>
 				</div>
 			</div>
 		</div>
 		<p class="campaign-caption">{site.hours} · {site.serviceArea}</p>
 	</section>
 	<div class="brand-ticker" aria-hidden="true">
-		<span>Lash extensions</span><span>Full body waxing</span><span>Brazilian waxing</span><span>Brow services</span><span>Customized facials</span>
+		<span>Lash Extensions</span><span>Full Body Waxing</span><span>Brazilian Waxing</span><span>Brow Services</span><span>Customized Facials</span>
 	</div>
 
 	<section class="section intro-section" aria-labelledby="intro-heading">
@@ -70,8 +70,8 @@ const bookingSteps = [
 	<section class="section social-feature" aria-labelledby="social-heading">
 		<div class="container social-feature-grid">
 			<div>
-				<p class="section-kicker">Stay connected</p>
-				<h2 id="social-heading">Your beauty routine has a community, too.</h2>
+				<p class="section-kicker">Stay Connected</p>
+				<h2 id="social-heading">Your Beauty Routine Has a Community, Too.</h2>
 				<p>Follow along for current updates, beauty-bar moments, and future announcements. Connect with Marie’s Minks n Beauty Bar on the platform that feels most like you.</p>
 				<ul class="social-feature-links">
 					{site.socials.map((social) => <li><a class="button button-dark" href={social.href} target="_blank" rel="noopener noreferrer">{social.label} <span aria-hidden="true">↗</span></a></li>)}
@@ -86,28 +86,28 @@ const bookingSteps = [
 	<section class="section gallery-section" aria-labelledby="gallery-heading">
 		<div class="container gallery-preview-grid">
 			<div class="gallery-heading">
-				<div><p class="section-kicker">The finished look</p><h2 id="gallery-heading">Real results, coming into focus.</h2></div>
+				<div><p class="section-kicker">The Finished Look</p><h2 id="gallery-heading">Real Results, Coming Into Focus.</h2></div>
 				<p>The treatment portfolio is being curated with approved work photography. Visit the gallery to see the plan and learn how to connect with the beauty bar meanwhile.</p>
 			</div>
 			<figure class="gallery-preview-figure">
 				<Image src={lashEditorial} alt="Concept editorial close-up featuring a polished lash look" format="webp" widths={[640, 960]} sizes="(max-width: 800px) 100vw, 60vw" loading="lazy" />
-				<figcaption>Concept imagery · Portfolio pending approval</figcaption>
+				<figcaption>Concept Imagery · Portfolio Pending Approval</figcaption>
 			</figure>
-			<a class="text-link gallery-preview-link" href={withBase('/gallery/')}>View the gallery <span aria-hidden="true">↓</span></a>
+			<a class="text-link gallery-preview-link" href={withBase('/gallery/')}>View the Gallery <span aria-hidden="true">↓</span></a>
 		</div>
 	</section>
 
 	<section class="section booking-feature" aria-labelledby="booking-heading">
 		<div class="container booking-grid">
 			<div class="booking-intro">
-				<p class="section-kicker">Reserve your time</p>
-				<h2 id="booking-heading">Go straight to booking.</h2>
+				<p class="section-kicker">Reserve Your Time</p>
+				<h2 id="booking-heading">Go Straight to Booking.</h2>
 				<p>Choose your service, select an available time, and confirm your details in the secure booking calendar.</p>
-				<a class="button button-dark" href={generalBookingPath}>Book now <span aria-hidden="true">↓</span></a>
+				<a class="button button-dark" href={generalBookingPath}>Book Now <span aria-hidden="true">↓</span></a>
 				<p class="secure-note"><span aria-hidden="true">✓</span> Secure online booking</p>
 			</div>
 			<div class="booking-steps">
-				<p class="section-kicker section-kicker-pink">What happens next</p>
+				<p class="section-kicker section-kicker-pink">What Happens Next</p>
 				<ol>
 					{bookingSteps.map(([number, title, copy]) => (
 						<li><span>{number}</span><div><strong>{title}</strong><p>{copy}</p></div></li>
@@ -119,20 +119,20 @@ const bookingSteps = [
 
 	<section class="section faq-section" aria-labelledby="faq-heading">
 		<div class="container faq-grid">
-			<div><p class="section-kicker">Good to know</p><h2 id="faq-heading">Before you book.</h2></div>
+			<div><p class="section-kicker">Good to Know</p><h2 id="faq-heading">Before You Book.</h2></div>
 			<div class="faq-list">
-				<details><summary><span>01</span> How do I book an appointment?</summary><p>Select a service to open its matching booking options, then choose a live time and complete the secure booking flow.</p></details>
-				<details><summary><span>02</span> Where can I see current prices?</summary><p>Current pricing, appointment lengths, and live availability are maintained in the booking system while the approved website price menu is prepared.</p></details>
-				<details><summary><span>03</span> Where is the studio?</summary><p>This is an appointment-only home studio serving Ocala and surrounding areas. The address is provided after booking.</p></details>
+				<details><summary><span>01</span> How Do I Book an Appointment?</summary><p>Select a service to open its matching booking options, then choose a live time and complete the secure booking flow.</p></details>
+				<details><summary><span>02</span> Where Can I See Current Prices?</summary><p>Current pricing, appointment lengths, and live availability are maintained in the booking system while the approved website price menu is prepared.</p></details>
+				<details><summary><span>03</span> Where Is the Studio?</summary><p>This is an appointment-only home studio serving Ocala and surrounding areas. The address is provided after booking.</p></details>
 			</div>
 		</div>
 	</section>
 
 	<section class="section final-cta-section">
 		<div class="container final-cta">
-			<p class="section-kicker">Ready when you are</p>
-			<h2>Make time for your beauty routine.</h2>
-			<a class="button button-dark" href={generalBookingPath}>Book an appointment <span aria-hidden="true">↓</span></a>
+			<p class="section-kicker">Ready When You Are</p>
+			<h2>Make Time for Your Beauty Routine.</h2>
+			<a class="button button-dark" href={generalBookingPath}>Book an Appointment <span aria-hidden="true">↓</span></a>
 		</div>
 	</section>
 </BaseLayout>

@@ -16,13 +16,13 @@ const site = getSiteSettings();
 	<section class="section service-editorial-section">
 		<div class="container split-feature split-feature-reverse">
 			<div class="split-copy">
-				<p class="section-kicker">From first look to final detail</p>
-				<h1>Choose your beauty moment.</h1>
+				<p class="section-kicker">From First Look to Final Detail</p>
+				<h1>Choose Your Beauty Moment.</h1>
 				<p class="lead-copy">Choose a service below to open the matching booking options.</p>
 			</div>
 			<figure class="editorial-figure editorial-figure-tall">
 				<Image src={beautyTools} alt="Beauty-bar tools and spa essentials arranged on a pink counter" format="webp" widths={[480, 720, 960]} sizes="(max-width: 800px) 100vw, 44vw" loading="lazy" />
-				<figcaption>Beauty bar essentials</figcaption>
+				<figcaption>Beauty Bar Essentials</figcaption>
 			</figure>
 		</div>
 	</section>
@@ -32,11 +32,11 @@ const site = getSiteSettings();
 			<div class="service-image-column">
 				<figure class="editorial-figure sticky-figure">
 					<Image src={lashEditorial} alt="Editorial close-up featuring a finished lash look" format="webp" widths={[480, 720, 960]} sizes="(max-width: 850px) 100vw, 36vw" loading="eager" />
-					<figcaption>Original concept imagery</figcaption>
+					<figcaption>Original Concept Imagery</figcaption>
 				</figure>
 			</div>
 			<div>
-				<p class="sr-only" id="service-menu-heading">Service categories</p>
+				<p class="sr-only" id="service-menu-heading">Service Categories</p>
 				<div class="service-stack service-stack-page">
 					{serviceCategories.map((service, index) => (
 						<details class="service-disclosure" name="service-menu" open={index === 0}>
@@ -61,7 +61,7 @@ const site = getSiteSettings();
 									))}
 								</ul>
 								<details class="service-booking-panel" data-scheduler-panel>
-									<summary class="text-link">View all {service.name} booking options <span aria-hidden="true">↓</span></summary>
+									<summary class="text-link">View All {service.name} Booking Options <span aria-hidden="true">↓</span></summary>
 									<div class="inline-scheduler">
 										<iframe title={`Schedule ${service.name} with ${site.displayName}`} data-scheduler-src={service.bookingUrl} width="100%" height="760" frameborder="0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
 									</div>
@@ -71,7 +71,7 @@ const site = getSiteSettings();
 					))}
 				</div>
 				<details class="service-booking-panel service-menu-cta" data-scheduler-panel>
-					<summary class="button button-dark">View all services <span aria-hidden="true">↓</span></summary>
+					<summary class="button button-dark">View All Services <span aria-hidden="true">↓</span></summary>
 					<div class="inline-scheduler">
 						<iframe title={`Schedule a service with ${site.displayName}`} data-scheduler-src={bookingSchedulerUrl} width="100%" height="760" frameborder="0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
 					</div>

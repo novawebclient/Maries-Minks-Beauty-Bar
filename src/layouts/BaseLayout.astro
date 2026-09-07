@@ -49,7 +49,7 @@ const navigation = [
 		<title>{title}</title>
 	</head>
 	<body>
-		<a class="skip-link" href="#main-content">Skip to main content</a>
+		<a class="skip-link" href="#main-content">Skip to Main Content</a>
 		<div class="top-ribbon">
 			<div class="container top-ribbon-inner top-ribbon-message">
 				<span>{site.serviceArea} · {site.hours}</span>
@@ -82,7 +82,7 @@ const navigation = [
 						</ul>
 					</nav>
 				</details>
-				<a class="header-book" href={generalBookingPath}>Book now <span aria-hidden="true">↓</span></a>
+				<a class="header-book" href={generalBookingPath}>Book Now <span aria-hidden="true">↓</span></a>
 			</div>
 		</header>
 		<main id="main-content">
@@ -99,7 +99,7 @@ const navigation = [
 				<nav aria-label="Footer navigation">
 					<ul class="footer-nav">
 						{navigation.slice(1).map((item) => <li><a href={withBase(item.href)}>{item.label}</a></li>)}
-						<li><a href={generalBookingPath}>Book now ↓</a></li>
+						<li><a href={generalBookingPath}>Book Now ↓</a></li>
 						<li><a href={withBase('/privacy/')}>Privacy</a></li>
 						<li><a href={withBase('/policies/')}>Policies</a></li>
 					</ul>

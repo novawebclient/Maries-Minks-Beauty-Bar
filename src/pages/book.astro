@@ -4,9 +4,9 @@ import { bookingSchedulerUrl, generalBookingPath } from '../data/booking';
 import { getSiteSettings } from '../content/site';
 
 const bookingSteps = [
-	['01', 'Choose your service', 'Review current services, prices, and appointment lengths in the live scheduler.'],
-	['02', 'Select your time', 'Choose from Marie’s current live availability.'],
-	['03', 'Confirm your visit', 'Enter your details, review the booking terms, and complete your reservation.'],
+	['01', 'Choose Your Service', 'Review current services, prices, and appointment lengths in the live scheduler.'],
+	['02', 'Select Your Time', 'Choose from Marie’s current live availability.'],
+	['03', 'Confirm Your Visit', 'Enter your details, review the booking terms, and complete your reservation.'],
 ];
 const site = getSiteSettings();
 ---
@@ -17,7 +17,7 @@ const site = getSiteSettings();
 >
 	<header class="page-masthead page-masthead-pink">
 		<div class="container masthead-grid">
-			<div><p class="section-kicker">Reserve your time</p><h1>Go straight to booking.</h1></div>
+			<div><p class="section-kicker">Reserve Your Time</p><h1>Go Straight to Booking.</h1></div>
 			<p>Choose your service, select an available time, and confirm your details in the secure online booking calendar.</p>
 		</div>
 	</header>
@@ -25,7 +25,7 @@ const site = getSiteSettings();
 	<section class="section scheduler-section" aria-labelledby="scheduler-heading">
 		<div class="container">
 			<div class="scheduler-heading">
-				<div><p class="section-kicker">Live scheduling</p><h2 id="scheduler-heading">Choose your time.</h2></div>
+				<div><p class="section-kicker">Live Scheduling</p><h2 id="scheduler-heading">Choose Your Time.</h2></div>
 				<p>When you arrive from a service link, the booking calendar opens with that service selected or with only its relevant options shown.</p>
 			</div>
 			<div class="scheduler-shell" id="scheduler">
@@ -41,7 +41,7 @@ const site = getSiteSettings();
 					referrerpolicy="strict-origin-when-cross-origin"
 				></iframe>
 			</div>
-			<p class="scheduler-fallback">Prefer a separate window or having trouble with the embed? <a data-booking-fallback href={bookingSchedulerUrl} target="_blank" rel="noopener noreferrer">Open secure booking <span aria-hidden="true">↗</span></a></p>
+			<p class="scheduler-fallback">Prefer a separate window or having trouble with the embed? <a data-booking-fallback href={bookingSchedulerUrl} target="_blank" rel="noopener noreferrer">Open Secure Booking <span aria-hidden="true">↗</span></a></p>
 		</div>
 		<script is:inline>
 			(() => {
@@ -74,14 +74,14 @@ const site = getSiteSettings();
 	<section class="section booking-page-section">
 		<div class="container booking-grid booking-grid-page">
 			<div class="booking-intro">
-				<p class="section-kicker">Booking support</p>
-				<h2>Book with the beauty bar.</h2>
+				<p class="section-kicker">Booking Support</p>
+				<h2>Book With the Beauty Bar.</h2>
 				<p>Current service options, pricing, appointment lengths, payments, and availability remain inside the secure booking system.</p>
-				<a class="button button-dark button-large" href={generalBookingPath}>Return to the scheduler <span aria-hidden="true">↑</span></a>
-				<p class="secure-note"><span aria-hidden="true">✓</span> Secure online booking</p>
+				<a class="button button-dark button-large" href={generalBookingPath}>Return to the Scheduler <span aria-hidden="true">↑</span></a>
+				<p class="secure-note"><span aria-hidden="true">✓</span> Secure Online Booking</p>
 			</div>
 			<div class="booking-steps">
-				<p class="section-kicker section-kicker-pink">What happens next</p>
+				<p class="section-kicker section-kicker-pink">What Happens Next</p>
 				<ol>
 					{bookingSteps.map(([number, title, copy]) => (
 						<li><span>{number}</span><div><strong>{title}</strong><p>{copy}</p></div></li>
@@ -93,20 +93,20 @@ const site = getSiteSettings();
 
 	<section class="section faq-section" aria-labelledby="booking-faq-heading">
 		<div class="container faq-grid">
-			<div><p class="section-kicker">Booking notes</p><h2 id="booking-faq-heading">Good to know.</h2></div>
+			<div><p class="section-kicker">Booking Notes</p><h2 id="booking-faq-heading">Good to Know.</h2></div>
 			<div class="faq-list">
-				<details><summary><span>01</span> Why is booking embedded here?</summary><p>The in-page calendar lets you choose a time and continue the booking flow without leaving the website.</p></details>
-				<details><summary><span>02</span> Where are appointment details stored?</summary><p>Booking information is handled inside the client-owned booking system; this website does not maintain a separate appointment database.</p></details>
-				<details><summary><span>03</span> What if the embedded calendar does not load?</summary><p>Use the secure booking link directly beneath the calendar. It opens the same live booking system in a separate window.</p></details>
+				<details><summary><span>01</span> Why Is Booking Embedded Here?</summary><p>The in-page calendar lets you choose a time and continue the booking flow without leaving the website.</p></details>
+				<details><summary><span>02</span> Where Are Appointment Details Stored?</summary><p>Booking information is handled inside the client-owned booking system; this website does not maintain a separate appointment database.</p></details>
+				<details><summary><span>03</span> What If the Embedded Calendar Does Not Load?</summary><p>Use the secure booking link directly beneath the calendar. It opens the same live booking system in a separate window.</p></details>
 			</div>
 		</div>
 	</section>
 
 	<section class="section final-cta-section final-cta-section-dark">
 		<div class="container final-cta final-cta-dark">
-			<p class="section-kicker section-kicker-pink">Marie’s schedule</p>
-			<h2>Your next beauty moment starts here.</h2>
-			<a class="button button-pink" href={generalBookingPath}>Book now <span aria-hidden="true">↑</span></a>
+			<p class="section-kicker section-kicker-pink">Marie’s Schedule</p>
+			<h2>Your Next Beauty Moment Starts Here.</h2>
+			<a class="button button-pink" href={generalBookingPath}>Book Now <span aria-hidden="true">↑</span></a>
 		</div>
 	</section>
 </BaseLayout>
