@@ -5,7 +5,6 @@ import galleryFeatured from '../../assets/originals/client-gallery/lash-results/
 import waxStudioKit from '../../assets/originals/client-brand/studio-details/4f7ad076-4c84-4f25-a390-b3f12154f663.jpg';
 import portraitHero from '../../assets/originals/client-questionnaire/DB8_1436-Edit.jpeg';
 import portraitClose from '../../assets/originals/client-questionnaire/DB8_1181-Edit.jpeg';
-import { generalBookingPath } from '../data/booking';
 import { getSiteSettings } from '../content/site';
 import { withBase } from '../utils/urls';
 
@@ -41,7 +40,7 @@ const bookingSteps = [
 				<p class="campaign-lede">A beauty-bar experience for the appointments that keep you feeling polished, cared for, and completely yourself.</p>
 				<div class="actions">
 					{instagram && <a class="button button-pink" href={instagram.href} target="_blank" rel="noopener noreferrer">Follow on Instagram <span aria-hidden="true">↗</span></a>}
-					<a class="text-link text-link-light" href={generalBookingPath}>Book an Appointment <span aria-hidden="true">↓</span></a>
+					<a class="text-link text-link-light" href={withBase('/services/')}>Book an Appointment <span aria-hidden="true">↓</span></a>
 				</div>
 			</div>
 		</div>
@@ -103,7 +102,7 @@ const bookingSteps = [
 				<p class="section-kicker">Reserve Your Time</p>
 				<h2 id="booking-heading">Go Straight to Booking.</h2>
 				<p>Choose your service, select an available time, and confirm your details in the secure booking calendar.</p>
-				<a class="button button-dark" href={generalBookingPath}>Book Now <span aria-hidden="true">↓</span></a>
+				<a class="button button-dark" href={withBase('/services/')}>Book Now <span aria-hidden="true">↓</span></a>
 				<p class="secure-note"><span aria-hidden="true">✓</span> Secure online booking</p>
 			</div>
 			<div class="booking-steps">
@@ -132,7 +131,7 @@ const bookingSteps = [
 		<div class="container final-cta">
 			<p class="section-kicker">Ready When You Are</p>
 			<h2>Make Time for Your Beauty Routine.</h2>
-			<a class="button button-dark" href={generalBookingPath}>Book an Appointment <span aria-hidden="true">↓</span></a>
+			<a class="button button-dark" href={withBase('/services/')}>Book an Appointment <span aria-hidden="true">↓</span></a>
 		</div>
 	</section>
 </BaseLayout>

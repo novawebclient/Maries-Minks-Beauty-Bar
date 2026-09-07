@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { bookingSchedulerUrl, generalBookingPath } from '../data/booking';
 import { getSiteSettings } from '../content/site';
+import { withBase } from '../utils/urls';
 
 const bookingSteps = [
 	['01', 'Choose Your Service', 'Review current services, prices, and appointment lengths in the live scheduler.'],
@@ -106,7 +107,7 @@ const site = getSiteSettings();
 		<div class="container final-cta final-cta-dark">
 			<p class="section-kicker section-kicker-pink">Marie’s Schedule</p>
 			<h2>Your Next Beauty Moment Starts Here.</h2>
-			<a class="button button-pink" href={generalBookingPath}>Book Now <span aria-hidden="true">↑</span></a>
+			<a class="button button-pink" href={withBase('/services/')}>Book Now <span aria-hidden="true">↑</span></a>
 		</div>
 	</section>
 </BaseLayout>

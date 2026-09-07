@@ -1,7 +1,6 @@
 ---
 import { Image } from 'astro:assets';
 import '../styles/global.css';
-import { generalBookingPath } from '../data/booking';
 import { getSiteSettings } from '../content/site';
 import { withBase } from '../utils/urls';
 import headerPortrait from '../../assets/originals/client-questionnaire/brand-header-portrait.png';
@@ -18,10 +17,10 @@ const site = getSiteSettings();
 
 const navigation = [
 	{ href: '/', label: 'Home' },
-	{ href: '/services/', label: 'Services' },
-	{ href: '/training/', label: 'Training' },
-	{ href: '/gallery/', label: 'Gallery' },
 	{ href: '/about/', label: 'About' },
+	{ href: '/services/', label: 'Services' },
+	{ href: '/gallery/', label: 'Gallery' },
+	{ href: '/training/', label: 'Training' },
 	{ href: '/contact/', label: 'Contact' },
 ];
 ---
@@ -50,11 +49,6 @@ const navigation = [
 	</head>
 	<body>
 		<a class="skip-link" href="#main-content">Skip to Main Content</a>
-		<div class="top-ribbon">
-			<div class="container top-ribbon-inner top-ribbon-message">
-				<span>{site.serviceArea} · {site.hours}</span>
-			</div>
-		</div>
 		<header class="site-header">
 			<div class="container header-inner">
 				<a class="wordmark" href={withBase('/')} aria-label={`${site.displayName} home`}>
@@ -82,7 +76,7 @@ const navigation = [
 						</ul>
 					</nav>
 				</details>
-				<a class="header-book" href={generalBookingPath}>Book Now <span aria-hidden="true">↓</span></a>
+				<a class="header-book" href={withBase('/services/')}>Book Now <span aria-hidden="true">↓</span></a>
 			</div>
 		</header>
 		<main id="main-content">
@@ -99,7 +93,6 @@ const navigation = [
 				<nav aria-label="Footer navigation">
 					<ul class="footer-nav">
 						{navigation.slice(1).map((item) => <li><a href={withBase(item.href)}>{item.label}</a></li>)}
-						<li><a href={generalBookingPath}>Book Now ↓</a></li>
 						<li><a href={withBase('/privacy/')}>Privacy</a></li>
 						<li><a href={withBase('/policies/')}>Policies</a></li>
 					</ul>

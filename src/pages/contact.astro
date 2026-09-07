@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { generalBookingPath } from '../data/booking';
 import { getSiteSettings } from '../content/site';
+import { withBase } from '../utils/urls';
 
 const site = getSiteSettings();
 ---
@@ -21,12 +21,12 @@ const site = getSiteSettings();
 		<div class="container">
 			<div class="section-heading-wide">
 				<div><p class="section-kicker">Contact Options</p><h2 id="contact-options-heading">Choose the Way That Works for You.</h2></div>
-				<p>For an appointment, the live booking calendar is the quickest route. For general business questions, use the public contact details below.</p>
+				<p>For an appointment, the Services page is the quickest route. For general business questions, use the public contact details below.</p>
 			</div>
 			<div class="contact-card-grid">
 				<a class="contact-card" href={site.contact.phoneHref}><span>01</span><strong>Call</strong><p>{site.contact.phoneDisplay}</p><small>Tap to Call</small></a>
 				<a class="contact-card" href={`mailto:${site.contact.email}`}><span>02</span><strong>Email</strong><p>{site.contact.email}</p><small>Send an Email</small></a>
-				<a class="contact-card contact-card-dark" href={generalBookingPath}><span>03</span><strong>Book</strong><p>Choose a live appointment time.</p><small>Open Booking ↓</small></a>
+				<a class="contact-card contact-card-dark" href={withBase('/services/')}><span>03</span><strong>Book</strong><p>Choose the service that fits your routine.</p><small>Explore Services ↓</small></a>
 			</div>
 		</div>
 	</section>

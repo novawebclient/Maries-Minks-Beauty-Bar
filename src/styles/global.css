@@ -10,7 +10,7 @@
 	--display: "DM Serif Display", Georgia, serif;
 	--sans: "Manrope", "Helvetica Neue", Arial, sans-serif;
 	--serif: var(--sans);
-	--content-width: 73rem;
+	--content-width: 68rem;
 	font-family: var(--sans);
 	color: var(--ink);
 	background: var(--white);
@@ -72,17 +72,17 @@ h2 {
 }
 
 h1 {
-	font-size: clamp(3.8rem, 8vw, 7.6rem);
+	font-size: clamp(3.25rem, 7vw, 6.4rem);
 }
 
 h2 {
-	font-size: clamp(3rem, 6vw, 5.6rem);
+	font-size: clamp(2.5rem, 5.4vw, 4.75rem);
 }
 
 h3 {
 	margin-bottom: 0;
 	font-family: var(--display);
-	font-size: clamp(1.5rem, 2.5vw, 2rem);
+	font-size: clamp(1.35rem, 2.2vw, 1.8rem);
 	font-weight: 400;
 	line-height: 1.1;
 }
@@ -98,7 +98,7 @@ h3 {
 }
 
 .section {
-	padding-block: clamp(5rem, 10vw, 9rem);
+	padding-block: clamp(4rem, 8vw, 7.5rem);
 }
 
 .sr-only {
@@ -144,33 +144,8 @@ h3 {
 
 .lead-copy {
 	font-family: var(--serif);
-	font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+	font-size: clamp(1.15rem, 2.1vw, 1.55rem);
 	line-height: 1.38;
-}
-
-.top-ribbon {
-	background: var(--pink);
-	color: var(--ink);
-	font-size: 0.64rem;
-	font-weight: 800;
-	letter-spacing: 0.16em;
-	text-transform: uppercase;
-}
-
-.top-ribbon-inner {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 1rem;
-	min-height: 2.05rem;
-}
-
-.top-ribbon-message {
-	justify-content: center;
-}
-
-.top-ribbon a {
-	text-underline-offset: 0.22rem;
 }
 
 .site-header {
@@ -185,7 +160,7 @@ h3 {
 	align-items: center;
 	justify-content: space-between;
 	gap: 1.5rem;
-	min-height: 5.4rem;
+	min-height: 4.75rem;
 }
 
 .wordmark {
@@ -295,8 +270,8 @@ h3 {
 	align-items: center;
 	justify-content: center;
 	gap: 0.75rem;
-	min-height: 3.15rem;
-	padding: 0.8rem 1.25rem;
+	min-height: 2.75rem;
+	padding: 0.68rem 1.05rem;
 	border: 1px solid var(--ink);
 	background: var(--ink);
 	color: var(--white);
@@ -333,8 +308,8 @@ h3 {
 }
 
 .button-large {
-	min-height: 3.75rem;
-	padding-inline: 1.6rem;
+	min-height: 3.15rem;
+	padding-inline: 1.35rem;
 }
 
 .text-link {
@@ -365,7 +340,7 @@ h3 {
 
 .campaign-hero {
 	position: relative;
-	min-height: clamp(39rem, 70vw, 50rem);
+	min-height: clamp(34rem, 62vw, 44rem);
 	overflow: hidden;
 	background: #090507;
 	color: var(--white);
@@ -392,7 +367,7 @@ h3 {
 	display: flex;
 	align-items: center;
 	min-height: inherit;
-	padding-block: 5.5rem 7rem;
+	padding-block: 4.5rem 5.5rem;
 }
 
 .campaign-copy {
@@ -606,7 +581,7 @@ h3 {
 
 .service-disclosure strong {
 	font-family: var(--serif);
-	font-size: clamp(1.65rem, 3vw, 2.35rem);
+	font-size: clamp(1.5rem, 2.6vw, 2.1rem);
 	font-weight: 500;
 	line-height: 1;
 }
@@ -780,7 +755,7 @@ h3 {
 
 .service-intro {
 	font-family: var(--serif);
-	font-size: 1.35rem;
+	font-size: 1.2rem;
 	line-height: 1.4;
 }
 
@@ -963,7 +938,7 @@ h3 {
 
 .booking-steps strong {
 	font-family: var(--serif);
-	font-size: 1.35rem;
+	font-size: 1.2rem;
 	font-weight: 500;
 }
 
@@ -1003,7 +978,7 @@ h3 {
 	padding: 1.5rem 2.5rem 1.5rem 0;
 	cursor: pointer;
 	font-family: var(--serif);
-	font-size: 1.15rem;
+	font-size: 1.05rem;
 	list-style: none;
 }
 
@@ -1818,7 +1793,7 @@ h3 {
 
 @media (max-width: 46rem) {
 	.section {
-		padding-block: clamp(3.75rem, 15vw, 5rem);
+		padding-block: clamp(3rem, 12vw, 4rem);
 	}
 
 	.service-editorial-section {
@@ -1828,7 +1803,7 @@ h3 {
 
 	.header-inner {
 		gap: 0.5rem;
-		min-height: 4.4rem;
+		min-height: 4rem;
 	}
 
 	.wordmark {
@@ -1862,7 +1837,7 @@ h3 {
 	}
 
 	.campaign-hero {
-		min-height: min(44rem, 80svh);
+		min-height: min(38rem, 72svh);
 	}
 
 	.campaign-hero-image {
@@ -1875,7 +1850,7 @@ h3 {
 
 	.campaign-hero-inner {
 		align-items: flex-end;
-		padding-block: 3.5rem 2.5rem;
+		padding-block: 2.75rem 2rem;
 	}
 
 	.campaign-monogram,
@@ -1884,7 +1859,7 @@ h3 {
 	}
 
 	.campaign-copy h1 {
-		font-size: clamp(3.55rem, 16vw, 4.65rem);
+		font-size: clamp(3rem, 14vw, 4rem);
 	}
 
 	.campaign-copy .actions {
@@ -2040,24 +2015,16 @@ h3 {
 		width: min(calc(100% - 2rem), var(--content-width));
 	}
 
-	.top-ribbon-inner > span {
-		display: none;
-	}
-
-	.top-ribbon-inner {
-		justify-content: flex-end;
-	}
-
 	h1 {
-		font-size: clamp(3.2rem, 16vw, 4.4rem);
+		font-size: clamp(2.8rem, 14vw, 3.7rem);
 	}
 
 	h2 {
-		font-size: clamp(2.5rem, 13vw, 3.6rem);
+		font-size: clamp(2.25rem, 11vw, 3.1rem);
 	}
 
 	.campaign-copy h1 {
-		font-size: clamp(3.2rem, 16vw, 4rem);
+		font-size: clamp(2.8rem, 14vw, 3.5rem);
 	}
 
 	.service-disclosure > summary {
