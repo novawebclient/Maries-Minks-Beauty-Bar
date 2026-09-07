@@ -89,6 +89,16 @@ const navigation = [
 					<p class="footer-name">{site.displayName}</p>
 					<p class="footer-note">Lashes · Waxing · Brows · Facials</p>
 					<p class="footer-contact"><a href={site.contact.phoneHref}>{site.contact.phoneDisplay}</a><br /><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></p>
+					<nav class="footer-socials" aria-label="Social media">
+						{site.socials.map((social) => (
+							<a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}>
+								{social.label === 'Instagram' && <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.4" cy="6.6" r="1" /></svg>}
+								{social.label === 'Facebook' && <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.4 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.3H8.6V13h2.7v8h3.1Z" /></svg>}
+								{social.label === 'TikTok' && <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.8 3c.5 1.9 1.7 3.2 3.7 3.8v3.1c-1.4 0-2.7-.4-3.7-1.2v6.9a5.1 5.1 0 1 1-4.4-5V14a2.1 2.1 0 1 0 1.4 2V3h3Z" /></svg>}
+								<span class="sr-only">{social.label}</span>
+							</a>
+						))}
+					</nav>
 				</div>
 				<nav aria-label="Footer navigation">
 					<ul class="footer-nav">

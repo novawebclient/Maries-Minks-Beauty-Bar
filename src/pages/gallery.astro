@@ -54,24 +54,61 @@ const galleryImages = [
 	title={`Gallery | ${site.displayName}`}
 	description={`A growing beauty portfolio from ${site.displayName} in ${site.serviceArea}.`}
 >
-	<header class="page-masthead page-masthead-pink">
-		<div class="container masthead-grid">
-			<div><p class="section-kicker">Portfolio</p><h1>Lashes in Every Detail.</h1></div>
-			<p>A selection of finished lash work from {site.displayName}.</p>
-		</div>
-	</header>
-
 	<section class="section gallery-results-section" aria-labelledby="gallery-results-heading">
 		<div class="container">
+			<div class="section-heading-wide gallery-page-intro">
+				<div><p class="section-kicker">Portfolio</p><h1>Lashes in Every Detail.</h1></div>
+				<p>A selection of finished lash work from {site.displayName}.</p>
+			</div>
 			<div class="section-heading-wide">
 				<div><p class="section-kicker">Lash Extensions</p><h2 id="gallery-results-heading">A Closer Look at the Finished Set.</h2></div>
-				<p>Explore a range of finished lash looks across clients.</p>
+				<p>Swipe through the finished looks, then tap any image to see it larger.</p>
 			</div>
-			<div class="client-gallery-grid">
-				{galleryImages.map(([image, alt]) => (
-					<figure><Image src={image} alt={alt} format="webp" widths={[480, 720, 960]} sizes="(max-width: 736px) 50vw, (max-width: 1100px) 33vw, 24vw" loading="lazy" /></figure>
+			<div class="client-gallery-carousel" aria-label="Finished lash work gallery">
+				{galleryImages.map(([image, alt], index) => (
+					<button class="client-gallery-card" type="button" data-gallery-item aria-haspopup="dialog" aria-label={`Open image ${index + 1}: ${alt}`}>
+						<Image src={image} alt={alt} format="webp" widths={[480, 720, 960]} sizes="(max-width: 736px) 82vw, (max-width: 1100px) 40vw, 28vw" loading="lazy" />
+						<span aria-hidden="true">{String(index + 1).padStart(2, '0')} ↗</span>
+					</button>
 				))}
 			</div>
 		</div>
 	</section>
+
+	<dialog class="gallery-dialog" data-gallery-dialog aria-labelledby="gallery-dialog-caption">
+		<button class="gallery-dialog-close" type="button" data-gallery-close aria-label="Close expanded image">×</button>
+		<figure>
+			<img data-gallery-dialog-image src="" alt="" />
+			<figcaption id="gallery-dialog-caption" data-gallery-dialog-caption></figcaption>
+		</figure>
+	</dialog>
+
+	<script is:inline>
+		(() => {
+			const dialog = document.querySelector('[data-gallery-dialog]');
+			const dialogImage = document.querySelector('[data-gallery-dialog-image]');
+			const caption = document.querySelector('[data-gallery-dialog-caption]');
+			const closeButton = document.querySelector('[data-gallery-close]');
+			const items = document.querySelectorAll('[data-gallery-item]');
+
+			if (!(dialog instanceof HTMLDialogElement) || !(dialogImage instanceof HTMLImageElement) || !(caption instanceof HTMLElement)) return;
+
+			items.forEach((item) => {
+				if (!(item instanceof HTMLButtonElement)) return;
+				item.addEventListener('click', () => {
+					const image = item.querySelector('img');
+					if (!(image instanceof HTMLImageElement)) return;
+					dialogImage.src = image.currentSrc || image.src;
+					dialogImage.alt = image.alt;
+					caption.textContent = image.alt;
+					dialog.showModal();
+				});
+			});
+
+			closeButton?.addEventListener('click', () => dialog.close());
+			dialog.addEventListener('click', (event) => {
+				if (event.target === dialog) dialog.close();
+			});
+		})();
+	</script>
 </BaseLayout>
