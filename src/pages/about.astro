@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import portraitHero from '../../assets/originals/client-questionnaire/DB8_1325-Edit.jpeg';
 import portraitAbout from '../../assets/originals/client-questionnaire/DB8_1368-Edit.jpeg';
+import lashRitual from '../../assets/originals/client-brand/studio-details/51a06ccd-bddd-4433-a48c-2168a9d6d3e6.jpg';
 import { getSiteSettings } from '../content/site';
 import { withBase } from '../utils/urls';
 
@@ -33,6 +34,10 @@ const site = getSiteSettings();
 				<p class="lead-copy">I’m Angelina Marie, a Licensed Esthetician and the woman behind Marie’s Minks n Beauty Bar. What began as a personal love for beauty and self-care has grown into a career that allows me to help others feel confident, cared for, and beautiful in their own skin.</p>
 				<p>My love for the beauty industry started in my teenage years. At first, beauty was simply something I enjoyed as a way to pamper myself, but over time it became so much more. I realized that self-care could be a form of self-love, a way to slow down, reset, and reconnect with yourself. That feeling of confidence and comfort is something I wanted to give to other women, and it ultimately led me to become a Licensed Esthetician and build a business of my own.</p>
 				<p>Over the years, I’ve continued expanding my education and mastering different areas of the beauty industry. I specialize in wet and wispy lash extensions while also offering brow laminations, Brazilian waxing, and customized facials. I love being versatile in my craft and creating services tailored to each individual client rather than taking a one-size-fits-all approach to beauty.</p>
+				<figure class="about-brand-detail">
+					<Image src={lashRitual} alt="Lash spoolies arranged beside softly lit candles" format="webp" widths={[480, 720, 960]} sizes="(max-width: 800px) 100vw, 28rem" loading="lazy" />
+					<figcaption>Beauty-Bar Details</figcaption>
+				</figure>
 				<p>As my career has grown, so has my passion for education. I’ve expanded beyond providing services and into teaching and mentoring other beauty professionals. Being able to share the knowledge and experience I’ve gained along the way has opened an entirely new chapter for me. My goal is to continue growing as both an esthetician and educator while creating resources, mentorship opportunities, and education for those building careers of their own in the beauty industry.</p>
 				<p>For me, Marie’s Minks n Beauty Bar has never been just about the service itself. I want every client who sits in my chair to feel like they are entering a safe, welcoming space where they can relax, be themselves, and leave feeling refreshed and confident. Life can be busy and challenging, and sometimes having that little piece of time dedicated completely to yourself makes all the difference.</p>
 				<p>Outside of the treatment room, I’m someone who loves new experiences, the beach, music, and staying active. The beach has always been one of my favorite places to relax and reset, while music is another escape for me. I can easily get lost in a song and sing for hours. You’ll also often find me in the gym, which has become one of my favorite ways to relieve stress, clear my mind, and practice another form of self-care.</p>

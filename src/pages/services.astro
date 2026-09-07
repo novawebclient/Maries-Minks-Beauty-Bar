@@ -1,8 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import beautyTools from '../assets/beauty-tools.png';
-import lashEditorial from '../assets/lash-editorial.png';
+import hardWax from '../../assets/originals/client-brand/studio-details/150ea0ff-bfc6-4077-8f28-c3b75fb5deca.jpg';
+import lashToolDetail from '../../assets/originals/client-brand/studio-details/c5600ddb-5fc9-4cea-b28f-683faf1855a9.jpg';
 import { bookingSchedulerUrl, serviceCategories } from '../data/booking';
 import { getSiteSettings } from '../content/site';
 
@@ -21,8 +21,8 @@ const site = getSiteSettings();
 				<p class="lead-copy">Choose a service below to open the matching booking options.</p>
 			</div>
 			<figure class="editorial-figure editorial-figure-tall">
-				<Image src={beautyTools} alt="Beauty-bar tools and spa essentials arranged on a pink counter" format="webp" widths={[480, 720, 960]} sizes="(max-width: 800px) 100vw, 44vw" loading="lazy" />
-				<figcaption>Beauty Bar Essentials</figcaption>
+				<Image src={hardWax} alt="Hard wax warming on a wooden applicator" format="webp" widths={[480, 720, 960]} sizes="(max-width: 800px) 100vw, 44vw" loading="eager" />
+				<figcaption>Waxing Essentials</figcaption>
 			</figure>
 		</div>
 	</section>
@@ -31,8 +31,8 @@ const site = getSiteSettings();
 		<div class="container service-page-grid">
 			<div class="service-image-column">
 				<figure class="editorial-figure sticky-figure">
-					<Image src={lashEditorial} alt="Editorial close-up featuring a finished lash look" format="webp" widths={[480, 720, 960]} sizes="(max-width: 850px) 100vw, 36vw" loading="eager" />
-					<figcaption>Original Concept Imagery</figcaption>
+					<Image src={lashToolDetail} alt="Lash spoolie resting over a heart-shaped bowl of cleansing foam" format="webp" widths={[480, 720, 960]} sizes="(max-width: 850px) 100vw, 36vw" loading="lazy" />
+					<figcaption>Precision in Every Detail</figcaption>
 				</figure>
 			</div>
 			<div>

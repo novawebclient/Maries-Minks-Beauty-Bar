@@ -7,7 +7,7 @@
 	--pink-soft: #fff0f6;
 	--white: #ffffff;
 	--line: #ded4d9;
-	--display: "Bodoni Moda", Didot, "Times New Roman", serif;
+	--display: "DM Serif Display", Georgia, serif;
 	--sans: "Manrope", "Helvetica Neue", Arial, sans-serif;
 	--serif: var(--sans);
 	--content-width: 73rem;
@@ -65,9 +65,9 @@ h1,
 h2 {
 	margin-bottom: 0;
 	font-family: var(--display);
-	font-weight: 450;
-	line-height: 0.94;
-	letter-spacing: -0.065em;
+	font-weight: 400;
+	line-height: 0.98;
+	letter-spacing: -0.045em;
 	text-wrap: balance;
 }
 
@@ -83,7 +83,7 @@ h3 {
 	margin-bottom: 0;
 	font-family: var(--display);
 	font-size: clamp(1.5rem, 2.5vw, 2rem);
-	font-weight: 500;
+	font-weight: 400;
 	line-height: 1.1;
 }
 
@@ -1372,6 +1372,29 @@ h3 {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+
+.about-brand-detail {
+	max-width: 28rem;
+	margin: 2.5rem 0;
+	overflow: hidden;
+	background: var(--pink-soft);
+}
+
+.about-brand-detail img {
+	width: 100%;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+}
+
+.about-brand-detail figcaption {
+	padding: 0.7rem 0.85rem;
+	background: var(--ink);
+	color: var(--white);
+	font-size: 0.6rem;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
 }
 
 .gallery-preview-grid {
