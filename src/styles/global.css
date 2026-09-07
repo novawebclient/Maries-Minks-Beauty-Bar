@@ -286,7 +286,14 @@ h3 {
 
 .mobile-nav a {
 	display: block;
-	padding: 0.8rem;
+	min-height: 2.75rem;
+	padding: 0.75rem 0.8rem;
+}
+
+.mobile-nav-book a {
+	margin-top: 0.35rem;
+	background: var(--pink-deep);
+	color: var(--white);
 }
 
 .button {
@@ -734,6 +741,7 @@ h3 {
 
 .inline-scheduler iframe {
 	display: block;
+	width: 100%;
 	border: 0;
 }
 
@@ -1765,7 +1773,7 @@ h3 {
 
 @media (max-width: 46rem) {
 	.section {
-		padding-block: 5rem;
+		padding-block: clamp(3.75rem, 15vw, 5rem);
 	}
 
 	.service-editorial-section {
@@ -1775,7 +1783,7 @@ h3 {
 
 	.header-inner {
 		gap: 0.7rem;
-		min-height: 4.8rem;
+		min-height: 4.4rem;
 	}
 
 	.wordmark {
@@ -1793,7 +1801,7 @@ h3 {
 	}
 
 	.campaign-hero {
-		min-height: 44rem;
+		min-height: min(44rem, 80svh);
 	}
 
 	.campaign-hero-image {
@@ -1806,7 +1814,7 @@ h3 {
 
 	.campaign-hero-inner {
 		align-items: flex-end;
-		padding-block: 5rem;
+		padding-block: 3.5rem 2.5rem;
 	}
 
 	.campaign-monogram,
@@ -1815,7 +1823,22 @@ h3 {
 	}
 
 	.campaign-copy h1 {
-		font-size: clamp(4rem, 18vw, 5.5rem);
+		font-size: clamp(3.55rem, 16vw, 4.65rem);
+	}
+
+	.campaign-copy .actions {
+		align-items: stretch;
+		gap: 0.85rem;
+		margin-top: 1.5rem;
+	}
+
+	.campaign-copy .button,
+	.campaign-copy .text-link {
+		width: 100%;
+	}
+
+	.campaign-copy .text-link {
+		justify-content: center;
 	}
 
 	.split-feature,
@@ -1857,7 +1880,7 @@ h3 {
 
 	.booking-steps,
 	.booking-intro {
-		padding: 2rem 1.5rem;
+		padding: 2rem 1.25rem;
 	}
 
 	.scheduler-heading {
@@ -1879,7 +1902,7 @@ h3 {
 	}
 
 	.page-masthead-pink {
-		padding-block: 5rem;
+		padding-block: clamp(3.75rem, 15vw, 5rem);
 	}
 
 	.masthead-grid {
@@ -1887,7 +1910,7 @@ h3 {
 	}
 
 	.page-masthead-dark {
-		min-height: 38rem;
+		min-height: min(38rem, 78svh);
 	}
 
 	.masthead-background {
@@ -1900,7 +1923,7 @@ h3 {
 
 	.masthead-content {
 		justify-content: end;
-		padding-bottom: 4.5rem;
+		padding-bottom: 3rem;
 	}
 
 	.footer-main,
@@ -1926,11 +1949,24 @@ h3 {
 	.legal-aside {
 		position: static;
 	}
+
+	.social-feature-links {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+
+	.social-feature-links .button {
+		width: 100%;
+	}
+
+	.final-cta {
+		padding: 3rem 1.25rem;
+	}
 }
 
 @media (max-width: 34rem) {
 	.container {
-		width: min(calc(100% - 1.5rem), var(--content-width));
+		width: min(calc(100% - 2rem), var(--content-width));
 	}
 
 	.top-ribbon-inner > span {
@@ -1942,11 +1978,15 @@ h3 {
 	}
 
 	h1 {
-		font-size: clamp(3.4rem, 17vw, 4.8rem);
+		font-size: clamp(3.2rem, 16vw, 4.4rem);
 	}
 
 	h2 {
-		font-size: clamp(2.8rem, 14vw, 4rem);
+		font-size: clamp(2.5rem, 13vw, 3.6rem);
+	}
+
+	.campaign-copy h1 {
+		font-size: clamp(3.2rem, 16vw, 4rem);
 	}
 
 	.service-disclosure > summary {
