@@ -103,6 +103,7 @@ const navigation = [
 				<nav aria-label="Footer navigation">
 					<ul class="footer-nav">
 						{navigation.slice(1).map((item) => <li><a href={withBase(item.href)}>{item.label}</a></li>)}
+						<li><a href={withBase('/faq/')}>FAQs</a></li>
 						<li><a href={withBase('/privacy/')}>Privacy</a></li>
 						<li><a href={withBase('/policies/')}>Policies</a></li>
 					</ul>

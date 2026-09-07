@@ -9,15 +9,11 @@ const site = getSiteSettings();
 	title={`Contact | ${site.displayName}`}
 	description={`Contact ${site.displayName} for beauty services in ${site.serviceArea}, or book online.`}
 >
-	<section class="section contact-section" aria-labelledby="contact-options-heading">
+	<section class="section contact-section" aria-labelledby="contact-heading">
 		<div class="container">
 			<div class="section-heading-wide contact-page-intro">
-				<div><p class="section-kicker">Get in Touch</p><h1>Let’s Keep It Easy.</h1></div>
-				<p>Call or email for general business questions. This appointment-only beauty bar shares the studio address after booking.</p>
-			</div>
-			<div class="section-heading-wide">
-				<div><p class="section-kicker">Contact Options</p><h2 id="contact-options-heading">Choose the Way That Works for You.</h2></div>
-				<p>For an appointment, the Services page is the quickest route. For general business questions, use the public contact details below.</p>
+				<div><p class="section-kicker">Get in Touch</p><h1 id="contact-heading">Let’s Keep It Easy.</h1></div>
+				<p>Call or email for general business questions.</p>
 			</div>
 			<div class="contact-card-grid">
 				<a class="contact-card" href={site.contact.phoneHref}><span>01</span><strong>Call</strong><p>{site.contact.phoneDisplay}</p><small>Tap to Call</small></a>

@@ -56,12 +56,8 @@ const galleryImages = [
 >
 	<section class="section gallery-results-section" aria-labelledby="gallery-results-heading">
 		<div class="container">
-			<div class="section-heading-wide gallery-page-intro">
-				<div><p class="section-kicker">Portfolio</p><h1>Lashes in Every Detail.</h1></div>
-				<p>A selection of finished lash work from {site.displayName}.</p>
-			</div>
 			<div class="section-heading-wide">
-				<div><p class="section-kicker">Lash Extensions</p><h2 id="gallery-results-heading">A Closer Look at the Finished Set.</h2></div>
+				<div><p class="section-kicker">Portfolio</p><h1 id="gallery-results-heading">A Closer Look at the Finished Set.</h1></div>
 				<p>Swipe through the finished looks, then tap any image to see it larger.</p>
 			</div>
 			<div class="client-gallery-carousel" aria-label="Finished lash work gallery">
@@ -75,33 +71,43 @@ const galleryImages = [
 		</div>
 	</section>
 
-	<dialog class="gallery-dialog" data-gallery-dialog aria-labelledby="gallery-dialog-caption">
+	<dialog class="gallery-dialog" data-gallery-dialog aria-label="Expanded lash work gallery">
 		<button class="gallery-dialog-close" type="button" data-gallery-close aria-label="Close expanded image">×</button>
-		<figure>
-			<img data-gallery-dialog-image src="" alt="" />
-			<figcaption id="gallery-dialog-caption" data-gallery-dialog-caption></figcaption>
-		</figure>
+		<div class="gallery-dialog-track" data-gallery-dialog-track aria-label="Expanded gallery images"></div>
 	</dialog>
 
 	<script is:inline>
 		(() => {
 			const dialog = document.querySelector('[data-gallery-dialog]');
-			const dialogImage = document.querySelector('[data-gallery-dialog-image]');
-			const caption = document.querySelector('[data-gallery-dialog-caption]');
+			const dialogTrack = document.querySelector('[data-gallery-dialog-track]');
 			const closeButton = document.querySelector('[data-gallery-close]');
 			const items = document.querySelectorAll('[data-gallery-item]');
 
-			if (!(dialog instanceof HTMLDialogElement) || !(dialogImage instanceof HTMLImageElement) || !(caption instanceof HTMLElement)) return;
+			if (!(dialog instanceof HTMLDialogElement) || !(dialogTrack instanceof HTMLElement)) return;
 
-			items.forEach((item) => {
+			const populateDialog = () => {
+				dialogTrack.replaceChildren();
+				items.forEach((item) => {
+					const sourceImage = item.querySelector('img');
+					if (!(sourceImage instanceof HTMLImageElement)) return;
+
+					const figure = document.createElement('figure');
+					const image = document.createElement('img');
+					const caption = document.createElement('figcaption');
+					image.src = sourceImage.currentSrc || sourceImage.src;
+					image.alt = sourceImage.alt;
+					caption.textContent = sourceImage.alt;
+					figure.append(image, caption);
+					dialogTrack.append(figure);
+				});
+			};
+
+			items.forEach((item, index) => {
 				if (!(item instanceof HTMLButtonElement)) return;
 				item.addEventListener('click', () => {
-					const image = item.querySelector('img');
-					if (!(image instanceof HTMLImageElement)) return;
-					dialogImage.src = image.currentSrc || image.src;
-					dialogImage.alt = image.alt;
-					caption.textContent = image.alt;
+					populateDialog();
 					dialog.showModal();
+					requestAnimationFrame(() => dialogTrack.children[index]?.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'start' }));
 				});
 			});
 

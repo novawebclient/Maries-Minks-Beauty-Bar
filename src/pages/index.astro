@@ -10,12 +10,6 @@ import { withBase } from '../utils/urls';
 
 const site = getSiteSettings();
 const instagram = site.socials.find((social) => social.label === 'Instagram');
-
-const bookingSteps = [
-	['01', 'Choose Your Service', 'Explore the category that fits your routine and open its matching booking options.'],
-	['02', 'Select Your Time', 'Choose from the live availability in the secure booking calendar.'],
-	['03', 'Confirm Your Visit', 'Review the appointment details and reserve your time directly with the beauty bar.'],
-];
 ---
 
 <BaseLayout
@@ -59,8 +53,8 @@ const bookingSteps = [
 			<div class="split-copy">
 				<p class="section-kicker">Welcome to</p>
 				<h2 id="intro-heading">Marie’s Minks n Beauty Bar</h2>
-				<p class="lead-copy">Greetings! Thank you for choosing Marie’s Minks n Beauty Bar for your professional services. I specialize in individual lash extensions, full body waxing, Brazilian’s, brows and customized facials.</p>
-				<p>I aim to provide a relaxing experience in the comfort of my home studio. My services will leave you feeling more confident and make your everyday routine a breeze.</p>
+				<p class="lead-copy">Hi! Thank you for choosing Marie’s Minks n Beauty Bar for your professional services. I specialize in individual lash extensions, full body waxing, Brazilian’s, brows and customized facials.</p>
+				<p class="home-intro-message">I aim to provide a relaxing experience in the comfort of my home studio. My services will leave you feeling more confident and make your everyday routine a breeze.</p>
 				<p class="signature">Xoxo,<br />Angelina</p>
 			</div>
 		</div>
@@ -93,37 +87,6 @@ const bookingSteps = [
 				<figcaption>Finished Lash Extensions</figcaption>
 			</figure>
 			<a class="text-link gallery-preview-link" href={withBase('/gallery/')}>View the Gallery <span aria-hidden="true">↓</span></a>
-		</div>
-	</section>
-
-	<section class="section booking-feature" aria-labelledby="booking-heading">
-		<div class="container booking-grid">
-			<div class="booking-intro">
-				<p class="section-kicker">Reserve Your Time</p>
-				<h2 id="booking-heading">Go Straight to Booking.</h2>
-				<p>Choose your service, select an available time, and confirm your details in the secure booking calendar.</p>
-				<a class="button button-dark" href={withBase('/services/')}>Book Now <span aria-hidden="true">↓</span></a>
-				<p class="secure-note"><span aria-hidden="true">✓</span> Secure online booking</p>
-			</div>
-			<div class="booking-steps">
-				<p class="section-kicker section-kicker-pink">What Happens Next</p>
-				<ol>
-					{bookingSteps.map(([number, title, copy]) => (
-						<li><span>{number}</span><div><strong>{title}</strong><p>{copy}</p></div></li>
-					))}
-				</ol>
-			</div>
-		</div>
-	</section>
-
-	<section class="section faq-section" aria-labelledby="faq-heading">
-		<div class="container faq-grid">
-			<div><p class="section-kicker">Good to Know</p><h2 id="faq-heading">Before You Book.</h2></div>
-			<div class="faq-list">
-				<details><summary><span>01</span> How Do I Book an Appointment?</summary><p>Select a service to open its matching booking options, then choose a live time and complete the secure booking flow.</p></details>
-				<details><summary><span>02</span> Where Can I See Current Prices?</summary><p>Current pricing, appointment lengths, and live availability are maintained in the booking system while the approved website price menu is prepared.</p></details>
-				<details><summary><span>03</span> Where Is the Studio?</summary><p>This is an appointment-only home studio serving Ocala and surrounding areas. The address is provided after booking.</p></details>
-			</div>
 		</div>
 	</section>
 

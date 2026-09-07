@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getSiteSettings } from '../content/site';
+import { withBase } from '../utils/urls';
+
+const site = getSiteSettings();
+
+const faqs = [
+	['How Do I Book an Appointment?', 'Select a service to open its matching booking options, then choose a live time and complete the secure booking flow.'],
+	['Where Can I See Current Prices?', 'Current pricing, appointment lengths, and live availability are maintained in the booking system while the approved website price menu is prepared.'],
+	['Where Is the Studio?', 'This is an appointment-only home studio serving Ocala and surrounding areas. The address is provided after booking.'],
+	['Is a Deposit Required?', 'A nonrefundable $20 deposit is due when booking to reserve your scheduled appointment time.'],
+	['Can I Reschedule or Cancel?', 'Please reschedule or cancel at least 24 hours before your appointment. Same-day cancellations are subject to 50% of the service cost, and a deposit may be transferred to a new appointment one time.'],
+	['What Happens If I Am Late?', 'If you are more than 15 minutes late, your deposit will be held and your appointment must be rescheduled.'],
+	['When Does a Lash Appointment Qualify as a Fill?', 'At least 50% of your lash extensions must remain for the appointment to qualify as a fill. Fills are required every two to three weeks; appointments more than three weeks after the previous service are considered a full set.'],
+	['How Should I Prepare for My Appointment?', 'Please arrive without eye makeup and wear comfortable clothing. You may remove your shoes during your appointment.'],
+	['Are Refunds Available?', 'Refunds are not offered on completed services. If you experience extreme lash fallout within the first three days after your appointment, a complimentary fill will be provided.'],
+];
+---
+
+<BaseLayout
+	title={`FAQs | ${site.displayName}`}
+	description={`Answers to common booking and appointment questions for ${site.displayName}.`}
+>
+	<section class="section faq-section" aria-labelledby="faq-heading">
+		<div class="container faq-grid">
+			<div>
+				<p class="section-kicker">Good to Know</p>
+				<h1 id="faq-heading">Before You Book.</h1>
+			</div>
+			<div class="faq-list">
+				{faqs.map(([question, answer], index) => (
+					<details>
+						<summary><span>{String(index + 1).padStart(2, '0')}</span> {question}</summary>
+						<p>{answer}</p>
+					</details>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section final-cta-section final-cta-section-dark">
+		<div class="container final-cta final-cta-dark">
+			<p class="section-kicker section-kicker-pink">Ready When You Are</p>
+			<h2>Choose Your Beauty Moment.</h2>
+			<a class="button button-pink" href={withBase('/services/')}>Explore Services <span aria-hidden="true">↓</span></a>
+		</div>
+	</section>
+</BaseLayout>

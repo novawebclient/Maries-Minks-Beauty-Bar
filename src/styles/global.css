@@ -468,6 +468,15 @@ h3 {
 	line-height: 1.65;
 }
 
+.about-story > p {
+	text-indent: 1.25em;
+}
+
+.home-intro-message {
+	font-size: clamp(1.125rem, 2.1vw, 1.55rem);
+	line-height: 1.55;
+}
+
 .split-copy .text-link,
 .split-copy .button {
 	margin-top: 1rem;
@@ -477,7 +486,7 @@ h3 {
 	margin: 1.5rem 0 0;
 	color: var(--ink) !important;
 	font-family: var(--display);
-	font-size: 0.9rem;
+	font-size: 0.9625rem;
 	font-weight: 650;
 	letter-spacing: -0.01em;
 	line-height: 1.5;
@@ -958,6 +967,7 @@ h3 {
 	gap: clamp(3rem, 8vw, 7rem);
 }
 
+.faq-grid h1,
 .faq-grid h2 {
 	max-width: 7ch;
 }
@@ -1433,13 +1443,6 @@ h3 {
 	background: #fffafb;
 }
 
-.gallery-page-intro {
-	margin-bottom: clamp(2rem, 4vw, 3rem);
-	padding-bottom: clamp(2rem, 5vw, 4rem);
-	border-bottom: 1px solid var(--line);
-}
-
-
 .client-gallery-carousel {
 	display: grid;
 	grid-auto-columns: minmax(14rem, 28vw);
@@ -1504,11 +1507,22 @@ h3 {
 	background: rgba(7, 3, 5, 0.84);
 }
 
-.gallery-dialog figure {
-	margin: 0;
+.gallery-dialog-track {
+	display: grid;
+	grid-auto-columns: 100%;
+	grid-auto-flow: column;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	overscroll-behavior-inline: contain;
+	-webkit-overflow-scrolling: touch;
 }
 
-.gallery-dialog img {
+.gallery-dialog-track figure {
+	margin: 0;
+	scroll-snap-align: start;
+}
+
+.gallery-dialog-track img {
 	display: block;
 	width: 100%;
 	max-height: 78svh;
@@ -1516,7 +1530,7 @@ h3 {
 	background: var(--ink);
 }
 
-.gallery-dialog figcaption {
+.gallery-dialog-track figcaption {
 	padding: 0.85rem 3.25rem 0.9rem 1rem;
 	color: #eadfe3;
 	font-size: 0.82rem;
@@ -1974,6 +1988,24 @@ h3 {
 
 	.campaign-copy .text-link {
 		justify-content: center;
+	}
+
+	.brand-ticker {
+		display: grid;
+		grid-template-columns: repeat(5, minmax(0, 1fr));
+		justify-content: normal;
+		gap: 0.25rem;
+		padding: 0.5rem 0.4rem;
+		font-size: 0.58rem;
+		letter-spacing: 0.08em;
+		line-height: 1.25;
+		text-align: center;
+		white-space: normal;
+	}
+
+	.brand-ticker span {
+		min-width: 0;
+		overflow-wrap: anywhere;
 	}
 
 	.split-feature,

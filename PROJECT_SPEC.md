@@ -84,10 +84,11 @@ The questionnaire changes the project from a small brochure site into a service,
 | `/about/` | Technician story, experience, credentials, approach, and appointment-only studio expectations | Required |
 | `/contact/` | Public phone, email, service area, appointment-only expectations, and social links; no custom form at launch | Required |
 | `/book/` | Embedded Acuity flow, service-specific handoff, direct-provider fallback, and booking guidance | Required |
+| `/faq/` | Client-approved booking, deposit, cancellation, late-arrival, lash-fill, preparation, and refund answers | Required |
 | `/privacy/` | Website, newsletter, embedded-provider, and analytics disclosures based on the final configuration | Required before launch |
 | `/policies/` | Booking, cancellation, rescheduling, lateness, deposit, refund, service, and training policies | Required before launch |
 
-Reviews and FAQs are sections on Home and Services rather than standalone routes. A journal/blog, shop, staff index, on-site search, locations page, and individual service-detail routes are deferred until the client supplies enough content and confirms they are needed. This keeps the first release focused and avoids empty or thin pages.
+Reviews remain sections on Home and Services. FAQs are available on a dedicated page linked from the footer, using the client-approved appointment policies. A journal/blog, shop, staff index, on-site search, locations page, and individual service-detail routes are deferred until the client supplies enough content and confirms they are needed. This keeps the first release focused and avoids empty or thin pages.
 
 ### Navigation and CTA hierarchy
 
