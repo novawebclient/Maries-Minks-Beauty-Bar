@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import beautyTools from '../assets/beauty-tools.png';
-import lashEditorial from '../assets/lash-editorial.png';
+import galleryFeatured from '../../assets/originals/client-gallery/lash-results/fdcbb455-57e4-445e-bc39-82c648c4b039.jpg';
 import portraitHero from '../../assets/originals/client-questionnaire/DB8_1436-Edit.jpeg';
 import portraitClose from '../../assets/originals/client-questionnaire/DB8_1181-Edit.jpeg';
 import { generalBookingPath } from '../data/booking';
@@ -87,11 +87,11 @@ const bookingSteps = [
 		<div class="container gallery-preview-grid">
 			<div class="gallery-heading">
 				<div><p class="section-kicker">The Finished Look</p><h2 id="gallery-heading">Real Results, Coming Into Focus.</h2></div>
-				<p>The treatment portfolio is being curated with approved work photography. Visit the gallery to see the plan and learn how to connect with the beauty bar meanwhile.</p>
+				<p>Explore a growing collection of finished lash work from Marie’s Minks n Beauty Bar.</p>
 			</div>
 			<figure class="gallery-preview-figure">
-				<Image src={lashEditorial} alt="Concept editorial close-up featuring a polished lash look" format="webp" widths={[640, 960]} sizes="(max-width: 800px) 100vw, 60vw" loading="lazy" />
-				<figcaption>Concept Imagery · Portfolio Pending Approval</figcaption>
+				<Image src={galleryFeatured} alt="Finished lash extensions on a reclining client, close-up view" format="webp" widths={[640, 960]} sizes="(max-width: 800px) 100vw, 60vw" loading="lazy" />
+				<figcaption>Finished Lash Extensions</figcaption>
 			</figure>
 			<a class="text-link gallery-preview-link" href={withBase('/gallery/')}>View the Gallery <span aria-hidden="true">↓</span></a>
 		</div>

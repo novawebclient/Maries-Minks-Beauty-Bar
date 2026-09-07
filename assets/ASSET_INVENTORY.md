@@ -8,6 +8,7 @@
 - All nine files are JPEG portraits at 1365 × 2048 pixels
 - `brand-header-portrait.png` was supplied directly by the client on August 28, 2026. It is a 1254 × 1254 PNG circular portrait with a gold ring and is approved by that request for use as the small header brand image.
 - Two policy-reference screenshots were supplied by the client on September 6, 2026 and preserved in `assets/originals/client-questionnaire/policies/`. Their policy text has been translated into the website’s Policies page. The opening hours shown in the source image were explicitly excluded at the client’s direction.
+- Twenty-one finished lash-result photos were supplied by the client on September 7, 2026 for public Gallery use. They are preserved in `assets/originals/client-gallery/lash-results/` and displayed in the Gallery and Home gallery preview.
 - Files are preserved as received. Cropped, compressed, renamed, or web-delivery derivatives belong in the Step 3 implementation, not in this originals folder.
 
 ## Publication gate
@@ -15,6 +16,8 @@
 Do not publish these images until the client confirms the subject’s identity, photographer/model rights or releases, allowed uses, cropping permission, and whether each file is approved for the public website. Do not describe the subject as Angelina Dunn, the business owner, or the lash technician until the client confirms that fact.
 
 These assets are professional studio portraits suitable for brand, About, and Training contexts. They are not photographs of lash, brow, waxing, facial, or other treatment results and therefore do not satisfy the planned Gallery/Portfolio requirement. Request approved before/after or finished-work images separately, with appropriate client/model consent.
+
+The `client-gallery/lash-results/` group is separate from the questionnaire portraits. It is client-supplied finished-work imagery authorized by the September 7, 2026 request for use in the public Gallery.
 
 ## File-by-file review
 
@@ -32,12 +35,12 @@ These assets are professional studio portraits suitable for brand, About, and Tr
 | `brand-header-portrait.png` | Circular professional headshot with a gold ring | Header brand image |
 | `policies/client-policies-booking-cancellation-refund-late.jpg` | Client policy reference covering deposits, changes, refunds, and late arrivals | Source-of-truth reference for the Policies page |
 | `policies/client-policies-fill-preparation-contact.jpg` | Client policy reference covering lash fills, appointment preparation, contact details, and superseded opening hours | Source-of-truth reference for the Policies page; opening hours intentionally excluded |
+| `client-gallery/lash-results/` (21 JPEG files) | Finished lash-extension results across a range of clients and close-up compositions | Public Gallery and Home gallery preview |
 
 ## Still missing
 
 - Final logo files and logo usage guidance
 - Approved brand font names/licenses and exact pink/gold color values
-- Treatment-result photography grouped by service family
 - Approved testimonial/review attribution and permission
 - Training-class activity or student-result photography, if desired
 - Image alternative-text facts that require the subject, action, service, or context to be confirmed

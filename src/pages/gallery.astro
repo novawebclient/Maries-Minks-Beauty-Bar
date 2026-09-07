@@ -1,13 +1,53 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import beautyTools from '../assets/beauty-tools.png';
-import lashEditorial from '../assets/lash-editorial.png';
-import portrait from '../../assets/originals/client-questionnaire/DB8_1451-Edit.jpeg';
-import { getSiteSettings, getSocialLink } from '../content/site';
+import { getSiteSettings } from '../content/site';
+import gallery01 from '../../assets/originals/client-gallery/lash-results/fdcbb455-57e4-445e-bc39-82c648c4b039.jpg';
+import gallery02 from '../../assets/originals/client-gallery/lash-results/a9ff506e-d7fd-49a0-a8d5-1d66bb5d1a74.jpg';
+import gallery03 from '../../assets/originals/client-gallery/lash-results/620c43f7-5ebc-4b12-b8b3-4eec24c9257b.jpg';
+import gallery04 from '../../assets/originals/client-gallery/lash-results/92942e46-fcd6-4a2f-b06f-9adc78304b8b.jpg';
+import gallery05 from '../../assets/originals/client-gallery/lash-results/3ae00eb4-5548-4e95-b835-f596a0398983.jpg';
+import gallery06 from '../../assets/originals/client-gallery/lash-results/92bf988b-cbce-4bb8-be09-1c5b0199031c.jpg';
+import gallery07 from '../../assets/originals/client-gallery/lash-results/4ef254b9-033d-427f-b6d9-bf1150eb8976.jpg';
+import gallery08 from '../../assets/originals/client-gallery/lash-results/f6361032-0e60-42ec-b31d-e971f4e368e1.jpg';
+import gallery09 from '../../assets/originals/client-gallery/lash-results/ec415dfc-c344-4b28-b0d3-4169606c1d39.jpg';
+import gallery10 from '../../assets/originals/client-gallery/lash-results/500c6b52-67c0-44e6-8d01-f71294b8877c.jpg';
+import gallery11 from '../../assets/originals/client-gallery/lash-results/480e3917-843e-4162-9436-1d60e5d8ac24.jpg';
+import gallery12 from '../../assets/originals/client-gallery/lash-results/eb21af42-9257-44c4-860a-20f508f43764.jpg';
+import gallery13 from '../../assets/originals/client-gallery/lash-results/09c4d2ed-5018-44ac-ab99-76fc37576cc7.jpg';
+import gallery14 from '../../assets/originals/client-gallery/lash-results/59eea7f7-23bf-4af4-8d1d-25a5fc2a705c.jpg';
+import gallery15 from '../../assets/originals/client-gallery/lash-results/746beb59-a675-4211-af42-4896e5b7fa16.jpg';
+import gallery16 from '../../assets/originals/client-gallery/lash-results/b6aed19e-1908-4e6b-9535-5f7115b2efaa.jpg';
+import gallery17 from '../../assets/originals/client-gallery/lash-results/79a71843-40d7-46d9-822a-dcde51193088.jpg';
+import gallery18 from '../../assets/originals/client-gallery/lash-results/b25acd9b-a768-48d6-9c1c-a2d21e82951b.jpg';
+import gallery19 from '../../assets/originals/client-gallery/lash-results/1e083a64-cf64-46e9-99c4-50cca6beff77.jpg';
+import gallery20 from '../../assets/originals/client-gallery/lash-results/542642f9-477e-4240-aad8-c3ef3807d1dc.jpg';
+import gallery21 from '../../assets/originals/client-gallery/lash-results/e9a1ba98-25a4-45d0-97af-750467f2d788.jpg';
 
 const site = getSiteSettings();
-const instagram = getSocialLink('Instagram');
+const galleryImages = [
+	[gallery01, 'Finished lash extensions on a reclining client, close-up view.'],
+	[gallery02, 'Finished lash extensions on a client, close-up view.'],
+	[gallery03, 'Finished lash extensions on a client, detailed eye view.'],
+	[gallery04, 'Finished lash extensions with defined brows, close-up view.'],
+	[gallery05, 'Finished lash extensions, close-up client portrait.'],
+	[gallery06, 'Finished lash extensions, detailed eye view.'],
+	[gallery07, 'Finished lash extensions and brows, close-up client portrait.'],
+	[gallery08, 'Finished lash extensions, front-facing client portrait.'],
+	[gallery09, 'Finished lash extensions, angled client portrait.'],
+	[gallery10, 'Finished lash extensions, side-profile view.'],
+	[gallery11, 'Finished lash extensions on a reclining client.'],
+	[gallery12, 'Finished lash extensions with a natural brow, close-up view.'],
+	[gallery13, 'Finished lash extensions on a reclining client, close-up view.'],
+	[gallery14, 'Finished lash extensions, close-up view.'],
+	[gallery15, 'Finished lash extensions, angled client portrait.'],
+	[gallery16, 'Finished lash extensions, close-up client portrait.'],
+	[gallery17, 'Lash brushes shown alongside finished lash extensions.'],
+	[gallery18, 'Finished lash extensions, detailed close-up view.'],
+	[gallery19, 'Finished lash extensions, detailed eye view.'],
+	[gallery20, 'Finished lash extensions and brows, front-facing view.'],
+	[gallery21, 'Finished lash extensions, close-up view.'],
+];
 ---
 
 <BaseLayout
@@ -16,38 +56,21 @@ const instagram = getSocialLink('Instagram');
 >
 	<header class="page-masthead page-masthead-pink">
 		<div class="container masthead-grid">
-			<div><p class="section-kicker">Portfolio</p><h1>Results Deserve the Right Spotlight.</h1></div>
-			<p>The client’s service-result photography is being collected and approved before it is presented as a portfolio.</p>
+			<div><p class="section-kicker">Portfolio</p><h1>Lashes in Every Detail.</h1></div>
+			<p>A selection of finished lash work from {site.displayName}.</p>
 		</div>
 	</header>
 
-	<section class="section gallery-status-section" aria-labelledby="gallery-status-heading">
-		<div class="container gallery-status-grid">
-			<div>
-				<p class="section-kicker">A Thoughtful Gallery</p>
-				<h2 id="gallery-status-heading">The Finished-Work Gallery Is on Its Way.</h2>
-				<p class="lead-copy">Lash, brow, waxing, facial, and training visuals will be added only with approved photography and the appropriate permissions.</p>
-				<p>For now, the images on this preview establish the beauty-bar atmosphere; they are not presented as client treatment results.</p>
-				{instagram && <a class="button button-dark" href={instagram.href} target="_blank" rel="noopener noreferrer">Follow on Instagram <span aria-hidden="true">↗</span></a>}
-			</div>
-			<div class="portfolio-placeholder" role="note">
-				<span>01</span>
-				<strong>Portfolio Launch Checklist</strong>
-				<ul><li>Approved Finished-Work Photography</li><li>Service Category and Alternative Text</li><li>Client/Model Consent Where Needed</li></ul>
-			</div>
-		</div>
-	</section>
-
-	<section class="section gallery-concept-section" aria-labelledby="concept-heading">
+	<section class="section gallery-results-section" aria-labelledby="gallery-results-heading">
 		<div class="container">
 			<div class="section-heading-wide">
-				<div><p class="section-kicker">Visual Direction</p><h2 id="concept-heading">The Beauty-Bar Mood.</h2></div>
-				<p>Concept and approved brand imagery establish the editorial direction while the results portfolio is prepared.</p>
+				<div><p class="section-kicker">Lash Extensions</p><h2 id="gallery-results-heading">A Closer Look at the Finished Set.</h2></div>
+				<p>Explore a range of finished lash looks across clients.</p>
 			</div>
-			<div class="editorial-gallery editorial-gallery-concept">
-				<figure><Image src={portrait} alt="Studio portrait of a person seated against a bright background" format="webp" widths={[480, 720]} sizes="(max-width: 700px) 100vw, 38vw" loading="lazy" /><figcaption>Brand Portrait · Approval Pending</figcaption></figure>
-				<figure><Image src={lashEditorial} alt="Concept editorial close-up featuring a polished lash look" format="webp" widths={[400, 640]} sizes="(max-width: 700px) 100vw, 27vw" loading="lazy" /><figcaption>Concept Lash Editorial</figcaption></figure>
-				<figure><Image src={beautyTools} alt="Beauty tools and spa essentials arranged on a pink counter" format="webp" widths={[400, 640]} sizes="(max-width: 700px) 100vw, 27vw" loading="lazy" /><figcaption>Beauty-Bar Details</figcaption></figure>
+			<div class="client-gallery-grid">
+				{galleryImages.map(([image, alt]) => (
+					<figure><Image src={image} alt={alt} format="webp" widths={[480, 720, 960]} sizes="(max-width: 736px) 50vw, (max-width: 1100px) 33vw, 24vw" loading="lazy" /></figure>
+				))}
 			</div>
 		</div>
 	</section>
