@@ -13,19 +13,12 @@ const site = getSiteSettings();
 		<div class="container">
 			<div class="section-heading-wide contact-page-intro">
 				<div><p class="section-kicker">Get in Touch</p><h1 id="contact-heading">Let’s Keep It Easy.</h1></div>
-				<p>Call or email for general business questions.</p>
+				<p>Call or email if you have any questions.</p>
 			</div>
 			<div class="contact-card-grid">
 				<a class="contact-card" href={site.contact.phoneHref}><span>01</span><strong>Call</strong><p>{site.contact.phoneDisplay}</p><small>Tap to Call</small></a>
 				<a class="contact-card" href={`mailto:${site.contact.email}`}><span>02</span><strong>Email</strong><p>{site.contact.email}</p><small>Send an Email</small></a>
 			</div>
-		</div>
-	</section>
-
-	<section class="section newsletter-pending-section" id="updates" aria-labelledby="updates-heading">
-		<div class="container newsletter-pending">
-			<div><p class="section-kicker">Email Updates</p><h2 id="updates-heading">A List Worth Looking Forward To.</h2></div>
-			<a class="newsletter-email-link" href={`mailto:${site.contact.email}`}>Email {site.contact.email} <span aria-hidden="true">↗</span></a>
 		</div>
 	</section>
 </BaseLayout>

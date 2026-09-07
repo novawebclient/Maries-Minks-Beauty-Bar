@@ -473,14 +473,16 @@ h3 {
 }
 
 .about-brand-detail {
-	max-width: 35rem;
-	margin: 2.5rem 0;
+	width: min(100%, 20rem);
+	margin: 2rem auto;
 	overflow: hidden;
 	background: var(--pink-soft);
 }
 
 .about-brand-detail img {
+	display: block;
 	width: 100%;
+	height: 25rem;
 	aspect-ratio: 4 / 5;
 	object-fit: cover;
 }
@@ -1702,49 +1704,6 @@ h3 {
 	color: #c7bac0;
 }
 
-.newsletter-pending-section {
-	padding-top: 0;
-	background: var(--white);
-}
-
-.newsletter-pending {
-	display: grid;
-	grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.75fr);
-	align-items: end;
-	gap: 3rem;
-	padding: clamp(2.5rem, 6vw, 5rem);
-	border: 1px solid var(--ink);
-	background: var(--pink);
-}
-
-.newsletter-pending h2 {
-	max-width: 10ch;
-}
-
-.newsletter-pending > p {
-	margin: 0;
-	color: #4d343f;
-}
-
-.newsletter-email-link {
-	display: inline-flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 1rem;
-	color: var(--ink);
-	font-family: var(--sans);
-	font-size: clamp(1rem, 1.8vw, 1.3rem);
-	font-weight: 800;
-	text-decoration: none;
-	text-decoration-thickness: 1px;
-	text-underline-offset: 0.2em;
-}
-
-.newsletter-email-link:hover,
-.newsletter-email-link:focus-visible {
-	text-decoration: underline;
-}
-
 .portfolio-placeholder {
 	display: flex;
 	min-height: 22rem;
@@ -2074,8 +2033,7 @@ h3 {
 	.masthead-grid,
 	.service-page-grid,
 	.details-grid,
-	.legal-layout,
-	.newsletter-pending {
+	.legal-layout {
 		grid-template-columns: 1fr;
 	}
 
