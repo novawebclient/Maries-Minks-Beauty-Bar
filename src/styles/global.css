@@ -77,6 +77,18 @@ main .final-cta p {
 	text-indent: 0;
 }
 
+.home-intro-section p,
+.social-feature p,
+.gallery-section p,
+.service-editorial-section p,
+.service-menu-section p,
+.training-detail-lede,
+.training-beyond-copy p:last-child,
+.training-intro-section .split-copy > p:nth-of-type(3),
+.training-intro-section .split-copy > p:nth-of-type(4) {
+	text-indent: 0;
+}
+
 h1,
 h2,
 h3,
