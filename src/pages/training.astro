@@ -9,53 +9,91 @@ const site = getSiteSettings();
 
 <BaseLayout
 	title={`Training | ${site.displayName}`}
-	description={`Explore lash and waxing training information from ${site.displayName} in ${site.serviceArea}.`}
+	description={`Private 1:1 in-person beginner lash training with ${site.displayName} in ${site.serviceArea}.`}
 >
 	<header class="page-masthead page-masthead-dark training-masthead">
 		<Image src={trainingPortrait} alt="Studio portrait of a person holding a lash training manual" class="masthead-background" format="webp" loading="eager" fetchpriority="high" />
 		<div class="masthead-overlay" aria-hidden="true"></div>
 		<div class="container masthead-content">
 			<p class="section-kicker section-kicker-pink">Education</p>
-			<h1>Build Your Beauty Skill Set.</h1>
-			<p>Lash and wax training are part of the beauty bar. Class details will be published once the client finalizes each offering.</p>
+			<h1>A New Chapter Begins.</h1>
+			<p>Private 1:1 in-person lash training for aspiring artists ready to begin with confidence.</p>
 		</div>
 	</header>
 
 	<section class="section training-intro-section" aria-labelledby="training-heading">
 		<div class="container split-feature">
 			<div class="split-copy">
-				<p class="section-kicker">Training at the Beauty Bar</p>
-				<h2 id="training-heading">The Next Class Is Taking Shape.</h2>
-				<p class="lead-copy">The client questionnaire confirms lash and wax training; dates, format, capacity, curriculum, pricing, and registration details are still being finalized.</p>
-				<p>That means this page intentionally does not promise a schedule, credential, payment requirement, or outcome that has not been approved yet.</p>
-				<a class="button button-dark" href={`mailto:${site.contact.email}?subject=Training%20interest`}>Ask About Training <span aria-hidden="true">↗</span></a>
+				<p class="section-kicker">1:1 Lash Training</p>
+				<h2 id="training-heading">Learn the Art. Build Something of Your Own.</h2>
+				<p class="lead-copy">For the last 3+ years, I’ve dedicated myself to growing my business, perfecting my craft, and helping women feel confident through beauty. What began as a dream has grown into a career that I truly love.</p>
+				<p>As I prepare to enter one of the most exciting seasons of my life—motherhood—I’ve been reflecting on how much this industry has given me. While I’ll continue doing what I love behind the lash chair, I also feel called to expand my impact beyond my own clients and help others build successful careers of their own.</p>
+				<p>That’s why I’m so excited to officially offer my private 1:1 in-person Lash Training Program. I’ve invested years in education, become 4x certified in lash extensions, refined my techniques, built clientele, and created systems that have helped me succeed. Now I’m ready to share that knowledge with aspiring lash artists.</p>
+				<a class="text-link" href="#training-details">Explore the Program <span aria-hidden="true">↓</span></a>
 			</div>
 			<figure class="editorial-figure editorial-figure-tall">
 				<Image src={trainingPortrait} alt="Portrait of a person holding a lash training manual" format="webp" widths={[480, 720, 960]} sizes="(max-width: 800px) 100vw, 44vw" loading="lazy" />
-				<figcaption>Training Details in Progress</figcaption>
+				<figcaption>Private 1:1 Lash Training</figcaption>
 			</figure>
 		</div>
 	</section>
 
-	<section class="section training-details-section" aria-labelledby="details-heading">
+	<section class="section training-details-section" id="training-details" aria-labelledby="details-heading">
 		<div class="container">
 			<div class="section-heading-wide">
-				<div><p class="section-kicker">Before Registration Opens</p><h2 id="details-heading">Each Class Needs the Right Details.</h2></div>
-				<p>The following information will be added before a training payment or booking link is displayed.</p>
+				<div><p class="section-kicker">Program Details</p><h2 id="details-heading">Everything You Need to Begin.</h2></div>
+				<p>A complete, beginner-friendly training experience built around technique, business foundations, and ongoing support.</p>
 			</div>
-			<div class="value-grid training-detail-grid">
-				<article><span>01</span><h3>Course Format</h3><p>Class type, skill level, date, duration, location, and capacity.</p></article>
-				<article><span>02</span><h3>What’s Included</h3><p>Curriculum, materials, models, certification details, and post-class support.</p></article>
-				<article><span>03</span><h3>Registration Terms</h3><p>Price, deposit, payment path, cancellation terms, and any prerequisites.</p></article>
+			<div class="training-detail-stack">
+				<article class="training-detail-card">
+					<div class="training-detail-heading"><span>01</span><div><p class="section-kicker">Course Format</p><h3>Private 1:1 In-Person Lash Training</h3></div></div>
+					<p class="training-detail-lede">A personalized, beginner-friendly training experience designed to give aspiring lash artists the knowledge, technique, and confidence needed to begin their journey in the lash industry.</p>
+					<dl class="training-spec-grid">
+						<div><dt>Class Type</dt><dd>Private 1:1 in-person training</dd></div>
+						<div><dt>Skill Level</dt><dd>Beginner — no prior experience required</dd></div>
+						<div><dt>Duration</dt><dd>8 hours</dd></div>
+						<div><dt>Scheduling</dt><dd>Date and time available by request</dd></div>
+						<div><dt>Flexible Option</dt><dd>One 8-hour session or split between two days to complete the full 8 hours</dd></div>
+						<div><dt>Location</dt><dd>Ocala, Florida — exact training address provided after booking</dd></div>
+						<div><dt>Capacity</dt><dd>One student per training</dd></div>
+					</dl>
+				</article>
+
+				<article class="training-detail-card">
+					<div class="training-detail-heading"><span>02</span><div><p class="section-kicker">What’s Included</p><h3>Education, Practice, and a Strong Foundation.</h3></div></div>
+					<p class="training-detail-lede">Your $750 investment includes a complete educational and hands-on training experience designed to teach both the artistry of lashes and the foundations of building your business.</p>
+					<h4>Your Training Includes</h4>
+					<ul class="training-inclusions">
+						<li>Comprehensive Lash Training Manual</li><li>Beginner-Friendly Education</li><li>Lash Theory &amp; Application Techniques</li><li>Lash Styling &amp; Mapping</li><li>Health, Safety &amp; Sanitation Training</li><li>Hands-On Practice</li><li>Live Model Experience</li><li>Starter Lash Kit</li><li>Product Knowledge &amp; Supply Guide</li><li>Client Consultation &amp; Aftercare Training</li><li>Pricing &amp; Business Strategies</li><li>Client Retention Techniques</li><li>Photography &amp; Content Creation Tips</li><li>Marketing &amp; Social Media Guidance</li><li>Certificate of Completion</li><li>Ongoing Support &amp; Mentorship</li>
+					</ul>
+					<div class="training-beyond-copy"><h4>Beyond the Lash Chair</h4><p>This training goes beyond learning how to apply lash extensions. You’ll receive insight from my 3+ years of experience as a lash artist and the knowledge I’ve gained through becoming 4x certified in lash extensions.</p><p>My goal is for you to leave with more than technique: knowledge, resources, support, and the confidence to begin building your own clientele and creating something of your own.</p></div>
+				</article>
+
+				<article class="training-detail-card">
+					<div class="training-detail-heading"><span>03</span><div><p class="section-kicker">Registration Terms</p><h3>Reserve Your Private Training Date.</h3></div></div>
+					<p class="training-investment">$750 Investment</p>
+					<dl class="training-spec-grid training-terms-grid">
+						<div><dt>Deposit</dt><dd>A 50% non-refundable deposit of $375 is required at booking to reserve your training date.</dd></div>
+						<div><dt>Remaining Balance</dt><dd>The remaining $375 is due before your scheduled training.</dd></div>
+						<div><dt>Scheduling</dt><dd>Training dates and times are available by request and confirmed after booking.</dd></div>
+						<div><dt>Rescheduling</dt><dd>Training may be rescheduled once with at least 48 hours’ notice; your original deposit will transfer to the new date.</dd></div>
+						<div><dt>Late Changes, Cancellations &amp; No-Shows</dt><dd>Requests made less than 48 hours before training, cancellations, or no-shows forfeit the $375 deposit. A new deposit is required to reserve another date.</dd></div>
+						<div><dt>Deposits &amp; Cancellations</dt><dd>All deposits are non-refundable because each private training is reserved and materials are prepared specifically for each student.</dd></div>
+						<div><dt>Location</dt><dd>Training is held in Ocala, Florida. The exact address is provided after booking is confirmed.</dd></div>
+						<div><dt>Prerequisites</dt><dd>No previous lash experience or certification is required. This beginner-friendly training provides a strong foundation for new artists.</dd></div>
+						<div><dt>Ongoing Mentorship</dt><dd>Students receive ongoing mentorship and support for questions, guidance, and continued growth after training.</dd></div>
+					</dl>
+				</article>
 			</div>
 		</div>
 	</section>
 
 	<section class="section final-cta-section">
 		<div class="container final-cta">
-			<p class="section-kicker">Interested in Training?</p>
-			<h2>Let the Beauty Bar Know.</h2>
-			<a class="button button-dark" href={`mailto:${site.contact.email}?subject=Training%20interest`}>Email About Training <span aria-hidden="true">↗</span></a>
+			<p class="section-kicker">Ready to Begin Your Lash Journey?</p>
+			<h2>Your Lash Career Can Start Here.</h2>
+			<div class="training-cta-copy"><p>Whether you’re looking to start a new career, create an additional stream of income, or turn your passion for beauty into a business, you don’t have to figure it all out on your own.</p><p>My private 1:1 Lash Training was created to give you personalized education, hands-on experience, business knowledge, and continued support as you take your first steps into the lash industry.</p><p class="training-investment">$750 Investment <span aria-hidden="true">|</span> $375 Due to Reserve Your Date</p></div>
+			<a class="button button-dark" href={`mailto:${site.contact.email}?subject=Request%20Your%20Training%20Date`}>Request Your Training Date <span aria-hidden="true">↗</span></a>
 		</div>
 	</section>
 </BaseLayout>

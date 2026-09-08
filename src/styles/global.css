@@ -524,6 +524,26 @@ h3 {
 	line-height: 1.5;
 }
 
+.intro-about-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-top: 0.55rem;
+	padding-bottom: 0.2rem;
+	border-bottom: 1px solid var(--gold);
+	color: var(--ink);
+	font-size: 0.68rem;
+	font-weight: 800;
+	letter-spacing: 0.12em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.intro-about-link:hover,
+.intro-about-link:focus-visible {
+	color: var(--pink-deep);
+}
+
 .editorial-figure {
 	position: relative;
 	min-height: 20rem;
@@ -1757,6 +1777,156 @@ h3 {
 	min-height: 17rem;
 }
 
+.training-detail-stack {
+	border-top: 1px solid var(--ink);
+}
+
+.training-detail-card {
+	padding-block: clamp(2.5rem, 6vw, 5rem);
+	border-bottom: 1px solid var(--ink);
+}
+
+.training-detail-heading {
+	display: grid;
+	grid-template-columns: 3rem minmax(0, 1fr);
+	gap: 1.25rem;
+	align-items: start;
+}
+
+.training-detail-heading > span {
+	padding-top: 0.25rem;
+	color: var(--pink-deep);
+	font-size: 0.64rem;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+}
+
+.training-detail-heading .section-kicker {
+	margin-bottom: 0.6rem;
+}
+
+.training-detail-heading h3 {
+	max-width: 18ch;
+	font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.training-detail-lede,
+.training-detail-card > h4,
+.training-detail-card > .training-investment,
+.training-detail-card > .training-spec-grid,
+.training-detail-card > .training-inclusions,
+.training-detail-card > .training-beyond-copy {
+	margin-left: calc(3rem + 1.25rem);
+}
+
+.training-detail-lede {
+	max-width: 45rem;
+	margin-top: 1.75rem;
+	font-size: clamp(1.1rem, 2vw, 1.35rem);
+	line-height: 1.5;
+}
+
+.training-detail-card h4 {
+	margin-top: 2.5rem;
+	margin-bottom: 1rem;
+	font-size: 0.72rem;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.training-spec-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0 2.5rem;
+	max-width: 58rem;
+	margin-top: 2rem;
+}
+
+.training-spec-grid > div {
+	padding: 1rem 0;
+	border-top: 1px solid var(--line);
+}
+
+.training-spec-grid dt {
+	margin-bottom: 0.4rem;
+	color: var(--pink-deep);
+	font-size: 0.62rem;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.training-spec-grid dd {
+	margin: 0;
+	color: var(--muted);
+	font-size: 0.92rem;
+	line-height: 1.55;
+}
+
+.training-inclusions {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0;
+	max-width: 58rem;
+	margin-top: 0;
+	padding: 0;
+	border-top: 1px solid var(--line);
+	list-style: none;
+}
+
+.training-inclusions li {
+	padding: 0.8rem 1rem 0.8rem 1.35rem;
+	border-bottom: 1px solid var(--line);
+	color: var(--muted);
+	font-size: 0.9rem;
+	line-height: 1.45;
+}
+
+.training-inclusions li::before {
+	margin-left: -1.35rem;
+	margin-right: 0.65rem;
+	color: var(--gold);
+	content: '•';
+}
+
+.training-beyond-copy {
+	max-width: 45rem;
+	margin-top: 2.5rem;
+}
+
+.training-beyond-copy p {
+	margin: 0.75rem 0 0;
+	color: var(--muted);
+}
+
+.training-investment {
+	margin-top: 1.75rem;
+	margin-bottom: 0;
+	color: var(--ink);
+	font-size: clamp(1rem, 2vw, 1.25rem);
+	font-weight: 800;
+	letter-spacing: 0.02em;
+}
+
+.training-terms-grid {
+	margin-top: 1.5rem;
+}
+
+.training-cta-copy {
+	position: relative;
+	z-index: 1;
+	max-width: 43rem;
+	margin: 1.5rem auto 0;
+}
+
+.training-cta-copy p {
+	margin: 0.9rem 0 0;
+}
+
+.training-cta-copy .training-investment {
+	margin-top: 1.5rem;
+}
+
 .legal-section,
 .policy-section {
 	background: #fffafb;
@@ -2115,6 +2285,25 @@ h3 {
 	.masthead-content {
 		justify-content: end;
 		padding-bottom: 3rem;
+	}
+
+	.training-detail-heading {
+		grid-template-columns: 2rem minmax(0, 1fr);
+		gap: 1rem;
+	}
+
+	.training-detail-lede,
+	.training-detail-card > h4,
+	.training-detail-card > .training-investment,
+	.training-detail-card > .training-spec-grid,
+	.training-detail-card > .training-inclusions,
+	.training-detail-card > .training-beyond-copy {
+		margin-left: 0;
+	}
+
+	.training-spec-grid,
+	.training-inclusions {
+		grid-template-columns: 1fr;
 	}
 
 	.footer-main,
