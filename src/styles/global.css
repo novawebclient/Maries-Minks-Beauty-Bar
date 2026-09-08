@@ -56,6 +56,27 @@ p {
 	text-wrap: pretty;
 }
 
+main p {
+	text-indent: 1.25em;
+}
+
+main .section-kicker,
+main .eyebrow,
+main .campaign-monogram,
+main .campaign-lede,
+main .campaign-caption,
+main .signature,
+main .section-heading-wide > p,
+main .gallery-heading > p,
+main .masthead-grid > p,
+main .masthead-content > p:last-child,
+main .contact-card p,
+main .scheduler-fallback,
+main .secure-note,
+main .final-cta p {
+	text-indent: 0;
+}
+
 h1,
 h2,
 h3,
@@ -473,10 +494,6 @@ h3 {
 	font-family: var(--sans);
 	font-size: 1rem;
 	line-height: 1.65;
-}
-
-.about-story > p {
-	text-indent: 1.25em;
 }
 
 .about-brand-detail {
