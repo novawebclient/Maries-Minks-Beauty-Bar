@@ -1,13 +1,11 @@
 ---
 import { Image } from 'astro:assets';
-import { env } from 'cloudflare:workers';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import digitalManualImage from '../../../../assets/originals/client-training/digital-lash-training-manual.jpg';
 import { getSiteSettings } from '../../../content/site';
-import { isCheckoutConfigured, type DigitalManualRuntimeEnv } from '../../../lib/digital-manual';
 
 const site = getSiteSettings();
-const checkoutReady = isCheckoutConfigured(env as unknown as DigitalManualRuntimeEnv);
+const checkoutReady = import.meta.env.PUBLIC_DIGITAL_CHECKOUT_READY === 'true';
 ---
 
 <BaseLayout

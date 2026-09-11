@@ -32,7 +32,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Build
-        run: pnpm build
+        env:
+          DEPLOY_TARGET: github-pages
+        run: |
+          mkdir .review-server
+          mv src/pages/api .review-server/api
+          mv src/pages/education/digital-manual/success.astro .review-server/success.astro
+          pnpm build
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

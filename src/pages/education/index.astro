@@ -1,15 +1,12 @@
 ---
 import { Image } from 'astro:assets';
-import { env } from 'cloudflare:workers';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSiteSettings } from '../../content/site';
-import type { DigitalManualRuntimeEnv } from '../../lib/digital-manual';
 import privateTrainingImage from '../../../assets/originals/client-training/private-1-1-lash-training.jpg';
 import digitalManualImage from '../../../assets/originals/client-training/digital-lash-training-manual.jpg';
 
 const site = getSiteSettings();
-const runtimeEnv = env as unknown as DigitalManualRuntimeEnv;
-const jotformUrl = runtimeEnv.JOTFORM_TRAINING_URL?.trim();
+const jotformUrl = import.meta.env.PUBLIC_JOTFORM_TRAINING_URL?.trim();
 const hasJotformUrl = Boolean(jotformUrl?.startsWith('https://'));
 ---
 

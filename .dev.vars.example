@@ -8,3 +8,5 @@ R2_OBJECT_KEY=products/lash-artist-digital-training-manual.pdf
 DOWNLOAD_FILENAME=Marie's-Minks-Lash-Artist-Digital-Training-Manual.pdf
 SITE_URL=http://localhost:4321
 JOTFORM_TRAINING_URL=
+PUBLIC_JOTFORM_TRAINING_URL=
+PUBLIC_DIGITAL_CHECKOUT_READY=false
