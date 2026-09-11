@@ -1,0 +1,36 @@
+---
+import { env } from 'cloudflare:workers';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getSiteSettings } from '../../../content/site';
+import { type DigitalManualRuntimeEnv, verifyManualPurchase } from '../../../lib/digital-manual';
+
+const site = getSiteSettings();
+const token = Astro.url.searchParams.get('token');
+const orderId = Astro.url.searchParams.get('orderId') || Astro.url.searchParams.get('order_id');
+const verified = await verifyManualPurchase(env as unknown as DigitalManualRuntimeEnv, token, orderId);
+const downloadUrl = verified && token && orderId
+	? `/api/digital-manual/download?token=${encodeURIComponent(token)}&orderId=${encodeURIComponent(orderId)}`
+	: null;
+---
+
+<BaseLayout title={`Digital Manual Purchase | ${site.displayName}`} description="Secure digital-manual purchase confirmation.">
+	<section class="section purchase-success-section">
+		<div class="container purchase-success-card">
+			{downloadUrl ? (
+				<>
+					<p class="section-kicker">Purchase Confirmed</p>
+					<h1>Your Digital Manual Is Ready.</h1>
+					<p>Your purchase was verified securely. Select the button below to download your Lash Artist Digital Training Manual.</p>
+					<a class="button button-dark button-large" href={downloadUrl}>Download Your Manual <span aria-hidden="true">↓</span></a>
+				</>
+			) : (
+				<>
+					<p class="section-kicker">Purchase Verification</p>
+					<h1>We Couldn’t Verify This Purchase.</h1>
+					<p>For your security, a completed purchase is required before the manual can be downloaded. Please return to Square to complete checkout or contact us if you need assistance.</p>
+					<a class="text-link" href="/education/digital-manual/">Return to the Digital Manual <span aria-hidden="true">→</span></a>
+				</>
+			)}
+		</div>
+	</section>
+</BaseLayout>

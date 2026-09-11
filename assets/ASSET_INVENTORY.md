@@ -10,6 +10,7 @@
 - Two policy-reference screenshots were supplied by the client on September 6, 2026 and preserved in `assets/originals/client-questionnaire/policies/`. Their policy text has been translated into the website’s Policies page. The opening hours shown in the source image were explicitly excluded at the client’s direction.
 - Twenty-one finished lash-result photos were supplied by the client on September 7, 2026 for public Gallery use. They are preserved in `assets/originals/client-gallery/lash-results/` and displayed in the Gallery and Home gallery preview.
 - Four brand-detail photos were supplied by the client on September 7, 2026 for public website use. They are preserved in `assets/originals/client-brand/studio-details/` and displayed across Home, About, and Services.
+- Two Lash Education images were supplied by the client on September 11, 2026 and are preserved in `assets/originals/client-training/`. The client assigned the instructor-with-manual image to Private 1:1 Lash Training and the manual-cover image to the Digital Lash Training Manual.
 - Files are preserved as received. Cropped, compressed, renamed, or web-delivery derivatives belong in the Step 3 implementation, not in this originals folder.
 
 ## Publication gate
@@ -40,6 +41,8 @@ The `client-brand/studio-details/` group is separate from the questionnaire port
 | `policies/client-policies-fill-preparation-contact.jpg` | Client policy reference covering lash fills, appointment preparation, contact details, and superseded opening hours | Source-of-truth reference for the Policies page; opening hours intentionally excluded |
 | `client-gallery/lash-results/` (21 JPEG files) | Finished lash-extension results across a range of clients and close-up compositions | Public Gallery and Home gallery preview |
 | `client-brand/studio-details/` (4 JPEG files) | Branded waxing materials and lash-tool studio details | Public Home, About, and Services imagery |
+| `client-training/private-1-1-lash-training.jpg` | Instructor holding the Lash Training Manual | Public Private 1:1 Lash Training and Lash Education imagery |
+| `client-training/digital-lash-training-manual.jpg` | Digital Lash Training Manual cover image | Public Digital Lash Training Manual and Lash Education imagery |
 
 ## Still missing
 

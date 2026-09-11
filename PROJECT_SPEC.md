@@ -79,7 +79,9 @@ The questionnaire changes the project from a small brochure site into a service,
 | --- | --- | --- |
 | `/` | Brand introduction, primary Instagram/social connection, service overview, featured work, reviews, email signup, and trust content | Required |
 | `/services/` | Lash, waxing, brow, lash-lift/tint, and facial services with approved prices and direct Acuity handoffs | Required |
-| `/training/` | Lash and wax training offers, instructor credibility, expectations, availability, and approved booking/payment path | Required once class details are supplied |
+| `/education/` | Lash Education landing page with separate Private 1:1 training and a Digital Lash Training Manual | Required |
+| `/education/private-1-1/` | Private training content, registration terms, and Jotform request handoff | Required once the Jotform URL is supplied |
+| `/education/digital-manual/` | Digital manual content and secure Square to private R2 fulfillment path | Required once Square, R2, and the final PDF are configured |
 | `/gallery/` | Approved treatment-result portfolio organized by service family; brand portraits may support editorial sections but do not substitute for results | Required once result photography is supplied |
 | `/about/` | Technician story, experience, credentials, approach, and appointment-only studio expectations | Required |
 | `/contact/` | Public phone, email, service area, appointment-only expectations, and social links; no custom form at launch | Required |

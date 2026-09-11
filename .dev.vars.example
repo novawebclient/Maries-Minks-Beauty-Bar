@@ -1,0 +1,10 @@
+# Local-only Cloudflare runtime configuration. Do not commit real values.
+SQUARE_ACCESS_TOKEN=
+SQUARE_LOCATION_ID=
+SQUARE_ENVIRONMENT=sandbox
+SQUARE_WEBHOOK_SIGNATURE_KEY=
+DOWNLOAD_SIGNING_SECRET=
+R2_OBJECT_KEY=products/lash-artist-digital-training-manual.pdf
+DOWNLOAD_FILENAME=Marie's-Minks-Lash-Artist-Digital-Training-Manual.pdf
+SITE_URL=http://localhost:4321
+JOTFORM_TRAINING_URL=

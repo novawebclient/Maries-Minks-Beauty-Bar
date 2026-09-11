@@ -1,0 +1,92 @@
+---
+import { Image } from 'astro:assets';
+import { env } from 'cloudflare:workers';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import digitalManualImage from '../../../../assets/originals/client-training/digital-lash-training-manual.jpg';
+import { getSiteSettings } from '../../../content/site';
+import { isCheckoutConfigured, type DigitalManualRuntimeEnv } from '../../../lib/digital-manual';
+
+const site = getSiteSettings();
+const checkoutReady = isCheckoutConfigured(env as unknown as DigitalManualRuntimeEnv);
+---
+
+<BaseLayout
+	title={`Digital Lash Training Manual | ${site.displayName}`}
+	description={`A self-paced digital lash education resource from ${site.displayName}.`}
+>
+	<header class="digital-manual-masthead">
+		<div class="container digital-manual-masthead-grid">
+			<div>
+				<p class="section-kicker">Digital Lash Training Manual</p>
+				<h1>Professional Lash Education, Wherever You Are.</h1>
+				<p>Created for aspiring lash artists who want a strong educational foundation while learning at their own pace.</p>
+			</div>
+			<figure class="digital-manual-cover">
+				<Image src={digitalManualImage} alt="Digital edition cover for the Lash Training Manual" format="webp" widths={[480, 720, 960]} sizes="(max-width: 46rem) 100vw, 42vw" loading="eager" fetchpriority="high" />
+			</figure>
+		</div>
+	</header>
+
+	<section class="section manual-overview-section" aria-labelledby="manual-overview-heading">
+		<div class="container manual-overview-grid">
+			<div>
+				<p class="section-kicker">Inside the Manual</p>
+				<h2 id="manual-overview-heading">A Foundation You Can Return To.</h2>
+			</div>
+			<p>The manual turns essential theory, technique, client care, and business fundamentals into a clear self-paced resource you can revisit as you build confidence.</p>
+		</div>
+		<div class="container manual-topic-grid">
+			<article><span>01</span><h3>Lash Fundamentals</h3><p>Lash theory · Eye anatomy · Lash cycles · Curls, lengths &amp; diameters · Product knowledge</p></article>
+			<article><span>02</span><h3>Application &amp; Technique</h3><p>Preparation · Isolation · Placement · Styling &amp; mapping · Step-by-step application · Infills · Removal</p></article>
+			<article><span>03</span><h3>Client Care &amp; Safety</h3><p>Consultations · Aftercare · Retention · Health &amp; safety · Professionalism</p></article>
+			<article><span>04</span><h3>Building Your Business</h3><p>Pricing · Scheduling · Deposits &amp; policies · Client experience · Photography · Marketing &amp; social media</p></article>
+		</div>
+		<div class="container manual-plus-note"><strong>Plus:</strong> Knowledge quiz and note pages.</div>
+	</section>
+
+	<section class="section manual-purchase-section" aria-labelledby="manual-purchase-heading">
+		<div class="container manual-purchase-card">
+			<p class="section-kicker">Digital Education</p>
+			<h2 id="manual-purchase-heading">The Lash Artist Digital Training Manual</h2>
+			<p class="manual-price">$147 introductory price</p>
+			<p class="manual-purchase-note">Digital product · Secure delivery after purchase · All sales final</p>
+			{checkoutReady ? (
+				<button class="button button-dark button-large manual-checkout-button" type="button" data-manual-checkout>Request the Digital Lash Training Manual <span aria-hidden="true">↗</span></button>
+			) : (
+				<span class="button button-disabled button-large" aria-disabled="true">Digital Checkout Coming Soon</span>
+			)}
+			<p class="manual-checkout-status" aria-live="polite" data-manual-checkout-status></p>
+		</div>
+	</section>
+
+	<section class="section manual-training-callout" aria-labelledby="hands-on-heading">
+		<div class="container manual-training-callout-grid">
+			<div><p class="section-kicker">Looking for Hands-On Training?</p><h2 id="hands-on-heading">Choose the Complete Experience.</h2></div>
+			<div>
+				<p>The Digital Training Manual is designed for self-paced education and does not include certification, a starter kit, live-model training, hands-on technique correction, or ongoing 1:1 mentorship.</p>
+				<p>For the complete learning experience, explore Private 1:1 Lash Training.</p>
+				<a class="text-link" href="/education/private-1-1/">Explore Private 1:1 Training <span aria-hidden="true">→</span></a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<script>
+	const checkoutButton = document.querySelector<HTMLButtonElement>('[data-manual-checkout]');
+	const checkoutStatus = document.querySelector<HTMLElement>('[data-manual-checkout-status]');
+
+	checkoutButton?.addEventListener('click', async () => {
+		checkoutButton.disabled = true;
+		if (checkoutStatus) checkoutStatus.textContent = 'Preparing secure checkout…';
+
+		try {
+			const response = await fetch('/api/digital-manual/checkout', { method: 'POST' });
+			const payload = await response.json() as { checkoutUrl?: string; message?: string };
+			if (!response.ok || !payload.checkoutUrl) throw new Error(payload.message || 'Checkout is not available yet.');
+			window.location.assign(payload.checkoutUrl);
+		} catch (error) {
+			checkoutButton.disabled = false;
+			if (checkoutStatus) checkoutStatus.textContent = error instanceof Error ? error.message : 'Checkout is not available yet.';
+		}
+	});
+</script>

@@ -19,6 +19,8 @@ astro-dev*.log
 # environment variables
 .env
 .env.production
+.dev.vars
+.wrangler/
 
 # locally archived client source references
 assets/originals/client-questionnaire/policies/
