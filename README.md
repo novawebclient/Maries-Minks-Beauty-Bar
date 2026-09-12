@@ -36,6 +36,18 @@ The completed client questionnaire has been reassessed through NOVA Steps 1 and 
 
 The production target is Cloudflare Workers, with GitHub retained as the source repository. The Worker configuration includes a private R2 binding for paid digital products. Square secrets, the R2 PDF, and the live Jotform URL must be configured before those live flows are enabled. Public indexing is intentionally disabled in `public/robots.txt` until launch approval in Step 4.
 
+### Digital manual checkout setup
+
+The secure download flow is ready for Cloudflare deployment. It creates a unique Square-hosted checkout for each buyer, sends Square’s successful-payment redirect to the site, confirms the matching order and completed payment directly with Square, and only then streams the PDF from the private R2 bucket. The confirmation page starts the download automatically and retains a manual-download fallback.
+
+Before enabling it in production, the client must provide or configure:
+
+- A Square Developer application with its production access token and location ID. Do not create or use a reusable public Square Payment Link for this product.
+- A private Cloudflare R2 bucket named `maries-minks-digital-products`, containing the final PDF at `products/lash-artist-digital-training-manual.pdf`. Do not enable public bucket access or add the PDF to the repository.
+- Cloudflare Worker secrets for `SQUARE_ACCESS_TOKEN`, `SQUARE_LOCATION_ID`, `DOWNLOAD_SIGNING_SECRET`, `R2_OBJECT_KEY`, `DOWNLOAD_FILENAME`, and `SITE_URL`. Set `SQUARE_ENVIRONMENT=production` after Sandbox testing.
+- A Square webhook endpoint at `https://<production-domain>/api/square/webhook` and the corresponding webhook signature key in `SQUARE_WEBHOOK_SIGNATURE_KEY`. The endpoint is verification-ready for later fulfillment auditing; each download is still checked against Square directly.
+- `PUBLIC_DIGITAL_CHECKOUT_READY=true` only after a paid Sandbox test proves that the confirmation page downloads the private R2 file and unpaid or altered links return 403.
+
 ## Content status
 
 - Generic booking calls to action open the website’s embedded Acuity scheduler.

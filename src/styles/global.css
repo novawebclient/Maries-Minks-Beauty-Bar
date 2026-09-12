@@ -2061,6 +2061,9 @@ button.button {
 
 .education-option-copy h2 {
 	max-width: 11ch;
+	/* Reserve the title space used by the longer digital-manual title so the
+	 * supporting copy in both learning options starts on the same baseline. */
+	min-block-size: 3.3em;
 	font-size: clamp(2.2rem, 4vw, 3.8rem);
 }
 
@@ -2247,6 +2250,10 @@ button.button {
 .purchase-success-card > p:not(.section-kicker) {
 	margin: 1.5rem auto 0;
 	color: var(--muted);
+}
+
+.purchase-success-download-note {
+	font-size: 0.9rem;
 }
 
 .purchase-success-card .button,

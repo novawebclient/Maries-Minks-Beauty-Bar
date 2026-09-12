@@ -20,8 +20,16 @@ const downloadUrl = verified && token && orderId
 				<>
 					<p class="section-kicker">Purchase Confirmed</p>
 					<h1>Your Digital Manual Is Ready.</h1>
-					<p>Your purchase was verified securely. Select the button below to download your Lash Artist Digital Training Manual.</p>
-					<a class="button button-dark button-large" href={downloadUrl}>Download Your Manual <span aria-hidden="true">↓</span></a>
+					<p>Your purchase was verified securely. Your download should begin automatically. If it does not, use the button below.</p>
+					<a class="button button-dark button-large" href={downloadUrl} download>Download Your Manual <span aria-hidden="true">↓</span></a>
+					<p class="purchase-success-download-note" aria-live="polite" data-auto-download-status>Preparing your download…</p>
+					<script define:vars={{ downloadUrl }}>
+						const downloadStatus = document.querySelector('[data-auto-download-status]');
+						window.setTimeout(() => {
+							if (downloadStatus) downloadStatus.textContent = 'Your download is starting now.';
+							window.location.assign(downloadUrl);
+						}, 250);
+					</script>
 				</>
 			) : (
 				<>
