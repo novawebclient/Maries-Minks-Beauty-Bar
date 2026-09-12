@@ -7,7 +7,7 @@ import privateTrainingImage from '../../../assets/originals/client-training/priv
 import digitalManualImage from '../../../assets/originals/client-training/digital-lash-training-manual.jpg';
 
 const site = getSiteSettings();
-const jotformUrl = import.meta.env.PUBLIC_JOTFORM_TRAINING_URL?.trim();
+const jotformUrl = import.meta.env.PUBLIC_JOTFORM_TRAINING_URL?.trim() || 'https://form.jotform.com/262538566461061';
 const hasJotformUrl = Boolean(jotformUrl?.startsWith('https://'));
 ---
 
