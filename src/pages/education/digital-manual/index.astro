@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import digitalManualImage from '../../../../assets/originals/client-training/digital-lash-training-manual.jpg';
 import { getSiteSettings } from '../../../content/site';
+import { withBase } from '../../../utils/urls';
 
 const site = getSiteSettings();
 const checkoutReady = import.meta.env.PUBLIC_DIGITAL_CHECKOUT_READY === 'true';
@@ -63,7 +64,7 @@ const checkoutReady = import.meta.env.PUBLIC_DIGITAL_CHECKOUT_READY === 'true';
 			<div>
 				<p>The Digital Training Manual is designed for self-paced education and does not include certification, a starter kit, live-model training, hands-on technique correction, or ongoing 1:1 mentorship.</p>
 				<p>For the complete learning experience, explore Private 1:1 Lash Training.</p>
-				<a class="text-link" href="/education/private-1-1/">Explore Private 1:1 Training <span aria-hidden="true">→</span></a>
+				<a class="text-link" href={withBase('/education/private-1-1/')}>Explore Private 1:1 Training <span aria-hidden="true">→</span></a>
 			</div>
 		</div>
 	</section>

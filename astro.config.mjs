@@ -8,7 +8,8 @@ const isGitHubPagesReview = process.env.DEPLOY_TARGET === 'github-pages';
 export default defineConfig({
 	output: isGitHubPagesReview ? 'static' : 'server',
 	session: false,
-	adapter: cloudflare({
+	// GitHub Pages needs flat static output; Cloudflare preserves its own client/server layout.
+	adapter: isGitHubPagesReview ? undefined : cloudflare({
 		imageService: 'compile',
 		prerenderEnvironment: 'node',
 	}),

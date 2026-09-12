@@ -1,3 +1,5 @@
 ---
-return Astro.redirect('/education/private-1-1/', 301);
+import { withBase } from '../utils/urls';
+
+return Astro.redirect(withBase('/education/private-1-1/'), 301);
 ---

@@ -10,6 +10,14 @@
 
 This document is the project source of truth. Update it whenever requirements or architectural decisions materially change. Do not store credentials or private customer information here.
 
+## GitHub Pages review deployment
+
+- GitHub Pages is the temporary design-review host at `https://novawebclient.github.io/Maries-Minks-Beauty-Bar/`; the full application targets Cloudflare.
+- `DEPLOY_TARGET=github-pages` builds static HTML without the Cloudflare adapter. The Pages workflow excludes server-only purchase routes, checks for `dist/index.html` and the education pages, then uploads `dist`.
+- The Cloudflare adapter preserves a nested client/server output layout, so it must not be enabled for the static Pages artifact. Publishing that layout caused the review homepage 404.
+- Internal page links and the legacy training redirect use `withBase()` to retain the repository prefix on GitHub Pages.
+- Live training requests and paid downloads still depend on the client-supplied Jotform URL and the configured Square/Cloudflare services.
+
 ## Client intake record
 
 - **Source:** Completed NOVA Website Starter Questionnaire submission dated August 27, 2026. The raw CSV remains outside the repository; its signed asset URLs are not copied into project documentation.

@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSiteSettings } from '../../content/site';
+import { withBase } from '../../utils/urls';
 import privateTrainingImage from '../../../assets/originals/client-training/private-1-1-lash-training.jpg';
 import digitalManualImage from '../../../assets/originals/client-training/digital-lash-training-manual.jpg';
 
@@ -46,7 +47,7 @@ const hasJotformUrl = Boolean(jotformUrl?.startsWith('https://'));
 							) : (
 								<span class="button button-disabled" aria-disabled="true">Training Request Form Coming Soon</span>
 							)}
-							<a class="text-link" href="/education/private-1-1/">Explore Private Training <span aria-hidden="true">↓</span></a>
+							<a class="text-link" href={withBase('/education/private-1-1/')}>Explore Private Training <span aria-hidden="true">↓</span></a>
 						</div>
 					</div>
 				</article>
@@ -62,8 +63,8 @@ const hasJotformUrl = Boolean(jotformUrl?.startsWith('https://'));
 						<p class="education-option-meta">Digital · Self-Paced · Beginner Friendly · 95-Page Educational Resource</p>
 						<p class="education-option-price">$147 introductory price</p>
 						<div class="education-option-actions">
-							<a class="button button-pink" href="/education/digital-manual/">Request the Digital Lash Training Manual <span aria-hidden="true">→</span></a>
-							<a class="text-link" href="/education/digital-manual/">Explore the Manual <span aria-hidden="true">↓</span></a>
+							<a class="button button-pink" href={withBase('/education/digital-manual/')}>Request the Digital Lash Training Manual <span aria-hidden="true">→</span></a>
+							<a class="text-link" href={withBase('/education/digital-manual/')}>Explore the Manual <span aria-hidden="true">↓</span></a>
 						</div>
 					</div>
 				</article>

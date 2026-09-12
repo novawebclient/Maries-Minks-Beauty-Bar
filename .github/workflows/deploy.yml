@@ -41,6 +41,13 @@ jobs:
           mv src/pages/api .review-server/api
           mv src/pages/education/digital-manual/success.astro .review-server/success.astro
           pnpm build
+      - name: Verify static Pages output
+        run: |
+          test -s dist/index.html
+          test -s dist/education/index.html
+          test -s dist/education/private-1-1/index.html
+          test -s dist/education/digital-manual/index.html
+          test ! -d dist/server
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
