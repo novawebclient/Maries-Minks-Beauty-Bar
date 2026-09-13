@@ -1662,6 +1662,12 @@ button.button {
 	background: #fffafb;
 }
 
+/* The source portrait is taller than the editorial frame. Anchor its crop at
+ * the top so Angelina's face remains visible at every responsive size. */
+.training-intro-section .editorial-figure img {
+	object-position: center top;
+}
+
 .contact-card-grid {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
