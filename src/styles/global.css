@@ -2060,18 +2060,16 @@ button.button {
 	object-position: center;
 }
 
-@media (min-width: 46.0625rem) {
-	/* Retain a little more white breathing room beside the private portrait. */
-	.education-option-private .education-option-image img {
-		box-sizing: border-box;
-		padding-inline-end: 1.4375rem;
-	}
+/* Retain a little more white breathing room beside the private portrait. */
+.education-option-private .education-option-image img {
+	box-sizing: border-box;
+	padding-inline-end: 1.4375rem;
+}
 
-	/* A subtle ratio adjustment adds roughly 3px at the annotated card width
-	 * without relying on a fixed image height. */
-	.education-option-digital .education-option-image {
-		aspect-ratio: 5 / 7.035;
-	}
+/* A subtle ratio adjustment adds roughly 3px at the annotated card width
+ * without relying on a fixed image height. */
+.education-option-digital .education-option-image {
+	aspect-ratio: 5 / 7.035;
 }
 
 .education-option-copy {
