@@ -2085,11 +2085,17 @@ button.button {
 
 .education-option-lede {
 	margin: 1.35rem 0 0;
+	/* Both option descriptions occupy the same text row on desktop, even if
+	 * one wraps differently at a particular viewport width. */
+	min-block-size: 3.4rem;
 	font-size: 1.1rem;
 }
 
 .education-option-meta {
 	margin: 1rem 0 0;
+	/* The private option has a longer feature list. Reserve three lines in
+	 * both cards so the price and actions share a baseline. */
+	min-block-size: 4.4rem;
 	color: var(--muted);
 	font-size: 0.86rem;
 	line-height: 1.7;
@@ -2600,6 +2606,11 @@ button.button {
 
 	.education-option-copy {
 		min-height: auto;
+	}
+
+	.education-option-lede,
+	.education-option-meta {
+		min-block-size: 0;
 	}
 
 	.education-option-image {
