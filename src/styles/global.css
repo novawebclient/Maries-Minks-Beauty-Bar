@@ -2050,21 +2050,14 @@ button.button {
 	overflow: hidden;
 	aspect-ratio: 4 / 3;
 	border-bottom: 1px solid var(--ink);
-	background: var(--pink-soft);
+	background: var(--white);
 }
 
 .education-option-image img {
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
-}
-
-.education-option-private .education-option-image img {
-	object-position: center top;
-}
-
-.education-option-digital .education-option-image img {
-	object-position: center 10%;
+	object-fit: contain;
+	object-position: center;
 }
 
 .education-option-copy {
