@@ -43,13 +43,14 @@ const checkoutReady = import.meta.env.PUBLIC_DIGITAL_CHECKOUT_READY === 'true';
 			<p class="section-kicker">Digital Education</p>
 			<h2 id="manual-purchase-heading">The Lash Artist Digital Training Manual</h2>
 			<p class="manual-price">$147 introductory price</p>
-			<p class="manual-purchase-note">Digital product · Secure delivery after purchase · All sales final</p>
+			<p class="manual-product-detail">95-page digital educational resource</p>
+			<p class="manual-purchase-note">Digital product · All sales final · For educational purposes · No certification included</p>
 			{checkoutReady ? (
-				<button class="button button-dark button-large manual-checkout-button" type="button" data-manual-checkout>Request the Digital Lash Training Manual <span aria-hidden="true">↗</span></button>
+				<button class="button button-dark button-large manual-checkout-button" type="button" data-manual-checkout>Purchase Digital Manual — $147 <span aria-hidden="true">↗</span></button>
 			) : (
-				<span class="button button-disabled button-large" aria-disabled="true">Digital Checkout Coming Soon</span>
+				<span class="button button-disabled button-large" aria-disabled="true">Purchase Digital Manual — $147</span>
 			)}
-			<p class="manual-checkout-status" aria-live="polite" data-manual-checkout-status></p>
+			<p class="manual-checkout-status" aria-live="polite" data-manual-checkout-status>{checkoutReady ? '' : 'Secure checkout is coming soon. After purchase, the manual will be delivered automatically.'}</p>
 		</div>
 	</section>
 

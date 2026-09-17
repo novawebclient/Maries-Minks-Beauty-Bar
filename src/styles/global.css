@@ -2224,6 +2224,11 @@ button.button {
 	font-size: 0.84rem;
 }
 
+.manual-product-detail {
+	margin: 0.65rem 0 0;
+	font-weight: 700;
+}
+
 .manual-checkout-button,
 .manual-purchase-card .button-disabled {
 	margin-top: 2rem;
