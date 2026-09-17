@@ -2115,14 +2115,15 @@ button.button {
 
 .education-option-actions {
 	display: flex;
-	flex-wrap: wrap;
+	align-items: flex-start;
+	flex-direction: column;
 	gap: 0.8rem 1.1rem;
 	margin-top: auto;
 	padding-top: 2rem;
 }
 
 .education-option-actions .text-link {
-	align-self: center;
+	align-self: flex-start;
 }
 
 .digital-manual-masthead {
