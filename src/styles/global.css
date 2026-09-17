@@ -2048,7 +2048,7 @@ button.button {
 .education-option-image {
 	position: relative;
 	overflow: hidden;
-	aspect-ratio: 4 / 3;
+	aspect-ratio: 5 / 7;
 	border-bottom: 1px solid var(--ink);
 	background: var(--white);
 }
@@ -2062,9 +2062,11 @@ button.button {
 
 .education-option-copy {
 	display: flex;
-	min-height: 27rem;
+	box-sizing: border-box;
+	min-height: 0;
 	flex: 1;
 	flex-direction: column;
+	aspect-ratio: 5 / 7;
 	padding: clamp(1.5rem, 3.5vw, 2.75rem);
 }
 
@@ -2600,6 +2602,7 @@ button.button {
 
 	.education-option-copy {
 		min-height: auto;
+		aspect-ratio: auto;
 	}
 
 	.education-option-lede,
@@ -2608,7 +2611,7 @@ button.button {
 	}
 
 	.education-option-image {
-		aspect-ratio: 4 / 3;
+		aspect-ratio: 5 / 7;
 	}
 
 	.digital-manual-masthead-grid {
