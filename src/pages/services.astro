@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import hardWax from '../../assets/originals/client-brand/studio-details/150ea0ff-bfc6-4077-8f28-c3b75fb5deca.jpg';
+import servicesPortrait from '../../assets/originals/client-questionnaire/DB8_1451-Edit.jpeg';
 import lashToolDetail from '../../assets/originals/client-brand/studio-details/c5600ddb-5fc9-4cea-b28f-683faf1855a9.jpg';
 import { bookingSchedulerUrl, serviceCategories } from '../data/booking';
 import { getSiteSettings } from '../content/site';
@@ -21,8 +21,8 @@ const site = getSiteSettings();
 				<p class="lead-copy">Choose a service below to open the matching booking options.</p>
 			</div>
 			<figure class="editorial-figure editorial-figure-tall">
-				<Image src={hardWax} alt="Hard wax warming on a wooden applicator" format="webp" widths={[480, 720, 960]} sizes="(max-width: 800px) 100vw, 44vw" loading="eager" />
-				<figcaption>Waxing Essentials</figcaption>
+				<Image src={servicesPortrait} alt="Angelina seated in a studio chair against a bright background" format="webp" widths={[480, 720, 960]} sizes="(max-width: 800px) 100vw, 44vw" loading="eager" />
+				<figcaption>Marie’s Minks n Beauty Bar</figcaption>
 			</figure>
 		</div>
 	</section>

@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSiteSettings } from '../../content/site';
 import { withBase } from '../../utils/urls';
 import privateTrainingImage from '../../../assets/originals/client-training/private-1-1-lash-training.jpg';
+import waxingTrainingImage from '../../../assets/originals/client-training/waxing-training/waxing-training-portrait.jpg';
 import digitalManualImage from '../../../assets/originals/client-training/digital-lash-training-manual.jpg';
 
 const site = getSiteSettings();
@@ -27,7 +28,7 @@ const hasJotformUrl = Boolean(jotformUrl?.startsWith('https://'));
 	<section class="section education-options-section" aria-labelledby="education-options-heading">
 		<div class="container">
 			<div class="education-options-heading">
-				<p class="section-kicker">Two Ways to Learn</p>
+				<p class="section-kicker">Three Ways to Learn</p>
 				<h2 id="education-options-heading">Start Where You Are.</h2>
 			</div>
 			<div class="education-option-grid">
@@ -37,7 +38,7 @@ const hasJotformUrl = Boolean(jotformUrl?.startsWith('https://'));
 					</figure>
 					<div class="education-option-copy">
 						<p class="section-kicker">Option 01</p>
-						<h2>Private 1:1 Lash Training</h2>
+						<h2>1:1 Lash Training</h2>
 						<p class="education-option-lede">The complete hands-on training experience.</p>
 						<p class="education-option-meta">Private · Beginner Friendly · 8 Hours · Live Model · Starter Kit · Certificate · Ongoing Mentorship</p>
 						<p class="education-option-price">Investment: $750 <span aria-hidden="true">|</span> $375 Deposit</p>
@@ -52,12 +53,29 @@ const hasJotformUrl = Boolean(jotformUrl?.startsWith('https://'));
 					</div>
 				</article>
 
+				<article class="education-option-card education-option-waxing">
+					<figure class="education-option-image">
+						<Image src={waxingTrainingImage} alt="Angelina holding a wooden waxing stick with pink wax" format="webp" widths={[480, 720, 960]} sizes="(max-width: 46rem) 100vw, (max-width: 80rem) 50vw, 33vw" loading="lazy" />
+					</figure>
+					<div class="education-option-copy">
+						<p class="section-kicker">Option 02</p>
+						<h2>1:1 Brazilian &amp; Body Waxing Training</h2>
+						<p class="education-option-lede">Private, beginner-friendly waxing education.</p>
+						<p class="education-option-meta">Private · Beginner Friendly · 6–8 Hours · Live Model · Starter Kit · Certificate</p>
+						<p class="education-option-price">Investment: $650 <span aria-hidden="true">|</span> $325 Deposit</p>
+						<div class="education-option-actions">
+							<span class="button button-disabled" aria-disabled="true">Waxing Training Request Form Coming Soon</span>
+							<a class="text-link" href={withBase('/education/waxing-training/')}>Explore Waxing Training <span aria-hidden="true">↓</span></a>
+						</div>
+					</div>
+				</article>
+
 				<article class="education-option-card education-option-digital">
 					<figure class="education-option-image">
 						<Image src={digitalManualImage} alt="Cover for the digital Lash Training Manual" format="webp" widths={[480, 720, 960]} sizes="(max-width: 46rem) 100vw, 50vw" loading="eager" />
 					</figure>
 					<div class="education-option-copy">
-						<p class="section-kicker">Option 02</p>
+						<p class="section-kicker">Option 03</p>
 						<h2>Digital Lash Training Manual</h2>
 						<p class="education-option-lede">Professional lash education at your own pace.</p>
 						<p class="education-option-meta">Digital · Self-Paced · Beginner Friendly · 95-Page Educational Resource</p>

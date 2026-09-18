@@ -46,6 +46,7 @@ jobs:
           test -s dist/index.html
           test -s dist/education/index.html
           test -s dist/education/private-1-1/index.html
+          test -s dist/education/waxing-training/index.html
           test -s dist/education/digital-manual/index.html
           test ! -d dist/server
       - name: Upload Pages artifact
