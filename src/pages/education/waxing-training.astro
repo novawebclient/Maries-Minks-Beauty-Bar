@@ -4,8 +4,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSiteSettings } from '../../content/site';
 import waxingPortrait from '../../../assets/originals/client-training/waxing-training/waxing-training-portrait.jpg';
 import pinkWaxTechnique from '../../../assets/originals/client-training/waxing-training/pink-wax-technique.jpg';
-import blackWaxDetail from '../../../assets/originals/client-brand/studio-details/150ea0ff-bfc6-4077-8f28-c3b75fb5deca.jpg';
-import waxedByAngelina from '../../../assets/originals/client-brand/studio-details/4f7ad076-4c84-4f25-a390-b3f12154f663.jpg';
 
 const site = getSiteSettings();
 const waxingJotformUrl = import.meta.env.PUBLIC_JOTFORM_WAXING_TRAINING_URL?.trim();
@@ -34,63 +32,63 @@ const waxFaqs = [
 			<p class="section-kicker section-kicker-pink">Private 1:1 Training</p>
 			<h1>1:1 Brazilian &amp; Body Waxing Training</h1>
 			<p>Master the technique, safety and client experience behind professional waxing services.</p>
-			{hasWaxingJotformUrl ? (
-				<a class="button button-pink" href={waxingJotformUrl} target="_blank" rel="noopener noreferrer">Request Your Training Date <span aria-hidden="true">↗</span></a>
-			) : (
-				<span class="button button-disabled" aria-disabled="true">Waxing Training Request Form Coming Soon</span>
-			)}
 		</div>
 	</header>
 
-	<section class="section training-intro-section waxing-intro-section" aria-labelledby="waxing-intro-heading">
+	<section class="section training-intro-section" aria-labelledby="waxing-intro-heading">
 		<div class="container split-feature">
 			<div class="split-copy">
-				<p class="section-kicker">Course Introduction</p>
-				<h2 id="waxing-intro-heading">Build Your Confidence Beyond the Wax Pot.</h2>
+				<p class="section-kicker">1:1 Waxing Training</p>
+				<h2 id="waxing-intro-heading">Learn the Technique. Build a Service Clients Trust.</h2>
 				<p class="lead-copy">Ready to add Brazilian and body waxing to your beauty business? This private, beginner-friendly training provides personalized education, hands-on practice and live-model experience to help you confidently begin offering professional waxing services.</p>
 				<p>Students will learn the theory behind waxing, proper hard- and soft-wax techniques, Brazilian waxing, body waxing, client consultation, sanitation, contraindications, aftercare, troubleshooting and business fundamentals.</p>
-				<a class="text-link" href="#waxing-details">Explore the Program <span aria-hidden="true">↓</span></a>
+				<a class="text-link" href="#training-details">Explore the Program <span aria-hidden="true">↓</span></a>
 			</div>
 			<figure class="editorial-figure editorial-figure-tall">
 				<Image src={pinkWaxTechnique} alt="Pink wax on a wooden applicator held by gloved hands" format="webp" widths={[480, 720, 960]} sizes="(max-width: 800px) 100vw, 44vw" loading="lazy" />
-				<figcaption>Technique, Care &amp; Confidence</figcaption>
+				<figcaption>1:1 Brazilian &amp; Body Waxing Training</figcaption>
 			</figure>
 		</div>
 	</section>
 
-	<section class="section training-details-section" id="waxing-details" aria-labelledby="waxing-details-heading">
+	<section class="section training-details-section" id="training-details" aria-labelledby="waxing-details-heading">
 		<div class="container">
 			<div class="section-heading-wide">
-				<div><p class="section-kicker">Program Details</p><h2 id="waxing-details-heading">A Foundation You Can Build On.</h2></div>
-				<p>Focused, hands-on education that brings technique, client care, and business basics together in one private training experience.</p>
+				<div><p class="section-kicker">Program Details</p><h2 id="waxing-details-heading">Everything You Need to Begin.</h2></div>
+				<p>A complete, beginner-friendly training experience built around waxing technique, client care, business foundations, and ongoing support.</p>
 			</div>
 			<div class="training-detail-stack">
 				<article class="training-detail-card">
-					<div class="training-detail-heading"><span>01</span><div><p class="section-kicker">What You’ll Learn</p><h3>Technique Starts With the Details.</h3></div></div>
+					<div class="training-detail-heading"><span>01</span><div><p class="section-kicker">Course Format</p><h3>Private 1:1 Brazilian &amp; Body Waxing Training</h3></div></div>
+					<p class="training-detail-lede">A personalized, beginner-friendly training experience designed to give aspiring beauty professionals the knowledge, technique, and confidence needed to begin offering professional waxing services.</p>
+					<dl class="training-spec-grid">
+						<div><dt>Class Type</dt><dd>Private 1:1 in-person training</dd></div>
+						<div><dt>Skill Level</dt><dd>Beginner-friendly; no prior waxing experience required</dd></div>
+						<div><dt>Duration</dt><dd>6–8 hours of personalized training</dd></div>
+						<div><dt>Scheduling</dt><dd>Date and time available by request</dd></div>
+						<div><dt>Live Model</dt><dd>Included as part of the hands-on learning experience</dd></div>
+						<div><dt>Capacity</dt><dd>One student per training</dd></div>
+					</dl>
+				</article>
+
+				<article class="training-detail-card">
+					<div class="training-detail-heading"><span>02</span><div><p class="section-kicker">Education &amp; Practice</p><h3>Technique, Safety, and a Strong Foundation.</h3></div></div>
+					<p class="training-detail-lede">Your training combines the knowledge behind professional waxing with the hands-on practice and client-care skills needed to begin confidently.</p>
+					<h4>What You’ll Learn</h4>
 					<ul class="training-inclusions">
 						<li>Hair growth cycles and hair types</li><li>Hard wax versus soft wax</li><li>Client consultation and contraindications</li><li>Sanitation and infection-control practices</li><li>Proper wax temperature and consistency</li><li>Wax application and removal techniques</li><li>Skin tension and hair-growth mapping</li><li>Brazilian and bikini waxing techniques</li><li>Client positioning, draping and privacy</li><li>Face, underarm and body waxing</li><li>Preventing irritation and ingrown hairs</li><li>Waxing aftercare</li><li>Troubleshooting common issues</li><li>Pricing, policies and client retention</li>
 					</ul>
-					<div class="waxing-visual-grid">
-						<figure><Image src={blackWaxDetail} alt="Black wax dripping from an applicator" format="webp" widths={[480, 720, 960]} sizes="(max-width: 800px) 100vw, 36vw" loading="lazy" /><figcaption>Texture &amp; Temperature</figcaption></figure>
-						<figure><Image src={waxedByAngelina} alt="Pink waxing beads in Angelina’s branded packaging" format="webp" widths={[480, 720, 960]} sizes="(max-width: 800px) 100vw, 36vw" loading="lazy" /><figcaption>Prepared With Care</figcaption></figure>
-					</div>
+					<div class="training-beyond-copy"><h4>Your Training Includes</h4><p>Private 1:1 instruction, a comprehensive 61-page training manual, a waxing starter kit, hands-on practice, live-model experience, a theory examination, practical skills assessment, certificate of completion, business and pricing education, and ongoing mentorship and support.</p></div>
 				</article>
 
 				<article class="training-detail-card">
-					<div class="training-detail-heading"><span>02</span><div><p class="section-kicker">Your Training Includes</p><h3>Private Education, Practical Experience.</h3></div></div>
-					<ul class="training-inclusions">
-						<li>Private 1:1 instruction</li><li>6–8 hours of personalized training</li><li>Comprehensive 61-page training manual</li><li>Waxing starter kit</li><li>Hands-on practice</li><li>Live-model experience</li><li>Theory examination</li><li>Practical skills assessment</li><li>Certificate of completion</li><li>Business and pricing education</li><li>Ongoing mentorship and support</li>
-					</ul>
-				</article>
-
-				<article class="training-detail-card">
-					<div class="training-detail-heading"><span>03</span><div><p class="section-kicker">Investment &amp; Important Information</p><h3>Reserve Your Private Training Date.</h3></div></div>
+					<div class="training-detail-heading"><span>03</span><div><p class="section-kicker">Registration Terms</p><h3>Reserve Your Private Training Date.</h3></div></div>
 					<p class="training-investment">$650 Training Investment</p>
 					<dl class="training-spec-grid training-terms-grid">
-						<div><dt>Non-refundable Deposit</dt><dd>$325 is due to reserve your training date after it has been reviewed and approved.</dd></div>
+						<div><dt>Deposit</dt><dd>A $325 non-refundable deposit is required after your training date has been reviewed and approved.</dd></div>
 						<div><dt>Remaining Balance</dt><dd>The remaining balance is due no later than the day before your scheduled training date.</dd></div>
+						<div><dt>Scheduling</dt><dd>Submitting a request form does not reserve a training date. Approved requests receive deposit and payment instructions.</dd></div>
 						<div><dt>When Your Date Is Reserved</dt><dd>Your training date is officially reserved once the deposit has been received.</dd></div>
-						<div><dt>Training Request</dt><dd>Submitting a request form does not reserve a training date. Approved requests receive deposit and payment instructions.</dd></div>
 						<div><dt>Certificate</dt><dd>This training provides a certificate of completion. It does not replace any professional license or registration required to legally perform waxing services.</dd></div>
 					</dl>
 				</article>
@@ -111,9 +109,9 @@ const waxFaqs = [
 
 	<section class="section final-cta-section" id="request-training">
 		<div class="container final-cta">
-			<p class="section-kicker">Ready to Learn?</p>
-			<h2>Your Waxing Education Can Start Here.</h2>
-			<p class="training-cta-copy">Request your preferred date when the dedicated waxing-training form becomes available. Your date is only secured after approval and receipt of the $325 non-refundable deposit.</p>
+			<p class="section-kicker">Ready to Begin Your Waxing Journey?</p>
+			<h2>Your Waxing Career Can Start Here.</h2>
+			<div class="training-cta-copy"><p>Private training gives you focused education, hands-on experience, business knowledge, and continued support as you take your next step in the beauty industry.</p></div>
 			{hasWaxingJotformUrl ? (
 				<a class="button button-dark" href={waxingJotformUrl} target="_blank" rel="noopener noreferrer">Request Your Training Date <span aria-hidden="true">↗</span></a>
 			) : (
