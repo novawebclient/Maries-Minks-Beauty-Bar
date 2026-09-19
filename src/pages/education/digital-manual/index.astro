@@ -4,7 +4,12 @@ import { getSiteSettings } from '../../../content/site';
 import { withBase } from '../../../utils/urls';
 
 const site = getSiteSettings();
-const checkoutReady = import.meta.env.PUBLIC_DIGITAL_CHECKOUT_READY === 'true';
+// The GitHub Pages URL is a static review-only build, so it cannot run the
+// private Worker endpoint. Cloudflare builds can safely expose the control;
+// the endpoint independently verifies every required secret, bucket binding,
+// and completed Square payment before serving the file.
+const isGitHubPagesReview = process.env.DEPLOY_TARGET === 'github-pages';
+const checkoutReady = !isGitHubPagesReview && import.meta.env.PUBLIC_DIGITAL_CHECKOUT_READY !== 'false';
 ---
 
 <BaseLayout
