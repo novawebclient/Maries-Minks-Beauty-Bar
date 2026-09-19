@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { generalBookingPath } from '../data/booking';
 import { getSiteSettings } from '../content/site';
 
 const site = getSiteSettings();
@@ -41,7 +40,6 @@ const site = getSiteSettings();
 					<h3>Questions About a Policy?</h3>
 					<p>Text <a href={site.contact.phoneHref}>{site.contact.phoneDisplay}</a> or email <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a> before booking.</p>
 				</div>
-				<a class="button button-dark" href={generalBookingPath}>View Live Booking Details <span aria-hidden="true">↓</span></a>
 			</div>
 		</div>
 	</section>
