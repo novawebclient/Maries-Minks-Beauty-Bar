@@ -6,7 +6,7 @@ import waxingPortrait from '../../../assets/originals/client-training/waxing-tra
 import pinkWaxTechnique from '../../../assets/originals/client-training/waxing-training/pink-wax-technique.jpg';
 
 const site = getSiteSettings();
-const waxingJotformUrl = import.meta.env.PUBLIC_JOTFORM_WAXING_TRAINING_URL?.trim();
+const waxingJotformUrl = import.meta.env.PUBLIC_JOTFORM_WAXING_TRAINING_URL?.trim() || 'https://form.jotform.com/262606037948060';
 const hasWaxingJotformUrl = Boolean(waxingJotformUrl?.startsWith('https://'));
 
 const waxFaqs = [
