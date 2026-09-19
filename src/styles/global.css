@@ -2112,18 +2112,6 @@ button.button {
 	}
 }
 
-@media (min-width: 46.0625rem) and (max-width: 79.9375rem) {
-	/* Keep the third option the same card width as the first two when the
-	 * viewport naturally supports a two-column education layout. */
-	.education-option-waxing {
-		grid-column: 1 / -1;
-		justify-self: center;
-		width: 100%;
-		max-width: calc(50% - 0.5px);
-		border-left: 1px solid var(--ink);
-	}
-}
-
 .education-option-price,
 .manual-price {
 	margin: 1.5rem 0 0;
@@ -2153,6 +2141,18 @@ button.button {
 	max-width: 100%;
 	white-space: normal;
 	text-align: center;
+}
+
+/* Keep the varied course descriptions natural, but align the price row
+ * immediately above the shared action area on tablet and desktop. */
+@media (min-width: 46.0625rem) {
+	.education-option-price {
+		margin-top: auto;
+	}
+
+	.education-option-actions {
+		margin-top: 0;
+	}
 }
 
 .digital-manual-masthead {
