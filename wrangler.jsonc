@@ -22,5 +22,22 @@
 			"binding": "PDF_BUCKET",
 			"bucket_name": "maries-minks-digital-products"
 		}
+	],
+	"secrets_store_secrets": [
+		{
+			"binding": "SQUARE_ACCESS_TOKEN",
+			"store_id": "d32554e8313941efa2272d1c93f801d2",
+			"secret_name": "SQUARE_ACCESS_TOKEN"
+		},
+		{
+			"binding": "DOWNLOAD_SIGNING_SECRET",
+			"store_id": "d32554e8313941efa2272d1c93f801d2",
+			"secret_name": "DOWNLOAD_SIGNING_SECRET"
+		},
+		{
+			"binding": "SQUARE_WEBHOOK_SIGNATURE_KEY",
+			"store_id": "d32554e8313941efa2272d1c93f801d2",
+			"secret_name": "SQUARE_WEBHOOK_SIGNATURE_KEY"
+		}
 	]
 }
