@@ -1,13 +1,13 @@
 import type { APIRoute } from 'astro';
 import { env } from 'cloudflare:workers';
-import { type DigitalManualRuntimeEnv, validateWebhookSignature } from '../../../lib/digital-manual';
+import { resolveDigitalManualRuntimeEnv, type DigitalManualRuntimeEnv, validateWebhookSignature } from '../../../lib/digital-manual';
 
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
 	const body = await request.text();
 	const verified = await validateWebhookSignature(
-		env as unknown as DigitalManualRuntimeEnv,
+		await resolveDigitalManualRuntimeEnv(env as unknown as DigitalManualRuntimeEnv),
 		request.url,
 		body,
 		request.headers.get('x-square-hmacsha256-signature'),

@@ -8,18 +8,30 @@ type PdfObject = {
 	httpMetadata?: { contentType?: string };
 };
 
+type SecretStoreBinding = {
+	get: () => Promise<unknown>;
+};
+
+type SecretValue = string | SecretStoreBinding;
+
 export interface DigitalManualRuntimeEnv {
-	SQUARE_ACCESS_TOKEN?: string;
+	SQUARE_ACCESS_TOKEN?: SecretValue;
 	SQUARE_LOCATION_ID?: string;
 	SQUARE_ENVIRONMENT?: string;
-	SQUARE_WEBHOOK_SIGNATURE_KEY?: string;
-	DOWNLOAD_SIGNING_SECRET?: string;
+	SQUARE_WEBHOOK_SIGNATURE_KEY?: SecretValue;
+	DOWNLOAD_SIGNING_SECRET?: SecretValue;
 	R2_OBJECT_KEY?: string;
 	DOWNLOAD_FILENAME?: string;
 	SITE_URL?: string;
 	JOTFORM_TRAINING_URL?: string;
 	PDF_BUCKET?: { get: (key: string) => Promise<PdfObject | null> };
 }
+
+type ResolvedDigitalManualRuntimeEnv = Omit<DigitalManualRuntimeEnv, 'SQUARE_ACCESS_TOKEN' | 'SQUARE_WEBHOOK_SIGNATURE_KEY' | 'DOWNLOAD_SIGNING_SECRET'> & {
+	SQUARE_ACCESS_TOKEN?: string;
+	SQUARE_WEBHOOK_SIGNATURE_KEY?: string;
+	DOWNLOAD_SIGNING_SECRET?: string;
+};
 
 type CheckoutToken = {
 	nonce: string;
@@ -41,7 +53,24 @@ type SquarePayment = {
 
 const isConfigured = (value?: string) => Boolean(value?.trim());
 
-export const isCheckoutConfigured = (env: DigitalManualRuntimeEnv) =>
+const readSecretValue = async (value?: SecretValue) => {
+	if (typeof value === 'string') return value;
+	if (!value || typeof value.get !== 'function') return undefined;
+	const result = await value.get();
+	return typeof result === 'string' ? result : undefined;
+};
+
+// Workers Builds accounts can attach secrets through Cloudflare Secrets Store.
+// Resolve those bindings once per request, while keeping direct Worker secrets
+// compatible for standard Cloudflare Worker deployments.
+export const resolveDigitalManualRuntimeEnv = async (env: DigitalManualRuntimeEnv): Promise<ResolvedDigitalManualRuntimeEnv> => ({
+	...env,
+	SQUARE_ACCESS_TOKEN: await readSecretValue(env.SQUARE_ACCESS_TOKEN),
+	SQUARE_WEBHOOK_SIGNATURE_KEY: await readSecretValue(env.SQUARE_WEBHOOK_SIGNATURE_KEY),
+	DOWNLOAD_SIGNING_SECRET: await readSecretValue(env.DOWNLOAD_SIGNING_SECRET),
+});
+
+export const isCheckoutConfigured = (env: ResolvedDigitalManualRuntimeEnv) =>
 	isConfigured(env.SQUARE_ACCESS_TOKEN) &&
 	isConfigured(env.SQUARE_LOCATION_ID) &&
 	isConfigured(env.DOWNLOAD_SIGNING_SECRET) &&
@@ -106,12 +135,12 @@ export const parseCheckoutToken = async (secret: string, token: string | null): 
 	}
 };
 
-const squareApiUrl = (env: DigitalManualRuntimeEnv, path: string) => {
+const squareApiUrl = (env: ResolvedDigitalManualRuntimeEnv, path: string) => {
 	const host = env.SQUARE_ENVIRONMENT === 'production' ? 'https://connect.squareup.com' : 'https://connect.squareupsandbox.com';
 	return `${host}${path}`;
 };
 
-const squareRequest = async <T>(env: DigitalManualRuntimeEnv, path: string, init: RequestInit = {}): Promise<T> => {
+const squareRequest = async <T>(env: ResolvedDigitalManualRuntimeEnv, path: string, init: RequestInit = {}): Promise<T> => {
 	if (!env.SQUARE_ACCESS_TOKEN) throw new Error('Square is not configured.');
 	const response = await fetch(squareApiUrl(env, path), {
 		...init,
@@ -128,7 +157,7 @@ const squareRequest = async <T>(env: DigitalManualRuntimeEnv, path: string, init
 
 const cleanSiteUrl = (siteUrl: string) => siteUrl.replace(/\/$/u, '');
 
-export const createManualCheckout = async (env: DigitalManualRuntimeEnv) => {
+export const createManualCheckout = async (env: ResolvedDigitalManualRuntimeEnv) => {
 	if (!isCheckoutConfigured(env) || !env.DOWNLOAD_SIGNING_SECRET || !env.SQUARE_LOCATION_ID || !env.SITE_URL) {
 		throw new Error('Digital checkout is not configured.');
 	}
@@ -156,7 +185,7 @@ export const createManualCheckout = async (env: DigitalManualRuntimeEnv) => {
 	return { checkoutUrl: result.payment_link.url };
 };
 
-export const verifyManualPurchase = async (env: DigitalManualRuntimeEnv, token: string | null, orderId: string | null) => {
+export const verifyManualPurchase = async (env: ResolvedDigitalManualRuntimeEnv, token: string | null, orderId: string | null) => {
 	if (!isCheckoutConfigured(env) || !env.DOWNLOAD_SIGNING_SECRET || !env.SQUARE_LOCATION_ID || !orderId) return false;
 	const payload = await parseCheckoutToken(env.DOWNLOAD_SIGNING_SECRET, token);
 	if (!payload) return false;
@@ -180,15 +209,15 @@ export const verifyManualPurchase = async (env: DigitalManualRuntimeEnv, token: 
 	}
 };
 
-export const getManualPdf = async (env: DigitalManualRuntimeEnv) => {
+export const getManualPdf = async (env: ResolvedDigitalManualRuntimeEnv) => {
 	if (!env.PDF_BUCKET || !env.R2_OBJECT_KEY) return null;
 	return env.PDF_BUCKET.get(env.R2_OBJECT_KEY);
 };
 
-export const getDownloadFilename = (env: DigitalManualRuntimeEnv) =>
+export const getDownloadFilename = (env: ResolvedDigitalManualRuntimeEnv) =>
 	(env.DOWNLOAD_FILENAME || 'Maries-Minks-Lash-Artist-Digital-Training-Manual.pdf').replaceAll(/[\r\n"]/gu, '');
 
-export const validateWebhookSignature = (env: DigitalManualRuntimeEnv, requestUrl: string, body: string, signature: string | null) =>
+export const validateWebhookSignature = (env: ResolvedDigitalManualRuntimeEnv, requestUrl: string, body: string, signature: string | null) =>
 	env.SQUARE_WEBHOOK_SIGNATURE_KEY && signature
 		? verifySignature(env.SQUARE_WEBHOOK_SIGNATURE_KEY, `${requestUrl}${body}`, signature)
 		: Promise.resolve(false);

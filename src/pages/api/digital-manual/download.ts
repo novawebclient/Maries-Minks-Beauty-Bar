@@ -1,11 +1,11 @@
 import type { APIRoute } from 'astro';
 import { env } from 'cloudflare:workers';
-import { getDownloadFilename, getManualPdf, type DigitalManualRuntimeEnv, verifyManualPurchase } from '../../../lib/digital-manual';
+import { getDownloadFilename, getManualPdf, resolveDigitalManualRuntimeEnv, type DigitalManualRuntimeEnv, verifyManualPurchase } from '../../../lib/digital-manual';
 
 export const prerender = false;
 
 export const GET: APIRoute = async ({ url }) => {
-	const runtimeEnv = env as unknown as DigitalManualRuntimeEnv;
+	const runtimeEnv = await resolveDigitalManualRuntimeEnv(env as unknown as DigitalManualRuntimeEnv);
 	const verified = await verifyManualPurchase(runtimeEnv, url.searchParams.get('token'), url.searchParams.get('orderId'));
 	if (!verified) return new Response('A completed purchase is required to download this file.', { status: 403 });
 

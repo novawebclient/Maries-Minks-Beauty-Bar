@@ -1,11 +1,11 @@
 import type { APIRoute } from 'astro';
 import { env } from 'cloudflare:workers';
-import { createManualCheckout, type DigitalManualRuntimeEnv } from '../../../lib/digital-manual';
+import { createManualCheckout, resolveDigitalManualRuntimeEnv, type DigitalManualRuntimeEnv } from '../../../lib/digital-manual';
 
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
-	const runtimeEnv = env as unknown as DigitalManualRuntimeEnv;
+	const runtimeEnv = await resolveDigitalManualRuntimeEnv(env as unknown as DigitalManualRuntimeEnv);
 	const siteUrl = runtimeEnv.SITE_URL?.replace(/\/$/u, '');
 	const origin = request.headers.get('origin')?.replace(/\/$/u, '');
 	if (!siteUrl) return Response.json({ message: 'Digital checkout is not configured yet.' }, { status: 503 });
