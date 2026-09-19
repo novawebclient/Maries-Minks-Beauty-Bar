@@ -1,6 +1,7 @@
 {
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "maries-minks-beauty-bar",
+	"keep_vars": true,
 	"main": "@astrojs/cloudflare/entrypoints/server",
 	"compatibility_date": "2026-09-11",
 	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
