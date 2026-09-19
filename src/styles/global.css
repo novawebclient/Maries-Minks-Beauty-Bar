@@ -1227,6 +1227,13 @@ button.button {
 	object-position: center;
 }
 
+/* The About portrait is a vertical source image. Keep it intact on desktop
+ * and reserve the left side of the dark masthead for the introductory copy. */
+.about-masthead .masthead-background {
+	object-fit: contain;
+	object-position: right center;
+}
+
 .masthead-overlay {
 	position: absolute;
 	inset: 0;
@@ -2737,6 +2744,10 @@ button.button {
 
 	.masthead-background {
 		object-position: 67% center;
+	}
+
+	.about-masthead .masthead-background {
+		object-fit: cover;
 	}
 
 	.masthead-overlay {
