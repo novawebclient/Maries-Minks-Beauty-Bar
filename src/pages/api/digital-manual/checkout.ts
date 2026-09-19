@@ -8,7 +8,10 @@ export const POST: APIRoute = async ({ request }) => {
 	const runtimeEnv = env as unknown as DigitalManualRuntimeEnv;
 	const siteUrl = runtimeEnv.SITE_URL?.replace(/\/$/u, '');
 	const origin = request.headers.get('origin')?.replace(/\/$/u, '');
-	if (!siteUrl || origin !== siteUrl) return new Response('Invalid request origin.', { status: 403 });
+	if (!siteUrl) return Response.json({ message: 'Digital checkout is not configured yet.' }, { status: 503 });
+	// Browsers send Origin for cross-site requests, but may omit it for a same-site
+	// fetch. Reject an explicitly mismatched origin without blocking that normal case.
+	if (origin && origin !== siteUrl) return Response.json({ message: 'Invalid request origin.' }, { status: 403 });
 
 	try {
 		const { checkoutUrl } = await createManualCheckout(runtimeEnv);
