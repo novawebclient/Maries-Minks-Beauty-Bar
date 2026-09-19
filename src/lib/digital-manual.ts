@@ -50,6 +50,7 @@ type SquareOrder = {
 type SquarePayment = {
 	payment?: { status?: string; order_id?: string; location_id?: string; amount_money?: SquareMoney };
 };
+type SquareOrderSearchResult = { orders?: SquareOrder[] };
 
 const isConfigured = (value?: string) => Boolean(value?.trim());
 
@@ -185,29 +186,63 @@ export const createManualCheckout = async (env: ResolvedDigitalManualRuntimeEnv)
 	return { checkoutUrl: result.payment_link.url };
 };
 
-export const verifyManualPurchase = async (env: ResolvedDigitalManualRuntimeEnv, token: string | null, orderId: string | null) => {
-	if (!isCheckoutConfigured(env) || !env.DOWNLOAD_SIGNING_SECRET || !env.SQUARE_LOCATION_ID || !orderId) return false;
-	const payload = await parseCheckoutToken(env.DOWNLOAD_SIGNING_SECRET, token);
-	if (!payload) return false;
+const findOrderIdForCheckout = async (env: ResolvedDigitalManualRuntimeEnv, payload: CheckoutToken) => {
+	if (!env.SQUARE_LOCATION_ID) return null;
 
 	try {
-		const { order } = await squareRequest<{ order?: SquareOrder }>(env, `/v2/orders/${encodeURIComponent(orderId)}`);
+		// Square's Sandbox test panel does not append the order ID to the redirect URL.
+		// The signed nonce is stored as the order reference ID, so it can be matched
+		// server-side without trusting a browser-supplied order identifier.
+		const createdAfter = new Date(payload.expiresAt - (31 * 60 * 1000)).toISOString();
+		const { orders } = await squareRequest<SquareOrderSearchResult>(env, '/v2/orders/search', {
+			method: 'POST',
+			body: JSON.stringify({
+				location_ids: [env.SQUARE_LOCATION_ID],
+				limit: 1000,
+				query: {
+					filter: {
+						date_time_filter: { created_at: { start_at: createdAfter } },
+					},
+					sort: { sort_field: 'CREATED_AT', sort_order: 'DESC' },
+				},
+			}),
+		});
+		return orders?.find((order) => order.reference_id === payload.nonce)?.id || null;
+	} catch {
+		return null;
+	}
+};
+
+export const getVerifiedManualOrderId = async (env: ResolvedDigitalManualRuntimeEnv, token: string | null, orderId: string | null) => {
+	if (!isCheckoutConfigured(env) || !env.DOWNLOAD_SIGNING_SECRET || !env.SQUARE_LOCATION_ID) return null;
+	const payload = await parseCheckoutToken(env.DOWNLOAD_SIGNING_SECRET, token);
+	if (!payload) return null;
+	const verifiedOrderId = orderId || await findOrderIdForCheckout(env, payload);
+	if (!verifiedOrderId) return null;
+
+	try {
+		const { order } = await squareRequest<{ order?: SquareOrder }>(env, `/v2/orders/${encodeURIComponent(verifiedOrderId)}`);
 		const correctItem = order?.line_items?.some((item) =>
 			item.name === checkoutItemName && item.quantity === '1' && item.base_price_money?.amount === checkoutAmount && item.base_price_money?.currency === checkoutCurrency,
 		);
 		const paymentId = order?.tenders?.find((tender) => tender.payment_id)?.payment_id;
-		if (!order || order.reference_id !== payload.nonce || order.location_id !== env.SQUARE_LOCATION_ID || !correctItem || order.total_money?.amount !== checkoutAmount || order.total_money?.currency !== checkoutCurrency || !paymentId) return false;
+		if (!order || order.reference_id !== payload.nonce || order.location_id !== env.SQUARE_LOCATION_ID || !correctItem || order.total_money?.amount !== checkoutAmount || order.total_money?.currency !== checkoutCurrency || !paymentId) return null;
 
 		const { payment } = await squareRequest<SquarePayment>(env, `/v2/payments/${encodeURIComponent(paymentId)}`);
 		return payment?.status === 'COMPLETED'
-			&& payment.order_id === orderId
+			&& payment.order_id === verifiedOrderId
 			&& payment.location_id === env.SQUARE_LOCATION_ID
 			&& payment.amount_money?.amount === checkoutAmount
-			&& payment.amount_money?.currency === checkoutCurrency;
+			&& payment.amount_money?.currency === checkoutCurrency
+			? verifiedOrderId
+			: null;
 	} catch {
-		return false;
+		return null;
 	}
 };
+
+export const verifyManualPurchase = async (env: ResolvedDigitalManualRuntimeEnv, token: string | null, orderId: string | null) =>
+	Boolean(await getVerifiedManualOrderId(env, token, orderId));
 
 export const getManualPdf = async (env: ResolvedDigitalManualRuntimeEnv) => {
 	if (!env.PDF_BUCKET || !env.R2_OBJECT_KEY) return null;

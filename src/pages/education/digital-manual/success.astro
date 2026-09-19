@@ -2,14 +2,15 @@
 import { env } from 'cloudflare:workers';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getSiteSettings } from '../../../content/site';
-import { type DigitalManualRuntimeEnv, verifyManualPurchase } from '../../../lib/digital-manual';
+import { getVerifiedManualOrderId, resolveDigitalManualRuntimeEnv, type DigitalManualRuntimeEnv } from '../../../lib/digital-manual';
 
 const site = getSiteSettings();
 const token = Astro.url.searchParams.get('token');
 const orderId = Astro.url.searchParams.get('orderId') || Astro.url.searchParams.get('order_id');
-const verified = await verifyManualPurchase(env as unknown as DigitalManualRuntimeEnv, token, orderId);
-const downloadUrl = verified && token && orderId
-	? `/api/digital-manual/download?token=${encodeURIComponent(token)}&orderId=${encodeURIComponent(orderId)}`
+const runtimeEnv = await resolveDigitalManualRuntimeEnv(env as unknown as DigitalManualRuntimeEnv);
+const verifiedOrderId = await getVerifiedManualOrderId(runtimeEnv, token, orderId);
+const downloadUrl = verifiedOrderId && token
+	? `/api/digital-manual/download?token=${encodeURIComponent(token)}&orderId=${encodeURIComponent(verifiedOrderId)}`
 	: null;
 ---
 
