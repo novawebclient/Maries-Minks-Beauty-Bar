@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getSiteSettings } from '../content/site';
 
 const site = getSiteSettings();
+const privacyEmail = 'angelinadunn1@gmail.com';
 ---
 
 <BaseLayout
@@ -12,25 +13,36 @@ const site = getSiteSettings();
 	<header class="page-masthead page-masthead-pink">
 		<div class="container masthead-grid">
 			<div><p class="section-kicker">Privacy</p><h1>Your Information Should Stay Clear and Protected.</h1></div>
-			<p>This draft identifies the external services used by the site. It must be finalized with the client’s approved legal and operational information before launch.</p>
+			<p>This Privacy Policy explains the information Marie’s Minks n Beauty Bar collects through this website, why it is used, and the choices available to you.</p>
 		</div>
 	</header>
 
 	<section class="section legal-section" aria-labelledby="privacy-details-heading">
 		<div class="container legal-layout">
-			<aside class="legal-aside"><p class="section-kicker">Draft Notice</p><p>Last updated: August 28, 2026</p><p>This is implementation copy for review, not legal advice.</p></aside>
+			<aside class="legal-aside"><p class="section-kicker">Privacy Notice</p><p>Effective: September 19, 2026</p><p>Questions or requests: <a href={`mailto:${privacyEmail}`}>{privacyEmail}</a></p></aside>
 			<div class="legal-copy">
-				<h2 id="privacy-details-heading">How This Preview Handles Information</h2>
-				<h3>Website Contact</h3>
-				<p>This site provides public phone, email, social, and booking links. It does not currently include a custom website contact form or account system.</p>
-				<h3>Booking and Payments</h3>
-				<p>Appointments are handled by the secure booking provider. Any payment completed through booking or an approved Square Payment Link is handled by that provider’s checkout surface, not by this website.</p>
-				<h3>Email Updates</h3>
-				<p>A newsletter signup will not be enabled until the client confirms the provider, consent language, list ownership, unsubscribe process, and privacy contact. If Brevo is used as planned, the final notice will name Brevo and describe that relationship.</p>
-				<h3>Third-Party Links</h3>
-				<p>Following a booking, payment, or social-media link takes you to a service with its own privacy practices. The final notice must include any analytics, advertising, or cookie technologies if they are later approved.</p>
-				<h3>Questions</h3>
-				<p>For general privacy questions, contact <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>.</p>
+				<h2 id="privacy-details-heading">How We Handle Information</h2>
+				<h3>Information We Collect</h3>
+				<p>We collect information you choose to provide when you contact us, request a service or training date, complete a form, or make a purchase. This may include your name, email address, phone number, social-media handle, preferred dates, service or training details, and messages you send us.</p>
+				<p>Training request forms are provided through Jotform. Digital Manual purchases are completed through Square’s secure checkout. We do not receive or store full payment-card numbers on this website.</p>
+				<h3>How We Use Information</h3>
+				<p>We use the information we collect to respond to inquiries, review booking or training requests, provide purchased digital materials, process and confirm purchases, provide customer support, protect the website, and comply with legal obligations.</p>
+				<h3>Website Analytics and Tracking</h3>
+				<p>At launch, this website does not use Google Analytics, Meta Pixel, advertising pixels, a newsletter platform, or other marketing or cross-site behavioral tracking tools. Cloudflare, which hosts and secures this website, may process limited technical information such as IP address, device or browser details, and request logs as necessary to operate, secure, and maintain the site.</p>
+				<h3>When Information Is Shared</h3>
+				<p>We do not sell or share your personal information for another company’s marketing or advertising purposes. We may share information only with service providers needed to operate the services you choose to use, such as Cloudflare for website hosting and secure digital delivery, Jotform for request forms, Square for payment processing, and the applicable booking provider. These providers handle information under their own privacy policies and terms.</p>
+				<h3>Data Retention and Security</h3>
+				<p>We keep information only as long as reasonably necessary for the purposes described above, including customer support, recordkeeping, fraud prevention, and legal obligations. We use reasonable administrative and technical safeguards, but no online system can guarantee absolute security.</p>
+				<h3>Your Choices and Requests</h3>
+				<p>You may request access to, correction of, or deletion of personal information we hold about you by emailing <a href={`mailto:${privacyEmail}`}>{privacyEmail}</a>. We may need to retain certain information when required for legitimate business, payment, security, or legal-recordkeeping purposes.</p>
+				<h3>External Links</h3>
+				<p>This site links to booking, payment, and social-media platforms. When you leave this website, the privacy practices of the destination service apply.</p>
+				<h3>Children’s Privacy</h3>
+				<p>This website and its services are not directed to children under 13, and we do not knowingly collect personal information from children under 13.</p>
+				<h3>Updates to This Policy</h3>
+				<p>We may update this policy when the website or our information practices change. The effective date above will be updated when a revised policy is posted.</p>
+				<h3>Contact</h3>
+				<p>For privacy questions or requests, email <a href={`mailto:${privacyEmail}`}>{privacyEmail}</a>.</p>
 			</div>
 		</div>
 	</section>
