@@ -7,8 +7,8 @@
 	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
 	"vars": {
 		"SITE_URL": "https://mariesminksnbeautybar.com",
-		"SQUARE_ENVIRONMENT": "sandbox",
-		"SQUARE_LOCATION_ID": "LVDEGFQHXTEM8",
+		"SQUARE_ENVIRONMENT": "production",
+		"SQUARE_LOCATION_ID": "LF4WPYTAV6TXH",
 		"R2_OBJECT_KEY": "Ebook lash training manual .pdf",
 		"DOWNLOAD_FILENAME": "Ebook lash training manual .pdf"
 	},
