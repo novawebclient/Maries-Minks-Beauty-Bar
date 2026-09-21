@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Marie’s Minks n Beauty Bar</title>
+  <desc id="description">Luxury black, white, pink, and gold social preview reading Beauty in every detail.</desc>
+  <rect width="1200" height="630" fill="#fffafb"/>
+  <rect x="24" y="24" width="1152" height="582" fill="none" stroke="#b78b35" stroke-width="2"/>
+  <path d="M840 0h360v630H720c118-96 138-188 89-279-47-87-39-204 31-351Z" fill="#0b090a"/>
+  <circle cx="1050" cy="112" r="166" fill="#ec4f91"/>
+  <circle cx="1012" cy="520" r="238" fill="none" stroke="#ec4f91" stroke-width="52" opacity=".78"/>
+  <circle cx="1078" cy="485" r="106" fill="none" stroke="#b78b35" stroke-width="3"/>
+  <text x="88" y="116" fill="#d92f77" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" letter-spacing="7">OCALA BEAUTY STUDIO</text>
+  <text x="82" y="244" fill="#0b090a" font-family="Georgia, 'Times New Roman', serif" font-size="92" font-weight="700">Marie’s Minks</text>
+  <text x="82" y="348" fill="#0b090a" font-family="Georgia, 'Times New Roman', serif" font-size="92" font-weight="700">n Beauty Bar</text>
+  <line x1="88" y1="399" x2="565" y2="399" stroke="#b78b35" stroke-width="3"/>
+  <text x="88" y="458" fill="#0b090a" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="600" letter-spacing="3">BEAUTY IN EVERY DETAIL.</text>
+  <text x="88" y="518" fill="#5e5558" font-family="Arial, Helvetica, sans-serif" font-size="23">Lashes · Waxing · Brows · Facials · Education</text>
+  <g transform="translate(936 250)">
+    <path d="M0 114C0 51 51 0 114 0s114 51 114 114-51 114-114 114S0 177 0 114Z" fill="#fffafb"/>
+    <text x="114" y="139" text-anchor="middle" fill="#0b090a" font-family="Georgia, 'Times New Roman', serif" font-size="84" font-weight="700">MM</text>
+  </g>
+</svg>

@@ -1,53 +1,47 @@
 # Client Asset Inventory
 
-## Intake and handling
+## Handling and approval
 
-- Source: nine files supplied through the completed NOVA Website Starter Questionnaire dated August 27, 2026
-- Local originals: `assets/originals/client-questionnaire/`
-- Original signed download URLs are intentionally not retained in repository documentation
-- All nine files are JPEG portraits at 1365 × 2048 pixels
-- `brand-header-portrait.png` was supplied directly by the client on August 28, 2026. It is a 1254 × 1254 PNG circular portrait with a gold ring and is approved by that request for use as the small header brand image.
-- Two policy-reference screenshots were supplied by the client on September 6, 2026 and preserved in `assets/originals/client-questionnaire/policies/`. Their policy text has been translated into the website’s Policies page. The opening hours shown in the source image were explicitly excluded at the client’s direction.
-- Twenty-one finished lash-result photos were supplied by the client on September 7, 2026 for public Gallery use. They are preserved in `assets/originals/client-gallery/lash-results/` and displayed in the Gallery and Home gallery preview.
-- Four brand-detail photos were supplied by the client on September 7, 2026 for public website use. They are preserved in `assets/originals/client-brand/studio-details/` and displayed across Home, About, and Services.
-- Two Lash Education images were supplied by the client on September 11, 2026 and are preserved in `assets/originals/client-training/`. The client assigned the instructor-with-manual image to Private 1:1 Lash Training and the manual-cover image to the Digital Lash Training Manual.
-- Files are preserved as received. Cropped, compressed, renamed, or web-delivery derivatives belong in the Step 3 implementation, not in this originals folder.
+- Original client files are preserved under `assets/originals/`.
+- Signed intake download URLs, customer records, and the paid manual are intentionally not retained in Git.
+- Web crops and responsive derivatives are generated from the originals by Astro.
+- The client/user supplied these assets and explicitly directed their public placement during implementation. This constitutes the project’s website-use approval record.
+- The repository does not contain independent photographer contracts or model releases. The business owner remains responsible for retaining any underlying rights records.
+- The paid 95-page lash training manual is not a public website asset and must remain in private R2 storage.
 
-## Publication gate
+## Groups
 
-Do not publish these images until the client confirms the subject’s identity, photographer/model rights or releases, allowed uses, cropping permission, and whether each file is approved for the public website. Do not describe the subject as Angelina Dunn, the business owner, or the lash technician until the client confirms that fact.
+| Directory/file | Count | Description | Approved public use |
+| --- | ---: | --- | --- |
+| `assets/originals/client-questionnaire/DB8_*.jpeg` | 9 | Professional business and educator portraits | Home, About, Services, Contact, and editorial sections as directed |
+| `assets/originals/client-questionnaire/brand-header-portrait.png` | 1 | Circular gold-ring portrait | Header brand image |
+| `assets/originals/client-gallery/lash-results/` | 21 | Finished lash-result photographs across a range of clients | Gallery and Home gallery preview; ordering adjusted at client request |
+| `assets/originals/client-brand/studio-details/` | 4 | Lash-tool and waxing-brand detail photographs | Home, About, Services, and waxing education |
+| `assets/originals/client-training/private-1-1-lash-training.jpg` | 1 | Instructor holding the lash manual | Education landing and private lash training |
+| `assets/originals/client-training/digital-lash-training-manual.jpg` | 1 | Digital manual cover/education portrait | Education landing and digital manual |
+| `assets/originals/client-training/waxing-training/waxing-training-portrait.jpg` | 1 | Educator holding a waxing stick with pink wax | Waxing training hero/cover |
+| `assets/originals/client-training/waxing-training/pink-wax-technique.jpg` | 1 | Gloved hands and pink wax technique | Waxing training supporting imagery |
+| `assets/brand/social-preview.svg` | 1 | Editable code-authored social card | Open Graph source |
+| `public/og.png` | 1 | Optimized 1200 × 630 social card | Public Open Graph/Twitter image |
+| `public/favicon.svg` | 1 | Code-authored MM monogram | Public favicon |
 
-These assets are professional studio portraits suitable for brand, About, and Training contexts. They are not photographs of lash, brow, waxing, facial, or other treatment results and therefore do not satisfy the planned Gallery/Portfolio requirement. Request approved before/after or finished-work images separately, with appropriate client/model consent.
+## Questionnaire portrait descriptions
 
-The `client-gallery/lash-results/` group is separate from the questionnaire portraits. It is client-supplied finished-work imagery authorized by the September 7, 2026 request for use in the public Gallery.
+| File | Visual description |
+| --- | --- |
+| `DB8_1181-Edit.jpeg` | Close portrait on a bright studio background |
+| `DB8_1316-Edit.jpeg` | Standing full-body portrait in a black suit |
+| `DB8_1325-Edit.jpeg` | Full-length portrait with jacket over one shoulder |
+| `DB8_1368-Edit.jpeg` | Centered seated portrait |
+| `DB8_1382-Edit.jpeg` | Seated portrait using a phone |
+| `DB8_1393-Edit.jpeg` | Seated portrait using a laptop |
+| `DB8_1436-Edit.jpeg` | Wide seated portrait with useful negative space |
+| `DB8_1451-Edit.jpeg` | Seated beauty-editorial portrait |
+| `DB8_1469-Edit.jpeg` | Portrait holding a lash training manual |
 
-The `client-brand/studio-details/` group is separate from the questionnaire portraits. It is client-supplied brand imagery authorized by the September 7, 2026 request for public Home, About, and Services use.
+## Missing or deferred assets
 
-## File-by-file review
-
-| File | Visual description | Candidate use after approval |
-| --- | --- | --- |
-| `DB8_1181-Edit.jpeg` | Close portrait on a bright studio background | About introduction, profile card, editorial portrait |
-| `DB8_1316-Edit.jpeg` | Standing full-body portrait in a black suit | Home/About campaign section |
-| `DB8_1325-Edit.jpeg` | Full-length standing portrait with jacket over one shoulder | Brand story or full-bleed campaign panel |
-| `DB8_1368-Edit.jpeg` | Centered seated portrait | About or founder/technician introduction |
-| `DB8_1382-Edit.jpeg` | Seated portrait using a phone | Contact/social/community section |
-| `DB8_1393-Edit.jpeg` | Seated portrait using a laptop | Business story, training, or editorial section |
-| `DB8_1436-Edit.jpeg` | Wide seated portrait with useful negative space | Home hero or campaign banner crop |
-| `DB8_1451-Edit.jpeg` | Seated portrait with hand near hair | About or beauty editorial section |
-| `DB8_1469-Edit.jpeg` | Portrait holding a Lash Training Manual | Training page hero or instructor section |
-| `brand-header-portrait.png` | Circular professional headshot with a gold ring | Header brand image |
-| `policies/client-policies-booking-cancellation-refund-late.jpg` | Client policy reference covering deposits, changes, refunds, and late arrivals | Source-of-truth reference for the Policies page |
-| `policies/client-policies-fill-preparation-contact.jpg` | Client policy reference covering lash fills, appointment preparation, contact details, and superseded opening hours | Source-of-truth reference for the Policies page; opening hours intentionally excluded |
-| `client-gallery/lash-results/` (21 JPEG files) | Finished lash-extension results across a range of clients and close-up compositions | Public Gallery and Home gallery preview |
-| `client-brand/studio-details/` (4 JPEG files) | Branded waxing materials and lash-tool studio details | Public Home, About, and Services imagery |
-| `client-training/private-1-1-lash-training.jpg` | Instructor holding the Lash Training Manual | Public Private 1:1 Lash Training and Lash Education imagery |
-| `client-training/digital-lash-training-manual.jpg` | Digital Lash Training Manual cover image | Public Digital Lash Training Manual and Lash Education imagery |
-
-## Still missing
-
-- Final logo files and logo usage guidance
-- Approved brand font names/licenses and exact pink/gold color values
-- Approved testimonial/review attribution and permission
-- Training-class activity or student-result photography, if desired
-- Image alternative-text facts that require the subject, action, service, or context to be confirmed
+- A separate final vector logo and formal logo-usage guide were not supplied. The site uses the approved portrait/wordmark treatment and a code-authored favicon.
+- Formal font-license and exact brand-token documentation were not supplied; launch tokens are project-owned CSS values.
+- Approved attributable testimonials/reviews were not supplied and are excluded from launch.
+- Student/classroom photography is optional future content and is not required for launch.

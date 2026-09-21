@@ -1,4 +1,5 @@
 export const site = {
+	url: 'https://mariesminksnbeautybar.com',
 	displayName: 'Marie’s Minks n Beauty Bar',
 	shortName: 'Marie’s Minks',
 	serviceArea: 'Ocala and surrounding areas',

@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getSiteSettings } from '../content/site';
+import { withBase } from '../utils/urls';
+
+const site = getSiteSettings();
+---
+
+<BaseLayout
+	title={`Page Not Found | ${site.displayName}`}
+	description="The page you requested could not be found."
+	robots="noindex, follow"
+>
+	<header class="page-masthead page-masthead-pink">
+		<div class="container masthead-grid">
+			<div>
+				<p class="section-kicker">404 · Page Not Found</p>
+				<h1>This Look Isn’t Here.</h1>
+			</div>
+			<p>The page may have moved, or the link may no longer be available. Let’s get you back to the beauty bar.</p>
+		</div>
+	</header>
+
+	<section class="section final-cta-section" aria-labelledby="not-found-heading">
+		<div class="container final-cta">
+			<p class="section-kicker">Choose Your Next Step</p>
+			<h2 id="not-found-heading">Find What You Need.</h2>
+			<div class="actions">
+				<a class="button button-dark" href={withBase('/services/')}>Explore Services <span aria-hidden="true">→</span></a>
+				<a class="text-link" href={withBase('/')}>Return Home <span aria-hidden="true">→</span></a>
+				<a class="text-link" href={withBase('/contact/')}>Contact Us <span aria-hidden="true">→</span></a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

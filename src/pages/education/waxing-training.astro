@@ -4,6 +4,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSiteSettings } from '../../content/site';
 import waxingPortrait from '../../../assets/originals/client-training/waxing-training/waxing-training-portrait.jpg';
 import pinkWaxTechnique from '../../../assets/originals/client-training/waxing-training/pink-wax-technique.jpg';
+import blackWaxDetail from '../../../assets/originals/client-brand/studio-details/150ea0ff-bfc6-4077-8f28-c3b75fb5deca.jpg';
+import waxedByAngelina from '../../../assets/originals/client-brand/studio-details/4f7ad076-4c84-4f25-a390-b3f12154f663.jpg';
 
 const site = getSiteSettings();
 const waxingJotformUrl = import.meta.env.PUBLIC_JOTFORM_WAXING_TRAINING_URL?.trim() || 'https://form.jotform.com/262606037948060';
@@ -96,6 +98,25 @@ const waxFaqs = [
 		</div>
 	</section>
 
+	<section class="section waxing-media-section" aria-labelledby="waxing-studio-heading">
+		<div class="container">
+			<div class="section-heading-wide">
+				<div><p class="section-kicker">Inside the Waxing Studio</p><h2 id="waxing-studio-heading">A Closer Look at the Craft.</h2></div>
+				<p>Professional waxing depends on product knowledge, controlled technique, and thoughtful preparation at every step.</p>
+			</div>
+			<div class="waxing-media-grid">
+				<figure class="editorial-figure">
+					<Image src={blackWaxDetail} alt="Black wax dripping from a wooden waxing applicator" format="webp" widths={[480, 720, 960]} sizes="(max-width: 736px) 100vw, 50vw" loading="lazy" />
+					<figcaption>Wax Consistency and Control</figcaption>
+				</figure>
+				<figure class="editorial-figure">
+					<Image src={waxedByAngelina} alt="Pink Waxed by Angelina sign displayed over bags of pink wax beads" format="webp" widths={[480, 720, 960]} sizes="(max-width: 736px) 100vw, 50vw" loading="lazy" />
+					<figcaption>Waxed by Angelina</figcaption>
+				</figure>
+			</div>
+		</div>
+	</section>
+
 	<section class="section faq-section waxing-faq-section" aria-labelledby="waxing-faq-heading">
 		<div class="container faq-grid">
 			<div><p class="section-kicker">Training FAQ</p><h2 id="waxing-faq-heading">Before You Request.</h2></div>
@@ -115,7 +136,7 @@ const waxFaqs = [
 			{hasWaxingJotformUrl ? (
 				<a class="button button-dark" href={waxingJotformUrl} target="_blank" rel="noopener noreferrer">Request Your Training Date <span aria-hidden="true">↗</span></a>
 			) : (
-				<span class="button button-disabled" aria-disabled="true">Waxing Training Request Form Coming Soon</span>
+				<span class="button button-disabled" aria-disabled="true">Waxing Training Requests Temporarily Unavailable</span>
 			)}
 		</div>
 	</section>

@@ -3,10 +3,9 @@ import { site as localSite, socialByLabel as localSocialByLabel } from '../data/
 /**
  * Content boundary for the public site.
  *
- * Local intake data is intentionally used until the client-owned Sanity project
- * is provisioned. Step 3 keeps page components dependent on this module rather
- * than a provider SDK, so the future Sanity implementation only replaces this
- * adapter and not the rendered site.
+ * Launch content is intentionally source-controlled. Page components depend on
+ * this module rather than a provider SDK, so an approved future CMS migration
+ * can replace the adapter without rewriting the rendered site.
  */
 export const getSiteSettings = () => localSite;
 

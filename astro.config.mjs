@@ -2,17 +2,15 @@
 import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 
-const isGitHubPagesReview = process.env.DEPLOY_TARGET === 'github-pages';
+const productionSite = 'https://mariesminksnbeautybar.com';
 
 // https://astro.build/config
 export default defineConfig({
-	output: isGitHubPagesReview ? 'static' : 'server',
+	output: 'server',
 	session: false,
-	// GitHub Pages needs flat static output; Cloudflare preserves its own client/server layout.
-	adapter: isGitHubPagesReview ? undefined : cloudflare({
+	adapter: cloudflare({
 		imageService: 'compile',
 		prerenderEnvironment: 'node',
 	}),
-	site: isGitHubPagesReview ? 'https://novawebclient.github.io' : process.env.SITE_URL,
-	base: isGitHubPagesReview ? '/Maries-Minks-Beauty-Bar' : undefined,
+	site: process.env.SITE_URL || productionSite,
 });

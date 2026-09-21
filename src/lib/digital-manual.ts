@@ -57,8 +57,15 @@ const isConfigured = (value?: string) => Boolean(value?.trim());
 const readSecretValue = async (value?: SecretValue) => {
 	if (typeof value === 'string') return value;
 	if (!value || typeof value.get !== 'function') return undefined;
-	const result = await value.get();
-	return typeof result === 'string' ? result : undefined;
+	try {
+		const result = await value.get();
+		return typeof result === 'string' ? result : undefined;
+	} catch {
+		// Local Miniflare exposes configured Secrets Store bindings even when the
+		// account-backed secret is unavailable. Treat that state as unconfigured
+		// so public routes fail closed instead of rendering a framework error.
+		return undefined;
+	}
 };
 
 // Workers Builds accounts can attach secrets through Cloudflare Secrets Store.
@@ -249,8 +256,13 @@ export const getManualPdf = async (env: ResolvedDigitalManualRuntimeEnv) => {
 	return env.PDF_BUCKET.get(env.R2_OBJECT_KEY);
 };
 
-export const getDownloadFilename = (env: ResolvedDigitalManualRuntimeEnv) =>
-	(env.DOWNLOAD_FILENAME || 'Maries-Minks-Lash-Artist-Digital-Training-Manual.pdf').replaceAll(/[\r\n"]/gu, '');
+export const getDownloadFilename = (env: ResolvedDigitalManualRuntimeEnv) => {
+	const fallback = 'Maries-Minks-Lash-Artist-Digital-Training-Manual.pdf';
+	const sanitized = (env.DOWNLOAD_FILENAME || fallback)
+		.replaceAll(/[\u0000-\u001f\u007f"*/:<>?\\|]/gu, '-')
+		.trim();
+	return sanitized || fallback;
+};
 
 export const validateWebhookSignature = (env: ResolvedDigitalManualRuntimeEnv, requestUrl: string, body: string, signature: string | null) =>
 	env.SQUARE_WEBHOOK_SIGNATURE_KEY && signature

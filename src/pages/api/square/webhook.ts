@@ -12,7 +12,7 @@ export const POST: APIRoute = async ({ request }) => {
 		body,
 		request.headers.get('x-square-hmacsha256-signature'),
 	);
-	if (!verified) return new Response('Invalid webhook signature.', { status: 403 });
+	if (!verified) return new Response('Request rejected.', { status: 403 });
 
 	// Download authorization is intentionally re-verified against Square on every request.
 	// This endpoint remains ready for payment auditing or future fulfillment features without D1.

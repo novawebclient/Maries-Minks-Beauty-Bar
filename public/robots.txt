@@ -1,4 +1,6 @@
-# This project is not approved for public indexing yet.
-# Replace this rule during Step 4 after the production domain is confirmed.
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /api/
+Disallow: /education/digital-manual/success/
+
+Sitemap: https://mariesminksnbeautybar.com/sitemap.xml

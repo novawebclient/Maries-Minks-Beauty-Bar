@@ -4,12 +4,10 @@ import { getSiteSettings } from '../../../content/site';
 import { withBase } from '../../../utils/urls';
 
 const site = getSiteSettings();
-// The GitHub Pages URL is a static review-only build, so it cannot run the
-// private Worker endpoint. Cloudflare builds can safely expose the control;
-// the endpoint independently verifies every required secret, bucket binding,
-// and completed Square payment before serving the file.
-const isGitHubPagesReview = process.env.DEPLOY_TARGET === 'github-pages';
-const checkoutReady = !isGitHubPagesReview && import.meta.env.PUBLIC_DIGITAL_CHECKOUT_READY !== 'false';
+// Cloudflare production enables checkout unless an emergency build variable
+// explicitly disables the button. The endpoint independently verifies every
+// required secret, bucket binding, request origin, and completed payment.
+const checkoutReady = import.meta.env.PUBLIC_DIGITAL_CHECKOUT_READY !== 'false';
 ---
 
 <BaseLayout
@@ -55,7 +53,7 @@ const checkoutReady = !isGitHubPagesReview && import.meta.env.PUBLIC_DIGITAL_CHE
 			) : (
 				<span class="button button-disabled button-large" aria-disabled="true">Purchase Digital Manual — $147</span>
 			)}
-			<p class="manual-checkout-status" aria-live="polite" data-manual-checkout-status>{checkoutReady ? '' : 'Secure checkout is coming soon. After purchase, the manual will be delivered automatically.'}</p>
+			<p class="manual-checkout-status" aria-live="polite" data-manual-checkout-status>{checkoutReady ? '' : 'Secure checkout is temporarily unavailable. Please contact us if you need assistance.'}</p>
 		</div>
 	</section>
 
@@ -81,12 +79,12 @@ const checkoutReady = !isGitHubPagesReview && import.meta.env.PUBLIC_DIGITAL_CHE
 
 		try {
 			const response = await fetch('/api/digital-manual/checkout', { method: 'POST' });
-			const payload = await response.json() as { checkoutUrl?: string; message?: string };
-			if (!response.ok || !payload.checkoutUrl) throw new Error(payload.message || 'Checkout is not available yet.');
+			const payload = await response.json().catch(() => ({})) as { checkoutUrl?: string; message?: string };
+			if (!response.ok || !payload.checkoutUrl) throw new Error(payload.message || 'We couldn’t start secure checkout. Please try again or contact us for help.');
 			window.location.assign(payload.checkoutUrl);
 		} catch (error) {
 			checkoutButton.disabled = false;
-			if (checkoutStatus) checkoutStatus.textContent = error instanceof Error ? error.message : 'Checkout is not available yet.';
+			if (checkoutStatus) checkoutStatus.textContent = error instanceof Error ? error.message : 'We couldn’t start secure checkout. Please try again or contact us for help.';
 		}
 	});
 </script>

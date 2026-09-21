@@ -14,7 +14,11 @@ const downloadUrl = verifiedOrderId && token
 	: null;
 ---
 
-<BaseLayout title={`Digital Manual Purchase | ${site.displayName}`} description="Secure digital-manual purchase confirmation.">
+<BaseLayout
+	title={`Digital Manual Purchase | ${site.displayName}`}
+	description="Secure digital-manual purchase confirmation."
+	robots="noindex, nofollow, noarchive"
+>
 	<section class="section purchase-success-section">
 		<div class="container purchase-success-card">
 			{downloadUrl ? (
@@ -22,13 +26,14 @@ const downloadUrl = verifiedOrderId && token
 					<p class="section-kicker">Purchase Confirmed</p>
 					<h1>Your Digital Manual Is Ready.</h1>
 					<p>Your purchase was verified securely. Your download should begin automatically. If it does not, use the button below.</p>
-					<a class="button button-dark button-large" href={downloadUrl} download>Download Your Manual <span aria-hidden="true">↓</span></a>
+					<a class="button button-dark button-large" href={downloadUrl} download data-manual-download>Download Your Manual <span aria-hidden="true">↓</span></a>
 					<p class="purchase-success-download-note" aria-live="polite" data-auto-download-status>Preparing your download…</p>
-					<script define:vars={{ downloadUrl }}>
+					<script>
 						const downloadStatus = document.querySelector('[data-auto-download-status]');
+						const downloadLink = document.querySelector('[data-manual-download]');
 						window.setTimeout(() => {
 							if (downloadStatus) downloadStatus.textContent = 'Your download is starting now.';
-							window.location.assign(downloadUrl);
+							if (downloadLink instanceof HTMLAnchorElement) downloadLink.click();
 						}, 250);
 					</script>
 				</>
@@ -42,4 +47,7 @@ const downloadUrl = verifiedOrderId && token
 			)}
 		</div>
 	</section>
+	<script>
+		if (window.location.search) window.history.replaceState(null, '', window.location.pathname);
+	</script>
 </BaseLayout>

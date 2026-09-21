@@ -8,12 +8,37 @@ import headerPortrait from '../../assets/originals/client-questionnaire/brand-he
 interface Props {
 	title: string;
 	description: string;
+	robots?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, robots = 'index, follow' } = Astro.props;
 const currentPath = Astro.url.pathname;
-const socialImage = Astro.site ? new URL('/og.png', Astro.site).toString() : undefined;
 const site = getSiteSettings();
+const basePath = import.meta.env.BASE_URL === '/' ? '/' : import.meta.env.BASE_URL;
+const productionPath = basePath !== '/' && currentPath.startsWith(basePath)
+	? `/${currentPath.slice(basePath.length)}`
+	: currentPath;
+const normalizedPath = productionPath === '/'
+	? '/'
+	: `${productionPath.replace(/\/+$/u, '')}/`;
+const canonicalUrl = new URL(normalizedPath, site.url).toString();
+const socialImage = new URL('/og.png', site.url).toString();
+const localBusinessStructuredData = {
+	'@context': 'https://schema.org',
+	'@type': 'BeautySalon',
+	'@id': `${site.url}/#beauty-salon`,
+	name: site.displayName,
+	url: site.url,
+	description: `Appointment-only beauty services serving ${site.serviceArea}.`,
+	image: socialImage,
+	telephone: site.contact.phoneHref.replace('tel:', ''),
+	email: site.contact.email,
+	areaServed: {
+		'@type': 'City',
+		name: 'Ocala, Florida',
+	},
+	sameAs: site.socials.map((social) => social.href),
+};
 
 const navigation = [
 	{ href: '/', label: 'Home' },
@@ -33,16 +58,23 @@ const navigation = [
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
-		<meta name="robots" content="noindex, nofollow" />
+		<meta name="robots" content={robots} />
 		<meta name="theme-color" content="#ec4f91" />
+		<link rel="canonical" href={canonicalUrl} />
+		<link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
 		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={site.displayName} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		{socialImage && <meta property="og:image" content={socialImage} />}
-		<meta name="twitter:card" content={socialImage ? 'summary_large_image' : 'summary'} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={socialImage} />
+		<meta property="og:image:alt" content={`${site.displayName} — beauty in every detail.`} />
+		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
-		{socialImage && <meta name="twitter:image" content={socialImage} />}
+		<meta name="twitter:image" content={socialImage} />
+		<meta name="twitter:image:alt" content={`${site.displayName} — beauty in every detail.`} />
+		<script type="application/ld+json" set:html={JSON.stringify(localBusinessStructuredData)} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 		<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />

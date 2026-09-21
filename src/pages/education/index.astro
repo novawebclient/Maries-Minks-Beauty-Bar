@@ -15,8 +15,8 @@ const hasWaxingJotformUrl = Boolean(waxingJotformUrl?.startsWith('https://'));
 ---
 
 <BaseLayout
-	title={`Lash Education | ${site.displayName}`}
-	description={`Choose private 1:1 training or a self-paced digital lash education resource from ${site.displayName}.`}
+	title={`Beauty Education | ${site.displayName}`}
+	description={`Explore private lash training, private Brazilian and body waxing training, and a self-paced digital lash resource from ${site.displayName}.`}
 >
 	<header class="education-masthead">
 		<div class="container education-masthead-copy">
@@ -48,7 +48,7 @@ const hasWaxingJotformUrl = Boolean(waxingJotformUrl?.startsWith('https://'));
 							{hasJotformUrl ? (
 								<a class="button button-dark" href={jotformUrl} target="_blank" rel="noopener noreferrer">Request Your Training Date <span aria-hidden="true">↗</span></a>
 							) : (
-								<span class="button button-disabled" aria-disabled="true">Training Request Form Coming Soon</span>
+								<span class="button button-disabled" aria-disabled="true">Training Requests Temporarily Unavailable</span>
 							)}
 							<a class="text-link" href={withBase('/education/private-1-1/')}>Explore Private Training <span aria-hidden="true">↓</span></a>
 						</div>
@@ -69,7 +69,7 @@ const hasWaxingJotformUrl = Boolean(waxingJotformUrl?.startsWith('https://'));
 							{hasWaxingJotformUrl ? (
 								<a class="button button-dark" href={waxingJotformUrl} target="_blank" rel="noopener noreferrer">Request Your Training Date <span aria-hidden="true">↗</span></a>
 							) : (
-								<span class="button button-disabled" aria-disabled="true">Waxing Training Request Form Coming Soon</span>
+								<span class="button button-disabled" aria-disabled="true">Waxing Training Requests Temporarily Unavailable</span>
 							)}
 							<a class="text-link" href={withBase('/education/waxing-training/')}>Explore Waxing Training <span aria-hidden="true">↓</span></a>
 						</div>

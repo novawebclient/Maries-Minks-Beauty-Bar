@@ -1,57 +1,102 @@
-# Marie’s minks n beauty bar Website
+# Marie’s Minks n Beauty Bar
 
-Current Astro-based project for Marie’s minks n beauty bar, covering individual lashes, waxing, Brazilian waxing, brows, lash lifts/tints, facials, and Lash Education.
+Production website for Marie’s Minks n Beauty Bar, an appointment-only beauty business serving Ocala and surrounding areas. The public site covers services, booking, a client gallery, lash and waxing education, training-request handoffs, policies, and secure purchase/delivery of the Lash Artist Digital Training Manual.
 
-The completed client questionnaire has been reassessed through NOVA Steps 1 and 2, and Step 3 implementation is now in progress. The site retains static Astro, existing Acuity booking, direct social links, and a provider-neutral local content boundary that will connect to client-owned Sanity after account setup. Square and newsletter connections remain deliberately inactive until their client-owned configurations and terms are supplied. See `PROJECT_SPEC.md` for the source of truth.
+- **Production:** https://mariesminksnbeautybar.com
+- **Source:** https://github.com/novawebclient/Maries-Minks-Beauty-Bar
+- **Runtime:** Astro on Cloudflare Workers
+- **Project source of truth:** [`PROJECT_SPEC.md`](PROJECT_SPEC.md)
+- **Operations and ownership:** [`OPERATIONS_HANDOFF.md`](OPERATIONS_HANDOFF.md)
+- **Controlling workflow:** [`NOVA_UNIVERSAL_WEBSITE_DEVELOPMENT_WORKFLOW.md`](NOVA_UNIVERSAL_WEBSITE_DEVELOPMENT_WORKFLOW.md)
 
 ## Requirements
 
-- Node.js 22.12 or newer (supported even-numbered release)
+- Node.js 22.12 or newer
 - pnpm 11.19.0
+- A Cloudflare account with access to the Worker, R2 bucket, Secrets Store, DNS zone, and custom domain
+- A Square developer application and seller location for production checkout
 
-## Commands
+## Local development
+
+```text
+pnpm install --frozen-lockfile
+pnpm dev
+```
+
+Copy `.dev.vars.example` to `.dev.vars` and enter local-only values when exercising the server-side checkout flow. Never commit `.dev.vars`, access tokens, webhook keys, signing secrets, customer records, or the paid PDF.
 
 | Command | Purpose |
 | --- | --- |
-| `pnpm install` | Install locked project dependencies |
-| `pnpm dev` | Start the local development server |
-| `pnpm build` | Build the Cloudflare Worker application and its assets in `dist/` |
-| `pnpm preview` | Preview the built Worker application locally |
+| `pnpm install --frozen-lockfile` | Install the locked dependency set |
+| `pnpm dev` | Start Astro locally |
+| `pnpm build` | Build the Cloudflare Worker and static assets into `dist/` |
+| `pnpm preview` | Preview the built Worker locally |
 
-## Current routes
+## Public routes
 
-- `/` — Home
-- `/services/` — Lash, brow/waxing, and skin/beauty categories
-- `/about/` — Beauty-bar story and pending technician-information requirements
-- `/book/` — Embedded Acuity scheduler, service-specific deep-link handling, external fallback, and booking guidance
-- `/education/` — Lash Education landing page with separate Private 1:1 Lash Training and Digital Lash Training Manual paths
-- `/education/private-1-1/` — Private training details, terms, and future Jotform handoff
-- `/education/digital-manual/` — Digital manual details and the secure Square checkout handoff
-- `/training/` — Legacy redirect to Private 1:1 Lash Training
-- `/gallery/` — Portfolio framework; approved treatment-result photography is still required
-- `/contact/` — Public phone, email, social profiles, and appointment-only location guidance
-- `/privacy/` and `/policies/` — Review-ready structures that require client-approved final copy before launch
+| Route | Purpose |
+| --- | --- |
+| `/` | Home and primary social/booking calls to action |
+| `/services/` | Service categories and service-specific booking handoffs |
+| `/about/` | Business and educator story |
+| `/book/` | Embedded Acuity scheduler with direct-provider fallback |
+| `/education/` | Education landing page with three offers |
+| `/education/private-1-1/` | Private 1:1 lash training and Jotform request handoff |
+| `/education/waxing-training/` | 1:1 Brazilian and body waxing training and Jotform handoff |
+| `/education/digital-manual/` | $147 digital manual offer and Square checkout handoff |
+| `/education/digital-manual/success/` | Private purchase verification/download result; excluded from indexing |
+| `/training/` | Legacy redirect to private lash training |
+| `/gallery/` | Approved client work gallery |
+| `/faq/` | Booking and training FAQs |
+| `/contact/` | Public contact details and social links |
+| `/privacy/` | Launch privacy notice |
+| `/policies/` | Booking, service, and training policies |
+| `/404` | Branded not-found response |
+| `/sitemap.xml` | Public search-engine route list |
+
+The `/api/` routes create Square checkout links, validate completed payments, stream the paid PDF from private R2 storage, and validate Square webhooks. They are not public content pages.
+
+## Integrations
+
+- **Acuity:** Booking is embedded on `/book/`; service buttons carry mapped appointment-type IDs from `src/data/booking.ts`.
+- **Jotform:** Lash and waxing training requests open their dedicated external forms. Public override variables are supported, while approved production URLs remain safe source fallbacks.
+- **Square:** The Worker creates a unique hosted checkout for the digital manual, then verifies the order, item, amount, location, and completed payment server-side.
+- **Cloudflare R2:** The paid PDF stays in a private bucket and is streamed only after verification. It is never committed to Git or exposed as a public bucket object.
+- **Cloudflare Secrets Store:** Square and signing credentials are runtime bindings, not source code or build variables.
+
+No analytics, Meta Pixel, newsletter, advertising tracker, custom contact form, account system, or public database is enabled at launch.
 
 ## Deployment
 
-The production target is Cloudflare Workers, with GitHub retained as the source repository. The Worker configuration includes a private R2 binding for paid digital products. Square secrets, the R2 PDF, and the live Jotform URL must be configured before those live flows are enabled. Public indexing is intentionally disabled in `public/robots.txt` until launch approval in Step 4.
+Cloudflare Workers Builds deploys the `main` branch. The expected commands are:
 
-### Digital manual checkout setup
+```text
+pnpm build
+npx wrangler deploy
+```
 
-The secure download flow is ready for Cloudflare deployment. It creates a unique Square-hosted checkout for each buyer, sends Square’s successful-payment redirect to the site, confirms the matching order and completed payment directly with Square, and only then streams the PDF from the private R2 bucket. The confirmation page starts the download automatically and retains a manual-download fallback.
+The root directory is `/`. `wrangler.jsonc` owns non-secret production bindings and values; Cloudflare runtime bindings own secrets and R2 access. The canonical production origin is `https://mariesminksnbeautybar.com`, and `www.mariesminksnbeautybar.com` redirects permanently to the apex domain.
 
-Before enabling it in production, the client must provide or configure:
+See `OPERATIONS_HANDOFF.md` before changing the domain, Worker, R2 object, Square application, booking mappings, or training-form URLs.
 
-- A Square Developer application with its production access token and location ID. Do not create or use a reusable public Square Payment Link for this product.
-- A private Cloudflare R2 bucket named `maries-minks-digital-products`, containing the final PDF at `products/lash-artist-digital-training-manual.pdf`. Do not enable public bucket access or add the PDF to the repository.
-- Cloudflare Worker secrets for `SQUARE_ACCESS_TOKEN`, `SQUARE_LOCATION_ID`, `DOWNLOAD_SIGNING_SECRET`, `R2_OBJECT_KEY`, `DOWNLOAD_FILENAME`, and `SITE_URL`. Set `SQUARE_ENVIRONMENT=production` after Sandbox testing.
-- A Square webhook endpoint at `https://<production-domain>/api/square/webhook` and the corresponding webhook signature key in `SQUARE_WEBHOOK_SIGNATURE_KEY`. The endpoint is verification-ready for later fulfillment auditing; each download is still checked against Square directly.
-- `PUBLIC_DIGITAL_CHECKOUT_READY=true` only after a paid Sandbox test proves that the confirmation page downloads the private R2 file and unpaid or altered links return 403.
+## Content maintenance
 
-## Content status
+- Public business facts and social links: `src/data/site.ts`
+- Booking categories and Acuity IDs: `src/data/booking.ts`
+- Shared content boundary: `src/content/site.ts`
+- Page copy: `src/pages/`
+- Global visual system: `src/styles/global.css`
+- Client originals and rights/provenance notes: `assets/`
 
-- Generic booking calls to action open the website’s embedded Acuity scheduler.
-- Service calls to action pass the matching public Acuity appointment-type ID or a filtered set of IDs. Reverify the mapping before launch if the client changes the Acuity service menu.
-- The client supplied Facebook, Instagram, TikTok, Square, public contact details, professional portrait originals, and two approved Lash Education images. Signed asset URLs are intentionally not copied into the repository; the local files and publication gate are documented in `assets/ASSET_INVENTORY.md`. Portraits are used only in the non-production local preview until their publication permission is confirmed.
-- Images in `src/assets/` and `public/og.png` are original generated campaign concepts, not depictions of the technician or documented client results.
-- Prices are requested on the website, but no price sheet was included in the questionnaire. Website service labels, biography, credentials, business policies, provider ownership, treatment-result photography, and training-class details still require client confirmation before final content can be published. Private training and digital-manual copy are in place, but the live Jotform, Square, R2 PDF, and Cloudflare secrets still need client configuration. Current client facts flow through `src/content/site.ts` so a future Sanity integration can replace the local source without rewriting pages.
+A CMS is intentionally not part of the launch build. Sanity remains an optional future enhancement if the client needs direct editing; adding it requires a scoped migration, client-owned project, roles, preview/publishing workflow, and backup plan.
+
+## Release standard
+
+Before a production release:
+
+1. Run `pnpm build` and resolve every error.
+2. Check `git diff --check` and ensure no secrets or paid files are staged.
+3. Test navigation, booking, both Jotforms, checkout initiation, the negative purchase-verification state, and responsive layouts.
+4. Revalidate Acuity appointment IDs after any scheduler change.
+5. Use a controlled low-value/approved production purchase only when the payment flow itself changed; do not create unnecessary customer charges during ordinary content releases.
+6. Confirm the sitemap, robots directives, canonical URLs, and custom-domain redirect.
