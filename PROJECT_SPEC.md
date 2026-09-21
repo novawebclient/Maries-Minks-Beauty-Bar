@@ -9,8 +9,8 @@
 - **Decision-maker:** Angelina Dunn
 - **Repository:** https://github.com/novawebclient/Maries-Minks-Beauty-Bar
 - **Hosting/runtime:** Cloudflare Workers with Cloudflare-managed DNS and custom domain
-- **Workflow status:** NOVA UWDW Step 4 — final QA, launch readiness, and handoff
-- **Last reconciled:** September 20, 2026
+- **Workflow status:** NOVA UWDW Step 4 complete — launched, verified, and documented
+- **Last reconciled:** September 21, 2026
 
 This file is the current project source of truth. The completed client questionnaire, later client instructions, approved images, and the deployed production behavior were reconciled for Step 4. Secrets, customer data, the paid manual, and private business records do not belong in this repository.
 

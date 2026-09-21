@@ -105,4 +105,14 @@ The production payment, verification, and R2 delivery flow was previously comple
 
 ## Release verification
 
-The release is complete when the Step 4 commit is pushed, the `launch-2026-09-21` tag identifies it, Cloudflare reports a successful production deployment, apex/`www` behavior passes, all public production routes respond, metadata/security headers are live, and production checkout initiation returns a Square-hosted checkout URL.
+Step 4 is complete.
+
+- Source release pushed to `main`; release record identified by tag `launch-2026-09-21`.
+- Cloudflare deployed the release successfully to the production custom domain.
+- All 13 sitemap routes returned HTTP 200; an unknown route returned the branded HTTP 404.
+- `www.mariesminksnbeautybar.com/education/?qa=step4` returned a permanent 301 to the same path and query on the apex domain.
+- The production sitemap, crawlable robots policy, canonical URL, social metadata, favicon, structured data, security headers, and private/no-store transactional headers are live.
+- A mismatched checkout origin returned HTTP 403.
+- A same-origin production checkout request returned a Square-hosted checkout showing **The Lash Artist Digital Training Manual**, **$147.00**, and **Pay $147.00**. No payment details were entered and no charge was submitted.
+- Acuity, both Jotforms, the gallery interaction, navigation, direct routes, and responsive layouts passed their recorded checks.
+- No launch blocker remains. Google Search Console property verification/submission remains a client-owned post-launch account action, as documented in `OPERATIONS_HANDOFF.md`.
